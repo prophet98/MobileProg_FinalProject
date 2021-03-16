@@ -29,16 +29,11 @@ public class PlayerController : MonoBehaviour
     {
         _playerInput.Disable();
     }
-    
-    private void Start()
-    {
-        _controller = gameObject.GetComponent<CharacterController>();
-    }
 
     private void LateUpdate()
     {
-        HandleMovement();
         HandleAttack();
+        HandleMovement();
     }
 
     private void HandleMovement()
@@ -59,15 +54,12 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
-        _controller.Move(_moveVector * (Time.deltaTime * playerSpeed));
-
         if (_moveVector != Vector3.zero)
         {
             gameObject.transform.forward = _moveVector;
         }
-
+        _controller.Move(_moveVector * (Time.deltaTime * playerSpeed));
         _playerVelocity.y += GravityValue * Time.deltaTime;
-        _controller.Move(_playerVelocity * Time.deltaTime);
     }
 
     private void HandleAttack()
@@ -75,10 +67,6 @@ public class PlayerController : MonoBehaviour
         if (_playerInput.PlayerActions.Attack.triggered)
         {
             Debug.Log("Player performing basic attack");
-        }
-        else
-        {
-            return;
         }
     }
 }
