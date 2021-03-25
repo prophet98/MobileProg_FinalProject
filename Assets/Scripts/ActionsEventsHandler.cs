@@ -22,14 +22,17 @@ public class ActionsEventsHandler : MonoBehaviour
 
     private void OnAttackPerformed(InputAction.CallbackContext context)
     {
+        VisualDebugger.PrintText("Player Attacks!");
         Debug.Log("Player Attacks!");
     }
     private void OnDashPerformed(InputAction.CallbackContext obj)
     {
+        VisualDebugger.PrintText("Player Dashes!");
         Debug.Log("Player Dashes!");
     }
     private void OnSkillPerformed(InputAction.CallbackContext obj)
     {
+        VisualDebugger.PrintText("Player used an active skill!");
         Debug.Log("Player used an active skill!");
     }
     
