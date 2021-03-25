@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 2.0f;
     
+    #region InputVariables
     private PlayerInput _playerInput;
     private CharacterController _controller;
     private Vector3 _playerVelocity;
@@ -13,7 +14,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _moveVector;
     private bool _groundedPlayer;
     private const float GravityValue = -9.81f;
-    
+    #endregion
+
     private void Awake()
     {
         _playerInput = new PlayerInput();
@@ -32,8 +34,9 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        HandleAttack();
-        HandleMovement();
+        //TODO: Refactor this is just for testing.
+         HandleMovement();  
+        
     }
 
     private void HandleMovement()
@@ -61,14 +64,7 @@ public class PlayerController : MonoBehaviour
         _controller.Move(_moveVector * (Time.deltaTime * playerSpeed));
         _playerVelocity.y += GravityValue * Time.deltaTime;
     }
-
-    private void HandleAttack()
-    {
-        if (_playerInput.PlayerActions.Attack.triggered)
-        {
-            Debug.Log("Player performing basic attack");
-        }
-    }
+    
 }
 
     
