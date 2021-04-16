@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 872816263}
   - component: {fileID: 872816262}
   m_Layer: 0
-  m_Name: Enemy_2
+  m_Name: Enemy_Ranged
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -845,6 +845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 249444310}
+  attackRange: 10
 --- !u!195 &872816263
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -880,7 +881,7 @@ Transform:
   m_Children:
   - {fileID: 462373437}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &877776129
 GameObject:
@@ -1690,7 +1691,7 @@ GameObject:
   - component: {fileID: 1271651958}
   - component: {fileID: 1271651957}
   m_Layer: 0
-  m_Name: Enemy_1
+  m_Name: Enemy_Base
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1709,6 +1710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 249444310}
+  attackRange: 3
 --- !u!195 &1271651958
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1967,6 +1969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemyInRange: 0
+  enemiesInRange: 0
 --- !u!1 &1539664663
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,7 +2349,7 @@ Transform:
   - {fileID: 1539664667}
   - {fileID: 1386092916}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2136118070
 GameObject:

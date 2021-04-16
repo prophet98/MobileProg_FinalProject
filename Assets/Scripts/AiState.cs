@@ -23,15 +23,16 @@ public class AiState
     protected AiState nextAiState;
     protected readonly NavMeshAgent agent;
 
-    private float _attackDistance = 3.0f;
+    protected float AttackDistance { get; }
 
-    protected AiState(GameObject npc, NavMeshAgent agent, Transform player)
+    protected AiState(GameObject npc, NavMeshAgent agent, Transform player, float attackDistance)
     {
         this.npc = npc;
         this.agent = agent;
         // anim = _anim;
         stage = Event.Enter;
         this.player = player;
+        this.AttackDistance = attackDistance;
     }
 
     protected virtual void Enter() { stage = Event.Update; }
@@ -54,7 +55,7 @@ public class AiState
     protected bool CanAttackPlayer()
     {
         var direction = player.position - npc.transform.position;
-        if (direction.magnitude < _attackDistance)
+        if (direction.magnitude < AttackDistance)
         {
             return true;
         }
@@ -64,7 +65,7 @@ public class AiState
 
 public class Chase: AiState
 {
-    public Chase(GameObject npc, NavMeshAgent agent, Transform player): base(npc, agent, player)
+    public Chase(GameObject npc, NavMeshAgent agent, Transform player, float attackDistance): base(npc, agent, player, attackDistance)
     {
         name = State.Chasing;
         base.agent.speed = 5;
@@ -79,13 +80,13 @@ public class Chase: AiState
 
     protected override void Update()
     {
-        Debug.Log("enemy chasing");
+        Debug.Log(npc.name + " " + "enemy chasing");
         agent.SetDestination(player.position);
         if (agent.hasPath)
         {
             if (CanAttackPlayer())
             {
-                nextAiState = new Attack(npc, agent, player);
+                nextAiState = new Attack(npc, agent, player, AttackDistance);
                 stage = Event.Exit;
             }
         }
@@ -101,7 +102,7 @@ public class Chase: AiState
 public class Attack : AiState
 {
     float rotationSpeed = 10.0f;
-    public Attack(GameObject npc, NavMeshAgent agent, Transform player): base(npc, agent, player)
+    public Attack(GameObject npc, NavMeshAgent agent, Transform player, float attackDistance): base(npc, agent, player, attackDistance)
     {
         name = State.Attacking;
     }
@@ -115,14 +116,14 @@ public class Attack : AiState
 
     protected override void Update()
     {
-        Debug.Log("enemy attacking");
+        Debug.Log(npc.name + " " + "enemy attacking");
         Vector3 direction = player.position - npc.transform.position;
         direction.y = 0;
         npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.LookRotation(direction),
                                             Time.deltaTime * rotationSpeed);
         if (!CanAttackPlayer())
         {
-            nextAiState = new Chase(npc, agent, player);
+            nextAiState = new Chase(npc, agent, player, AttackDistance);
             stage = Event.Exit;
         }
     }
