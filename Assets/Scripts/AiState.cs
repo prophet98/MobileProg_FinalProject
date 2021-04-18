@@ -32,7 +32,7 @@ public class AiState
         // anim = _anim;
         stage = Event.Enter;
         this.player = player;
-        this.AttackDistance = attackDistance;
+        AttackDistance = attackDistance;
     }
 
     protected virtual void Enter() { stage = Event.Update; }

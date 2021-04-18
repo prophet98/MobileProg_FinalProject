@@ -28,6 +28,7 @@ public class WeaponRange : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         isEnemyInRange = false;
+        enemiesInRange = 0;
         if (_triggerList.Contains(other))
         {
             _triggerList.Remove(other);
