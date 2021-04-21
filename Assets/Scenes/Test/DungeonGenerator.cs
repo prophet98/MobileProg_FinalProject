@@ -35,49 +35,7 @@ public class DungeonGenerator : MonoBehaviour
     void Awake()
     {
         RoomRandomSelector();
-
-        //InitRooms();
     }
-
-    //private void InitRooms()
-    //{
-    //    //init standard Rooms array
-    //    var nStdRooms = GameObject.FindGameObjectsWithTag(stdRString).Length;
-    //    stdRoomVariants = new GameObject[nStdRooms];
-    //
-    //    for (int i = 0; i < nStdRooms; i++)
-    //    {
-    //        stdRoomVariants[i] = GameObject.FindGameObjectsWithTag(stdRString)[i];
-    //    }
-    //
-    //    //deactivate rooms
-    //    for (int i = 0; i < stdRoomVariants.Length; i++)
-    //    {
-    //        stdRoomVariants[i].SetActive(false);
-    //        //stdRoomVariants[i].SetActive(false);
-    //        //Debug.Log(stdRoomVariants[i].name);
-    //    }
-    //
-    //    //init boss Rooms array
-    //    var nBossRooms = GameObject.FindGameObjectsWithTag(bossRString).Length;
-    //    bossRoomVariants = new GameObject[nBossRooms];
-    //
-    //    for (int i = 0; i < nBossRooms; i++)
-    //    {
-    //        bossRoomVariants[i] = GameObject.FindGameObjectsWithTag(bossRString)[i];
-    //        //bossRoomVariants[i].SetActive(false);
-    //        //Debug.Log(bossRoomVariants[i].name);
-    //    }
-    //
-    //    for (int i = 0; i < bossRoomVariants.Length; i++)
-    //    {
-    //        bossRoomVariants[i].SetActive(false);
-    //        //stdRoomVariants[i].SetActive(false);
-    //        //Debug.Log(stdRoomVariants[i].name);
-    //    }
-    //
-    //    RoomRandomSelector();
-    //}
 
     #endregion
 
