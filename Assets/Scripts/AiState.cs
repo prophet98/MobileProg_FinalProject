@@ -18,7 +18,7 @@ public class AiState
     protected State name;
     protected Event stage;
     protected readonly GameObject npc;
-    // protected Animator anim;
+    protected Animator anim;
     protected readonly Transform player;
     protected AiState nextAiState;
     protected readonly NavMeshAgent agent;
@@ -52,10 +52,11 @@ public class AiState
     }
     
 
-    protected bool CanAttackPlayer()
+    protected bool IsInRange()
     {
         var direction = player.position - npc.transform.position;
-        if (direction.magnitude < AttackDistance)
+        var angle = Vector3.Angle(direction.normalized, npc.transform.forward);
+        if ((direction.magnitude < AttackDistance))
         {
             return true;
         }
@@ -81,17 +82,17 @@ public class Chase: AiState
     protected override void Update()
     {
         Debug.Log(npc.name + " " + "enemy chasing");
-        agent.SetDestination(player.position);
+        
+        agent.SetDestination(player.position - new Vector3(-1,0,0));
         if (agent.hasPath)
         {
-            if (CanAttackPlayer())
+            if (IsInRange())
             {
                 nextAiState = new Attack(npc, agent, player, AttackDistance);
                 stage = Event.Exit;
             }
         }
     }
-
     protected override void Exit()
     {
         // anim.ResetTrigger("isChasing");
@@ -119,13 +120,32 @@ public class Attack : AiState
         Debug.Log(npc.name + " " + "enemy attacking");
         Vector3 direction = player.position - npc.transform.position;
         direction.y = 0;
-        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.LookRotation(direction),
-                                            Time.deltaTime * rotationSpeed);
-        if (!CanAttackPlayer())
+        if (AttackDistance>=10)
         {
+            AlignActorRotation();
+        }
+
+        if (IsInRange())
+        {
+            //npc.transform.LookAt(player.transform);
+            //&& !anim.GetCurrentAnimatorStateInfo(0).IsName("YourAnimationName")  da aggiungere nell'if sopra
+        }
+        
+        if (!IsInRange())
+        {
+            //&& anim.GetCurrentAnimatorStateInfo(0).IsName("YourAnimationName")  da aggiungere nell'if sopra.
             nextAiState = new Chase(npc, agent, player, AttackDistance);
             stage = Event.Exit;
         }
+
+        
+    }
+
+    private void AlignActorRotation()
+    {
+        Vector3 direction = player.position - npc.transform.position;
+        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.LookRotation(direction),
+            Time.deltaTime * rotationSpeed);
     }
 
     protected override void Exit()
