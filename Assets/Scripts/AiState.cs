@@ -56,7 +56,7 @@ public class AiState
     {
         var direction = player.position - npc.transform.position;
         var angle = Vector3.Angle(direction.normalized, npc.transform.forward);
-        if ((direction.magnitude < AttackDistance))
+        if ((direction.magnitude < AttackDistance) && angle < 45f)
         {
             return true;
         }
@@ -127,8 +127,8 @@ public class Attack : AiState
 
         if (IsInRange())
         {
-            //npc.transform.LookAt(player.transform);
             //&& !anim.GetCurrentAnimatorStateInfo(0).IsName("YourAnimationName")  da aggiungere nell'if sopra
+            npc.transform.LookAt(player.transform);
         }
         
         if (!IsInRange())

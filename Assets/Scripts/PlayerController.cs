@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 2.0f;
-    
     #region InputVariables
     private PlayerInput _playerInput;
     private CharacterController _controller;
@@ -13,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movementInput;
     private Vector3 _moveVector;
     private bool _groundedPlayer;
+    private static readonly int DebugRun = Animator.StringToHash("DebugRun");
     private const float GravityValue = -9.81f;
     #endregion
 
@@ -48,14 +48,15 @@ public class PlayerController : MonoBehaviour
         }
 
         _movementInput= _playerInput.PlayerActions.Move.ReadValue<Vector2>();
-        if (Math.Abs(_movementInput.x) > 0.2f || Math.Abs(_movementInput.y) > 0.2f )
-        { 
+        if (Math.Abs(_movementInput.x) > 0.2f || Math.Abs(_movementInput.y) > 0.2f)
+        {
             _moveVector = new Vector3(_movementInput.x, 0, _movementInput.y);
         }
         else
         {
             return;
         }
+        
         
         if (_moveVector != Vector3.zero)
         {
