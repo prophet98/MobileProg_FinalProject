@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationTest : MonoBehaviour
 {
-    private Animator playerAC;
+    private Animator[] playerAC;
 
     private const string DEBUG_ATTACK = "DebugAttack";
     private const string DEBUG_RUN = "DebugRun";
@@ -12,24 +12,33 @@ public class AnimationTest : MonoBehaviour
 
     private void Awake()
     {
-        playerAC = GetComponent<Animator>();
+        playerAC = GetComponentsInChildren<Animator>();
     }
 
     public void DebugRun()
     {
-        bool run = playerAC.GetBool(DEBUG_RUN);
-        playerAC.SetBool(DEBUG_RUN, !run);
+        for (int i = 0; i < playerAC.Length; i++)
+        {
+            bool run = playerAC[i].GetBool(DEBUG_RUN);
+            playerAC[i].SetBool(DEBUG_RUN, !run);
+        }
     }
 
     public void DebugDash()
     {
-        bool dash = playerAC.GetBool(DEBUG_DASH);
-        playerAC.SetBool(DEBUG_DASH, !dash);
+        for (int i = 0; i < playerAC.Length; i++)
+        {
+            bool dash = playerAC[i].GetBool(DEBUG_DASH);
+            playerAC[i].SetBool(DEBUG_DASH, !dash);
+        }
     }
 
     public void DebugAttack()
     {
-        bool attack = playerAC.GetBool(DEBUG_ATTACK);
-        playerAC.SetBool(DEBUG_ATTACK, !attack);
+        for (int i = 0; i < playerAC.Length; i++)
+        {
+            bool attack = playerAC[i].GetBool(DEBUG_ATTACK);
+            playerAC[i].SetBool(DEBUG_ATTACK, !attack);
+        }
     }
 }
