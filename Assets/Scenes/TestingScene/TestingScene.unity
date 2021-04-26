@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 249444310}
-  attackRange: 10
+  attackRange: 20
 --- !u!195 &872816263
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2418,6 +2418,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 432404637854077564, guid: d742e317998d776448fd57760fe6d7b0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.4688642
+      objectReference: {fileID: 0}
+    - target: {fileID: 432404637854077564, guid: d742e317998d776448fd57760fe6d7b0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.04728
+      objectReference: {fileID: 0}
+    - target: {fileID: 432404637854077564, guid: d742e317998d776448fd57760fe6d7b0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 432404638897891754, guid: d742e317998d776448fd57760fe6d7b0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 432404639281640596, guid: d742e317998d776448fd57760fe6d7b0,
         type: 3}
       propertyPath: m_RootOrder
@@ -2473,12 +2493,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 432404639281640597, guid: d742e317998d776448fd57760fe6d7b0,
+        type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 432404639281640597, guid: d742e317998d776448fd57760fe6d7b0,
+        type: 3}
+      propertyPath: m_SlopeLimit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 432404639281640599, guid: d742e317998d776448fd57760fe6d7b0,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 432404638897891754, guid: d742e317998d776448fd57760fe6d7b0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d742e317998d776448fd57760fe6d7b0, type: 3}
 --- !u!114 &6897979871157234682
 MonoBehaviour:

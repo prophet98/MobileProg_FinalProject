@@ -34,6 +34,7 @@ public class ActionsEventsHandler : MonoBehaviour
     {
         if (_weaponRange.isEnemyInRange)
         {
+            _animator.SetTrigger(DebugAttack);
             VisualDebugger.PrintText("Player Attacks!");
             Debug.Log("Player Attacks!");
         }
@@ -42,7 +43,7 @@ public class ActionsEventsHandler : MonoBehaviour
             VisualDebugger.PrintText("Player misses target!");
             Debug.Log("Player misses target!");
         }
-        _animator.SetTrigger(DebugAttack);
+        
     }
     private void OnAttackCanceled(InputAction.CallbackContext context)
     {
