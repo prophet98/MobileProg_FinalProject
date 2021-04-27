@@ -22,7 +22,7 @@ public class ActionsEventsHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerInput.PlayerActions.Attack.performed += OnAttackPerformed;
+        _playerInput.PlayerActions.Attack.started += OnAttackStarted;
         _playerInput.PlayerActions.Attack.canceled += OnAttackCanceled;
         _playerInput.PlayerActions.Dash.performed += OnDashPerformed;
         _playerInput.PlayerActions.Skill.performed += OnSkillPerformed;
@@ -30,7 +30,7 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Move.canceled += OnMoveCanceled;
     }
     
-    private void OnAttackPerformed(InputAction.CallbackContext context)
+    private void OnAttackStarted(InputAction.CallbackContext context)
     {
         if (_weaponRange.isEnemyInRange)
         {
@@ -72,7 +72,7 @@ public class ActionsEventsHandler : MonoBehaviour
     }
     private void OnDisable()
     {
-        _playerInput.PlayerActions.Attack.performed -= OnAttackPerformed;
+        _playerInput.PlayerActions.Attack.started -= OnAttackStarted;
         _playerInput.PlayerActions.Attack.canceled -= OnAttackCanceled;
         _playerInput.PlayerActions.Dash.performed -= OnDashPerformed;
         _playerInput.PlayerActions.Skill.performed -= OnSkillPerformed;
