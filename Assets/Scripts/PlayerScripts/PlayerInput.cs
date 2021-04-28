@@ -32,7 +32,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""id"": ""5803c323-b506-42ac-942d-cbbe06c02b64"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Tap""
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Dash"",
@@ -48,7 +48,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""id"": ""26c83e85-49b5-4e52-835a-0e065e94dc72"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Tap""
+                    ""interactions"": ""Press(behavior=2)""
                 }
             ],
             ""bindings"": [
