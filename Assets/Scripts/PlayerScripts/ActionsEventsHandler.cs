@@ -26,16 +26,22 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Skill.performed += OnSkillPerformed;
         _playerInput.PlayerActions.Move.performed += OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled += OnMoveCanceled;
+
+        DamageAnimationEvents.OnDamaged += DamageEnemy;
     }
-    
+
+    private void DamageEnemy()
+    {
+        foreach (var enemy in _weaponRange.triggerList)
+        {
+            enemy.GetComponentInParent<AiController>().RemoveHealth(_weaponRange.weaponDamage);
+        }
+    }
+
     private void OnAttackStarted(InputAction.CallbackContext context)
     {
         if (_weaponRange.isEnemyInRange)
         {
-            foreach (var enemy in _weaponRange.triggerList)
-            {
-                // enemy.gameObject.GetComponentInParent<AiController>().RemoveHealth(_weaponRange.weaponDamage); invoke from animation
-            }
             _animator.SetTrigger(DebugAttack);
             VisualDebugger.PrintText("Player Attacks!");
             Debug.Log("Player Attacks!");
