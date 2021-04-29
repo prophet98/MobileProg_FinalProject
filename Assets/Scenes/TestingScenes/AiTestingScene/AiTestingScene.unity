@@ -647,31 +647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feec1adffdeabfd459b8975d35150cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &662695693 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 878995775950298325, guid: d742e317998d776448fd57760fe6d7b0,
-    type: 3}
-  m_PrefabInstance: {fileID: 432404639175066434}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &662695694
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662695693}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cbdd0a9101c72e040b39fb82c18739fa, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &872816261
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 249444310}
   attackRange: 20
+  health: 100
 --- !u!195 &872816263
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1574,6 +1550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 249444310}
   attackRange: 3
+  health: 100
 --- !u!195 &1271651958
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2238,6 +2215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 249444310}
   attackRange: 5
+  health: 100
 --- !u!195 &1817920662
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2418,30 +2396,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 432404637854077564, guid: d742e317998d776448fd57760fe6d7b0,
+    - target: {fileID: 432404637854077440, guid: d742e317998d776448fd57760fe6d7b0,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.4688642
-      objectReference: {fileID: 0}
-    - target: {fileID: 432404637854077564, guid: d742e317998d776448fd57760fe6d7b0,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.04728
-      objectReference: {fileID: 0}
-    - target: {fileID: 432404637854077564, guid: d742e317998d776448fd57760fe6d7b0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 432404637854077564, guid: d742e317998d776448fd57760fe6d7b0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.93
-      objectReference: {fileID: 0}
-    - target: {fileID: 432404638897891754, guid: d742e317998d776448fd57760fe6d7b0,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: weaponDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 432404639281640596, guid: d742e317998d776448fd57760fe6d7b0,
         type: 3}
@@ -2498,23 +2456,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 432404639281640597, guid: d742e317998d776448fd57760fe6d7b0,
-        type: 3}
-      propertyPath: m_SkinWidth
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 432404639281640597, guid: d742e317998d776448fd57760fe6d7b0,
-        type: 3}
-      propertyPath: m_SlopeLimit
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 432404639281640599, guid: d742e317998d776448fd57760fe6d7b0,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 432404638897891754, guid: d742e317998d776448fd57760fe6d7b0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d742e317998d776448fd57760fe6d7b0, type: 3}
 --- !u!114 &6897979871157234682
 MonoBehaviour:

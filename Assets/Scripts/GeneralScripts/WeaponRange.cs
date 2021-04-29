@@ -1,5 +1,3 @@
-
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,31 +5,29 @@ using UnityEngine;
 public class WeaponRange : MonoBehaviour
 {
     public bool isEnemyInRange;
-    [SerializeField] private int enemiesInRange = 0;
-    private readonly List<Collider> _triggerList = new List<Collider>();
+    [SerializeField] private int enemiesInRange;
+    public readonly List<Collider> triggerList = new List<Collider>();
+    public int weaponDamage;
     
-
     private void OnTriggerStay(Collider other)
     {
         if (other.transform.parent.CompareTag("Enemy"))
         {
             isEnemyInRange = true;
+            if (!triggerList.Contains(other))
+            {
+                triggerList.Add(other);
+            }
         }
-
-        if (!_triggerList.Contains(other))
-        {
-            _triggerList.Add(other);
-        }
-
-        enemiesInRange = _triggerList.Count;
+        enemiesInRange = triggerList.Count;
     }
     private void OnTriggerExit(Collider other)
     {
         isEnemyInRange = false;
         enemiesInRange = 0;
-        if (_triggerList.Contains(other))
+        if (triggerList.Contains(other))
         {
-            _triggerList.Remove(other);
+            triggerList.Remove(other);
         }
     }
 }

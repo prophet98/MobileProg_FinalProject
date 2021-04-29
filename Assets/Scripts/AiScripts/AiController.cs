@@ -11,17 +11,24 @@ public class AiController : MonoBehaviour
     private AiState _currentAiState;
 
     public float attackRange;
+    public int health;
+
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
         // anim = this.GetComponent<Animator>();
         _currentAiState = new Chase(gameObject, _agent, player, attackRange);
+    }
 
+    public void RemoveHealth(int damage)
+    {
+        health -= damage;
     }
 
     private void Update()
     {
         _currentAiState = _currentAiState.Process();
     }
+    
 }
 

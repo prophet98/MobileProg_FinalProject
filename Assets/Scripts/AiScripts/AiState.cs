@@ -81,7 +81,7 @@ public class Chase: AiState
 
     protected override void Update()
     {
-        Debug.Log(npc.name + " " + "enemy chasing");
+        // Debug.Log(npc.name + " " + "enemy chasing");
         
         agent.SetDestination(player.position - new Vector3(-1,0,0));
         if (agent.hasPath)
@@ -117,7 +117,7 @@ public class Attack : AiState
 
     protected override void Update()
     {
-        Debug.Log(npc.name + " " + "enemy attacking");
+        // Debug.Log(npc.name + " " + "enemy attacking");
         Vector3 direction = player.position - npc.transform.position;
         direction.y = 0;
         if (AttackDistance>=10)
