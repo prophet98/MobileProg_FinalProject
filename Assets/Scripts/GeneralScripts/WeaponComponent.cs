@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class WeaponRange : MonoBehaviour
+public class WeaponComponent : MonoBehaviour
 {
     public bool isEnemyInRange;
     [SerializeField] private int enemiesInRange;

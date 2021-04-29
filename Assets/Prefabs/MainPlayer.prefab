@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 432404637854077565}
   - component: {fileID: 432404637854077440}
   m_Layer: 0
-  m_Name: WeaponRange
+  m_Name: WeaponComponent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemyInRange: 0
   enemiesInRange: 0
-  weaponDamage: 20
+  weaponDamage: 10
 --- !u!1 &432404639281640599
 GameObject:
   m_ObjectHideFlags: 0
