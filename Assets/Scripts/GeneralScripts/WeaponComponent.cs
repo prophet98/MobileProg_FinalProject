@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponComponent : MonoBehaviour
 {
     public bool isEnemyInRange;
-    [SerializeField] private int enemiesInRange;
+    // [SerializeField] private int enemiesInRange;
     public readonly List<Collider> triggerList = new List<Collider>();
     public int weaponDamage;
     
@@ -19,12 +19,12 @@ public class WeaponComponent : MonoBehaviour
                 triggerList.Add(other);
             }
         }
-        enemiesInRange = triggerList.Count;
+        // enemiesInRange = triggerList.Count;
     }
     private void OnTriggerExit(Collider other)
     {
         isEnemyInRange = false;
-        enemiesInRange = 0;
+        // enemiesInRange = 0;
         if (triggerList.Contains(other))
         {
             triggerList.Remove(other);
