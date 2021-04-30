@@ -658,6 +658,7 @@ GameObject:
   - component: {fileID: 872816264}
   - component: {fileID: 872816263}
   - component: {fileID: 872816262}
+  - component: {fileID: 872816266}
   - component: {fileID: 872816265}
   m_Layer: 0
   m_Name: Enemy_Ranged
@@ -680,7 +681,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 249444310}
   attackRange: 20
-  health: 100
 --- !u!195 &872816263
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -737,6 +737,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &872816266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872816261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f201ecff9c1f1d40b80e0297e20569f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpValue: 100
 --- !u!1 &877776129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1541,7 @@ GameObject:
   - component: {fileID: 1271651959}
   - component: {fileID: 1271651958}
   - component: {fileID: 1271651957}
+  - component: {fileID: 1271651961}
   - component: {fileID: 1271651960}
   m_Layer: 0
   m_Name: Enemy_Base
@@ -1550,7 +1564,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 249444310}
   attackRange: 3
-  health: 100
 --- !u!195 &1271651958
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1607,6 +1620,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1271651961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271651956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f201ecff9c1f1d40b80e0297e20569f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpValue: 100
 --- !u!1 &1386092915
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,6 +2219,7 @@ GameObject:
   - component: {fileID: 1817920663}
   - component: {fileID: 1817920662}
   - component: {fileID: 1817920661}
+  - component: {fileID: 1817920665}
   - component: {fileID: 1817920664}
   m_Layer: 0
   m_Name: Enemy_Base_Adv
@@ -2215,7 +2242,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 249444310}
   attackRange: 5
-  health: 100
 --- !u!195 &1817920662
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2272,6 +2298,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1817920665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817920660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f201ecff9c1f1d40b80e0297e20569f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpValue: 100
 --- !u!1 &2044664865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,6 +2435,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 432404637854077440, guid: d742e317998d776448fd57760fe6d7b0,
+        type: 3}
+      propertyPath: weaponDamage
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 432404639281640596, guid: d742e317998d776448fd57760fe6d7b0,
         type: 3}
       propertyPath: m_RootOrder

@@ -11,8 +11,6 @@ namespace AiScripts
         private AiState _currentAiState;
 
         public float attackRange;
-        public int enemyHealth;
-
         private void Start()
         {
             _agent = GetComponent<NavMeshAgent>();
@@ -22,11 +20,6 @@ namespace AiScripts
         private void Update()
         {
             _currentAiState = _currentAiState.Process();
-        }
-        
-        public void RemoveHealth(int damage)
-        {
-            enemyHealth -= damage;
         }
 
     }

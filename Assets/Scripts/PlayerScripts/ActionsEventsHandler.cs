@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using AiScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,8 +7,8 @@ using UnityEngine.InputSystem;
 public class ActionsEventsHandler : MonoBehaviour
 {
     private PlayerInput _playerInput;
-    private WeaponComponent _weaponComponent;
     private Animator _animator;
+    private PlayerWeaponComponent _playerWeaponComponent;
     private static readonly int DebugAttack = Animator.StringToHash("DebugAttack");
     private static readonly int DebugDash = Animator.StringToHash("DebugDash");
     private static readonly int DebugRun = Animator.StringToHash("DebugRun");
@@ -17,8 +19,8 @@ public class ActionsEventsHandler : MonoBehaviour
     {
         _playerInput = new PlayerInput();
         _playerInput.Enable();
-        _weaponComponent = GetComponentInChildren<WeaponComponent>();
         _animator = GetComponentInChildren<Animator>();
+        _playerWeaponComponent = GetComponentInChildren<PlayerWeaponComponent>();
     }
 
     private void OnEnable()
@@ -38,9 +40,9 @@ public class ActionsEventsHandler : MonoBehaviour
     {
         VisualDebugger.PrintText("Player Attacks!");
         // Debug.Log("Player Attacks!");
-        foreach (var enemy in _weaponComponent.triggerList)
+        foreach (var enemy in PlayerWeaponComponent.TriggerList.ToList())
         {
-            enemy.GetComponentInParent<AiController>().RemoveHealth(_weaponComponent.weaponDamage);
+            enemy.GetComponentInParent<DamageComponent>().RemoveHealth(_playerWeaponComponent.weaponDamage);
         }
     }
     private void CancelDamage()
@@ -55,7 +57,7 @@ public class ActionsEventsHandler : MonoBehaviour
     private void OnAttackStarted(InputAction.CallbackContext context)
     {
         _animator.SetTrigger(DebugAttack);
-        if (_weaponComponent.isEnemyInRange)
+        if (PlayerWeaponComponent.TriggerList.Count>0)
         {
             comboCounter++;
         }
@@ -102,5 +104,9 @@ public class ActionsEventsHandler : MonoBehaviour
         DamageAnimationEvents.OnDamagedSuccess -= ApplyDamage;
         DamageAnimationEvents.OnDamagedFail -= CancelDamage;
     }
-    
+
+    private void Update()
+    {
+        Debug.Log(PlayerWeaponComponent.TriggerList.Count);
+    }
 }
