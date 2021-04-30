@@ -29,15 +29,26 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Move.performed += OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled += OnMoveCanceled;
 
-        DamageAnimationEvents.OnDamagedSuccess += DamageEnemy;
+        DamageAnimationEvents.OnDamagedSuccess += ApplyDamage;
+        DamageAnimationEvents.OnDamagedFail += CancelDamage;
     }
 
-    private void DamageEnemy()
+    private void ApplyDamage()
     {
+        VisualDebugger.PrintText("Player Attacks!");
+        // Debug.Log("Player Attacks!");
         foreach (var enemy in _weaponComponent.triggerList)
         {
             enemy.GetComponentInParent<AiController>().RemoveHealth(_weaponComponent.weaponDamage);
         }
+    }
+    private void CancelDamage()
+    {
+        //suono di fail?
+        comboCounter = 0;
+        _animator.ResetTrigger(DebugAttack);
+        VisualDebugger.PrintText("Player misses target!");
+        // Debug.Log("Player misses target!");
     }
 
     private void OnAttackStarted(InputAction.CallbackContext context)
@@ -46,15 +57,11 @@ public class ActionsEventsHandler : MonoBehaviour
         if (_weaponComponent.isEnemyInRange)
         {
             comboCounter++;
-            VisualDebugger.PrintText("Player Attacks!");
-            Debug.Log("Player Attacks!");
         }
         else
         {
             comboCounter = 0;
             _animator.ResetTrigger(DebugAttack);
-            VisualDebugger.PrintText("Player misses target!");
-            Debug.Log("Player misses target!");
         }
     }
     private void OnAttackCanceled(InputAction.CallbackContext context)
@@ -91,7 +98,8 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Move.performed -= OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled -= OnMoveCanceled;
         
-        DamageAnimationEvents.OnDamagedSuccess -= DamageEnemy;
+        DamageAnimationEvents.OnDamagedSuccess -= ApplyDamage;
+        DamageAnimationEvents.OnDamagedFail -= CancelDamage;
     }
     
 }
