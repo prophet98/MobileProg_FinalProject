@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using AiScripts;
+using DamageScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,8 +33,15 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Move.performed += OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled += OnMoveCanceled;
 
-        DamageAnimationEvents.OnDamagedSuccess += ApplyDamage;
-        DamageAnimationEvents.OnDamagedFail += CancelDamage;
+        PlayerDamageAnimationEvents.OnDamagedSuccess += ApplyDamage;
+        PlayerDamageAnimationEvents.OnDamagedFail += CancelDamage;
+        
+        AiDamageAnimationEvents.OnPlayerDamagedSuccess += ReceiveDamage;
+    }
+
+    private void ReceiveDamage(int damage)
+    {
+        GetComponent<IDamageable<int>>().RemoveHealth(damage);
     }
 
     private void ApplyDamage()
@@ -42,7 +50,7 @@ public class ActionsEventsHandler : MonoBehaviour
         // Debug.Log("Player Attacks!");
         foreach (var enemy in PlayerWeaponComponent.TriggerList.ToList())
         {
-            enemy.GetComponentInParent<DamageComponent>().RemoveHealth(_playerWeaponComponent.weaponDamage);
+            enemy.GetComponentInParent<IDamageable<int>>().RemoveHealth(_playerWeaponComponent.weaponDamage);
         }
     }
     private void CancelDamage()
@@ -101,7 +109,7 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Move.performed -= OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled -= OnMoveCanceled;
         
-        DamageAnimationEvents.OnDamagedSuccess -= ApplyDamage;
-        DamageAnimationEvents.OnDamagedFail -= CancelDamage;
+        PlayerDamageAnimationEvents.OnDamagedSuccess -= ApplyDamage;
+        PlayerDamageAnimationEvents.OnDamagedFail -= CancelDamage;
     }
 }

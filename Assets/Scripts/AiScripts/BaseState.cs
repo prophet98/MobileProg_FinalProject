@@ -12,7 +12,7 @@ namespace AiScripts
     
         protected Event stage;
         protected readonly GameObject npc;
-        protected Animator anim;
+        protected readonly Animator anim;
         protected readonly Transform player;
         protected AiState nextAiState;
         protected readonly NavMeshAgent agent;

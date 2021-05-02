@@ -39,9 +39,10 @@ namespace AiScripts
             base.Exit();
         }
     }
-
+    
     public class AttackState : AiState
     {
+        private const string AttackAnimName = "ATTACK01";
         private static readonly int DebugAttack = Animator.StringToHash("DebugAttack");
 
         public AttackState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, float attackDistance): base(npc, agent, player, anim, attackDistance)
@@ -58,18 +59,16 @@ namespace AiScripts
         protected override void Update()
         {
             // Debug.Log(npc.name + " " + "enemy attacking");
-            if (AttackDistance>=10) //is a ranged player?
-            {
-                AlignActorRotation();
-            }
-
-            if (IsInRange() && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001"))
+            if (AttackDistance>=10) //is a ranged enemy?
             {
                 AlignActorRotation();
             }
             
-            
-            if (!IsInRange() && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") )
+            if (IsInRange() && !anim.GetCurrentAnimatorStateInfo(0).IsName(AttackAnimName))
+            {
+                AlignActorRotation();
+            } 
+            if (!IsInRange() && anim.GetCurrentAnimatorStateInfo(0).IsName(AttackAnimName) )
             {
                 nextAiState = new ChaseState(npc, agent, player, anim, AttackDistance);
                 stage = Event.Exit;
