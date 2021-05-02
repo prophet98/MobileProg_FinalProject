@@ -5,7 +5,9 @@ namespace AiScripts
 {
     public class ChaseState: AiState
     {
-        public ChaseState(GameObject npc, NavMeshAgent agent, Transform player, float attackDistance): base(npc, agent, player, attackDistance)
+        private static readonly int DebugRun = Animator.StringToHash("DebugRun");
+
+        public ChaseState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim,float attackDistance): base(npc, agent, player, anim, attackDistance)
         {
             base.agent.speed = 5;
             base.agent.isStopped = false;
@@ -13,7 +15,7 @@ namespace AiScripts
 
         protected override void Enter()
         {
-            // anim.ResetTrigger("isChasing");
+            anim.SetTrigger(DebugRun);
             base.Enter();
         }
 
@@ -26,28 +28,29 @@ namespace AiScripts
             {
                 if (IsInRange())
                 {
-                    nextAiState = new AttackState(npc, agent, player, AttackDistance);
+                    nextAiState = new AttackState(npc, agent, player, anim, AttackDistance);
                     stage = Event.Exit;
                 }
             }
         }
         protected override void Exit()
         {
-            // anim.ResetTrigger("isChasing");
+            anim.ResetTrigger(DebugRun);
             base.Exit();
         }
     }
 
     public class AttackState : AiState
     {
+        private static readonly int DebugAttack = Animator.StringToHash("DebugAttack");
 
-        public AttackState(GameObject npc, NavMeshAgent agent, Transform player, float attackDistance): base(npc, agent, player, attackDistance)
+        public AttackState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, float attackDistance): base(npc, agent, player, anim, attackDistance)
         {
         }
 
         protected override void Enter()
         {
-            // anim.SetTrigger("isAttacking");
+            anim.SetTrigger(DebugAttack);
             agent.isStopped = true;
             base.Enter();
         }
@@ -60,17 +63,15 @@ namespace AiScripts
                 AlignActorRotation();
             }
 
-            if (IsInRange())
+            if (IsInRange() && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001"))
             {
-                //&& !anim.GetCurrentAnimatorStateInfo(0).IsName("YourAnimationName")  da aggiungere nell'if sopra
                 AlignActorRotation();
             }
             
             
-            if (!IsInRange())
+            if (!IsInRange() && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") )
             {
-                //&& anim.GetCurrentAnimatorStateInfo(0).IsName("YourAnimationName")  da aggiungere nell'if sopra.
-                nextAiState = new ChaseState(npc, agent, player, AttackDistance);
+                nextAiState = new ChaseState(npc, agent, player, anim, AttackDistance);
                 stage = Event.Exit;
             }
 
@@ -87,7 +88,7 @@ namespace AiScripts
 
         protected override void Exit()
         {
-            // anim.ResetTrigger("isAttacking");
+            anim.ResetTrigger(DebugAttack);
             base.Exit();
         }
     }

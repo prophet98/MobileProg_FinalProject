@@ -19,11 +19,11 @@ namespace AiScripts
 
         protected float AttackDistance { get; }
 
-        protected AiState(GameObject npc, NavMeshAgent agent, Transform player, float attackDistance)
+        protected AiState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, float attackDistance)
         {
             this.npc = npc;
             this.agent = agent;
-            // anim = _anim;
+            this.anim = anim;
             stage = Event.Enter;
             this.player = player;
             AttackDistance = attackDistance;

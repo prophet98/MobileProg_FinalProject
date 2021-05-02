@@ -6,7 +6,7 @@ namespace AiScripts
     public class AiController : MonoBehaviour
     {
         private NavMeshAgent _agent;
-        // Animator anim;
+        public Animator anim;
         public Transform player;
         private AiState _currentAiState;
 
@@ -14,8 +14,8 @@ namespace AiScripts
         private void Start()
         {
             _agent = GetComponent<NavMeshAgent>();
-            // anim = this.GetComponent<Animator>();
-            _currentAiState = new ChaseState(gameObject, _agent, player, attackRange);
+            anim = this.GetComponentInChildren<Animator>();
+            _currentAiState = new ChaseState(gameObject, _agent, player, anim, attackRange);
         }
         private void Update()
         {

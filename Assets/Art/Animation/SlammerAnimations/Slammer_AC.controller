@@ -175,19 +175,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: DebugRun
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: DebugDash
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -265,7 +265,7 @@ AnimatorStateMachine:
     m_Position: {x: 365.96515, y: 200.02182, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6181613034885080237}
-    m_Position: {x: 470, y: 540, z: 0}
+    m_Position: {x: 480, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -242345500662930121}
     m_Position: {x: 670, y: 450, z: 0}

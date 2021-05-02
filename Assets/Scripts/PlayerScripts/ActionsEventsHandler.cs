@@ -104,9 +104,4 @@ public class ActionsEventsHandler : MonoBehaviour
         DamageAnimationEvents.OnDamagedSuccess -= ApplyDamage;
         DamageAnimationEvents.OnDamagedFail -= CancelDamage;
     }
-
-    private void Update()
-    {
-        Debug.Log(PlayerWeaponComponent.TriggerList.Count);
-    }
 }
