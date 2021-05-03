@@ -48,8 +48,17 @@ namespace AiScripts
         protected bool IsInRange()
         {
             var direction = player.position - npc.transform.position;
+            if ((direction.magnitude < AttackDistance))
+            {
+                return true;
+            }
+            return false;
+        }
+        protected bool IsInSight()
+        {
+            var direction = player.position - npc.transform.position;
             var angle = Vector3.Angle(direction.normalized, npc.transform.forward);
-            if ((direction.magnitude < AttackDistance) && angle < 45f)
+            if (angle < 20f)
             {
                 return true;
             }

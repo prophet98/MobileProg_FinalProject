@@ -6,6 +6,9 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: s
+  - first:
+      74: 3951970577203447479
+    second: Anim_Attack
   externalObjects: {}
   materials:
     materialImportMode: 2

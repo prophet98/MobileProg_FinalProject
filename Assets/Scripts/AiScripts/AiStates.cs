@@ -63,21 +63,25 @@ namespace AiScripts
             {
                 AlignActorRotation();
             }
-            
-            if (IsInRange() && !anim.GetCurrentAnimatorStateInfo(0).IsName(AttackAnimName))
+
+            if (IsInSight() && IsInRange())
             {
+                anim.SetTrigger(DebugAttack);
+            }
+            else if (IsInRange() && !IsInSight())
+            {
+                anim.ResetTrigger(DebugAttack);
                 AlignActorRotation();
             } 
-            if (!IsInRange() && anim.GetCurrentAnimatorStateInfo(0).IsName(AttackAnimName) )
+            else if (!IsInRange() && !IsInSight())
             {
                 nextAiState = new ChaseState(npc, agent, player, anim, AttackDistance);
                 stage = Event.Exit;
             }
-
-        
+            
         }
         
-        private const float RotationSpeed = 10.0f;
+        private const float RotationSpeed = 5.0f;
         private void AlignActorRotation()
         {
             Vector3 direction = player.position - npc.transform.position;
