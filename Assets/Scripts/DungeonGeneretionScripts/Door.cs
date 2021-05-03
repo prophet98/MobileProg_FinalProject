@@ -10,22 +10,10 @@ public class Door : MonoBehaviour
     void Start()
     {
         dungeonGenerator = GameObject.Find("Dungeon").GetComponent<DungeonGenerator>();
+        //Debug.Log(dungeonGenerator.name);
     }
 
-  
-   // private void OnCollisionEnter(Collision collision)
-   // {
-   //     Debug.Log(collision.gameObject.name);
-   //
-   //     if (collision.gameObject.tag == "Player")
-   //     {
-   //         Debug.Log(collision.gameObject.name);
-   //         dungeonGenerator.SetStageIsClear(true);
-   //         dungeonGenerator.NextRoom(gameObject);
-   //     }
-   // }
-
-    private void OnTriggerEnter(Collider other)
+      private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {

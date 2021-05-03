@@ -30,6 +30,9 @@ public class DungeonGenerator : MonoBehaviour
     private bool nextIsBoss = false;
     private bool stageClear = false;
 
+    [SerializeField]
+    private float adjustRotation;
+
 #region init
 
     void Awake()
@@ -73,7 +76,9 @@ public class DungeonGenerator : MonoBehaviour
         }
 
         doorMustFall = door;
-        fallenDoorInstance = Instantiate(fallenDoorPrefab, doorMustFall.transform.localPosition, doorMustFall.transform.rotation);
+        fallenDoorInstance = Instantiate(fallenDoorPrefab, fallenDoorPrefab.transform.position, doorMustFall.transform.localRotation);
+        Vector3 rotationOffset = new Vector3(0, adjustRotation, 0);
+        fallenDoorInstance.transform.Rotate(rotationOffset, Space.Self);
         doorMustFall.SetActive(false);
     }
 
