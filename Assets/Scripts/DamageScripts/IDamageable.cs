@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IDamageable<T>
 {
-    void ModifyHealth(T damage);
+    void RemoveHealth(T damage);
 }

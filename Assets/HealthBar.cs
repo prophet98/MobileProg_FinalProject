@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
     private void Awake()
     {
         foregroundImage = GetComponentInChildren<Image>();
-        PlayerHealthComponent.OnHealthPctChanged += HandleHealthChange;
+        GetComponentInParent<HealthComponent>().OnHealthPctChange += HandleHealthChange;
     }
 
     private void HandleHealthChange(float pct)
@@ -32,5 +32,9 @@ public class HealthBar : MonoBehaviour
         }
         
         foregroundImage.fillAmount = pct;
+    }
+    private void LateUpdate()
+    {
+        transform.LookAt(Camera.main.transform);
     }
 }
