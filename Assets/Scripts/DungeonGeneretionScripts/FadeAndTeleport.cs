@@ -14,7 +14,7 @@ public class FadeAndTeleport : MonoBehaviour
     void Start()
     {
         blackImage = GameObject.Find(imageName).GetComponent<Image>();
-        blackImage.color = Color.blue; //sparafleshato
+        blackImage.color = Color.black; //sparafleshato
         blackImage.CrossFadeAlpha(0f, 1.5f, false);
         wait = new WaitForSeconds(0.3f);
 
@@ -40,7 +40,7 @@ public class FadeAndTeleport : MonoBehaviour
 
     private IEnumerator FadeCoroutine()
     {
-        blackImage.CrossFadeAlpha(0.9f, 0f, true);
+        blackImage.CrossFadeAlpha(1f, 0f, true);
         yield return wait;
         blackImage.CrossFadeAlpha(0f, 1.5f, true);
         yield break;
