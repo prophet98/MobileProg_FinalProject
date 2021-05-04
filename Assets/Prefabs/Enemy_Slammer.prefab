@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   player: {fileID: 0}
-  attackRange: 5
+  attackRange: 4
 --- !u!114 &7050508820448470651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f201ecff9c1f1d40b80e0297e20569f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpValue: 100
+  maxHp: 100
 --- !u!1001 &245799014830745409
 PrefabInstance:
   m_ObjectHideFlags: 0
