@@ -14,6 +14,4 @@ public class EnvConfiguration : ScriptableObject
     public Material GroundMaterial { get => _groundMaterial; }
     public Material WallsMaterial { get => _wallsMaterial; }
     public Material MalusMaterial { get => _malusMaterial; }
-
-
 }

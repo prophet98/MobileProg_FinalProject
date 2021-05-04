@@ -33,11 +33,21 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField]
     private float adjustRotation;
 
-#region init
+    #region init
 
     void Awake()
     {
         RoomRandomSelector();
+    }
+
+    private void OnEnable()
+    {
+        EnvEventManager.OnEnvChange += SetStageIsClear;
+    }
+
+    private void OnDisable()
+    {
+        EnvEventManager.OnEnvChange -= SetStageIsClear;
     }
 
     #endregion
@@ -86,6 +96,8 @@ public class DungeonGenerator : MonoBehaviour
     {
         if (stageClear == true)
         {
+            GameObject.FindGameObjectWithTag("StandardRoom").SetActive(false);
+
             NewFallenDoor(entryDoor);
             RoomRandomSelector();
             Debug.Log("next room");
@@ -98,9 +110,9 @@ public class DungeonGenerator : MonoBehaviour
         nextIsBoss = isBoss;
     }
 
-    public void SetStageIsClear(bool clear)
+    public void SetStageIsClear()
     {
-        stageClear = clear;
+        stageClear = true;
         Debug.Log("clear");
     }
 

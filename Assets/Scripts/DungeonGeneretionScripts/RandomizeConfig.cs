@@ -14,13 +14,26 @@ public class RandomizeConfig : MonoBehaviour
     [SerializeField]
     private GameObject penaltyArea;
 
+    #region init
     // Start is called before the first frame update
     void Start()
     {
         ChangeEnv();
     }
 
-    public void ChangeEnv()
+    private void OnEnable()
+    {
+        EnvEventManager.OnEnvChange += ChangeEnv;
+    }
+
+    private void OnDisable()
+    {
+        EnvEventManager.OnEnvChange -= ChangeEnv;
+    }
+    #endregion
+
+    #region Randomization
+    private void ChangeEnv()
     {
         SetNewConfig(randomConfig());
     }
@@ -48,10 +61,5 @@ public class RandomizeConfig : MonoBehaviour
         MeshRenderer mr = goToChange.GetComponent<MeshRenderer>();
         mr.material = newMat;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #endregion
 }
