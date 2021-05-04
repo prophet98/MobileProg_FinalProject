@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    private DungeonGenerator dungeonGenerator;
+    [SerializeField]
+    private GameObject dungeon;
 
+    private DungeonGenerator dungeonGenerator;
+    private RandomizeConfig envRandomizer;
     // Start is called before the first frame update
     void Start()
     {
-        dungeonGenerator = GameObject.Find("Dungeon").GetComponent<DungeonGenerator>();
         //Debug.Log(dungeonGenerator.name);
+        dungeonGenerator = dungeon.GetComponent<DungeonGenerator>();
+        envRandomizer = dungeon.GetComponent<RandomizeConfig>();
+
     }
 
       private void OnTriggerEnter(Collider other)
@@ -21,6 +26,7 @@ public class Door : MonoBehaviour
             dungeonGenerator.SetStageIsClear(true);
             GameObject.FindGameObjectWithTag("StandardRoom").SetActive(false);
 
+            envRandomizer.ChangeEnv();
             dungeonGenerator.NextRoom(gameObject);
         }
     }
