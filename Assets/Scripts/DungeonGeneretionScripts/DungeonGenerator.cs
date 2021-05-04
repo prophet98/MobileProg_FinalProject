@@ -42,12 +42,12 @@ public class DungeonGenerator : MonoBehaviour
 
     private void OnEnable()
     {
-        EnvEventManager.OnEnvChange += SetStageIsClear;
+        Door.OnEnvChange += SetStageIsClear;
     }
 
     private void OnDisable()
     {
-        EnvEventManager.OnEnvChange -= SetStageIsClear;
+        Door.OnEnvChange -= SetStageIsClear;
     }
 
     #endregion
@@ -64,7 +64,7 @@ public class DungeonGenerator : MonoBehaviour
 
             nextIsBoss = false;
 
-            Debug.Log(stdRoomVariants[randomN].name);
+            //Debug.Log(stdRoomVariants[randomN].name);
         }
         else if (nextIsBoss)
         {
@@ -72,8 +72,6 @@ public class DungeonGenerator : MonoBehaviour
 
             int randomN = Random.Range(0, bossRoomVariants.Length);
             bossRoomVariants[randomN].SetActive(true);
-            
-            Debug.Log(bossRoomVariants[randomN].name);
         }
     }
 
@@ -100,7 +98,6 @@ public class DungeonGenerator : MonoBehaviour
 
             NewFallenDoor(entryDoor);
             RoomRandomSelector();
-            Debug.Log("next room");
         }
         stageClear = false;
     }
@@ -113,7 +110,6 @@ public class DungeonGenerator : MonoBehaviour
     public void SetStageIsClear()
     {
         stageClear = true;
-        Debug.Log("clear");
     }
 
     #endregion

@@ -20,9 +20,9 @@ public class EnvLightCycle : MonoBehaviour
     [Tooltip("main light, this light will change color and orientation during the game")]
     [SerializeField]
     private Light sunSource;
-    [Tooltip("add this amount in degrees to main light every time the light change")]
+    [Tooltip("rotate main light in degrees, must be the same lenght of colors array")]
     [SerializeField]
-    private float rotateAmount;
+    private float[] xLightAngle;
 
     private Vector3 sunAdjustAngle;
 
@@ -35,12 +35,12 @@ public class EnvLightCycle : MonoBehaviour
     
     private void OnEnable()
     {
-        EnvEventManager.OnEnvChange += ChangeLight;
+        Door.OnEnvChange += ChangeLight;
     }
 
     private void OnDisable()
     {
-        EnvEventManager.OnEnvChange -= ChangeLight;
+        Door.OnEnvChange -= ChangeLight;
     }
 
     private void ChangeLight()
@@ -62,14 +62,9 @@ public class EnvLightCycle : MonoBehaviour
 
     private void RotateSun()
     {
-        sunAdjustAngle.x = sunSource.transform.eulerAngles.x + rotateAmount;
+        sunAdjustAngle.x = xLightAngle[colorsIndex];
         sunAdjustAngle.y = sunSource.transform.eulerAngles.y;
         sunAdjustAngle.z = sunSource.transform.eulerAngles.z;
-
-        if(colorsIndex >= colors.Length)
-        {
-            sunAdjustAngle.x = rotateAmount;
-        }
 
         sunSource.transform.eulerAngles = sunAdjustAngle;
     }

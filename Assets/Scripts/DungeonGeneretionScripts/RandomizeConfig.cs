@@ -23,12 +23,12 @@ public class RandomizeConfig : MonoBehaviour
 
     private void OnEnable()
     {
-        EnvEventManager.OnEnvChange += ChangeEnv;
+        Door.OnEnvChange += ChangeEnv;
     }
 
     private void OnDisable()
     {
-        EnvEventManager.OnEnvChange -= ChangeEnv;
+        Door.OnEnvChange -= ChangeEnv;
     }
     #endregion
 
