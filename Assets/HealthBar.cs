@@ -16,10 +16,13 @@ public class HealthBar : MonoBehaviour
 
     private void HandleHealthChange(float pct)
     {
-        StartCoroutine(ChangeToPct(pct));
+        if (foregroundImage.IsActive())
+        {
+            StartCoroutine(ChangeHealthBarImagePct(pct));
+        }
     }
 
-    private IEnumerator ChangeToPct(float pct)
+    private IEnumerator ChangeHealthBarImagePct(float pct)
     {
         float preChangePct = foregroundImage.fillAmount;
         float elapsed = 0.0f;
