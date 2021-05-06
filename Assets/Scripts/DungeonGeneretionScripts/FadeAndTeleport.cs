@@ -8,14 +8,16 @@ public class FadeAndTeleport : MonoBehaviour
     private GameObject player;
     private WaitForSeconds wait;
 
-    private const string imageName = "BlackImage";
-    private Image blackImage;
+    private const string imageName = "FadeImage";
+    private Image fadeImage;
+    [SerializeField]
+    private Color fadeColor;
 
     void Start()
     {
-        blackImage = GameObject.Find(imageName).GetComponent<Image>();
-        blackImage.color = Color.black; //sparafleshato
-        blackImage.CrossFadeAlpha(0f, 1.5f, false);
+        fadeImage = GameObject.Find(imageName).GetComponent<Image>();
+        fadeImage.color = fadeColor; 
+        fadeImage.CrossFadeAlpha(0f, 1.5f, false);
         wait = new WaitForSeconds(0.3f);
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -40,9 +42,9 @@ public class FadeAndTeleport : MonoBehaviour
 
     private IEnumerator FadeCoroutine()
     {
-        blackImage.CrossFadeAlpha(1f, 0f, true);
+        fadeImage.CrossFadeAlpha(1f, 0f, true);
         yield return wait;
-        blackImage.CrossFadeAlpha(0f, 1.5f, true);
+        fadeImage.CrossFadeAlpha(0f, 1.5f, true);
         yield break;
     }
 }

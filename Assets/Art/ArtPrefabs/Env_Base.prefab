@@ -676,7 +676,7 @@ Transform:
   m_GameObject: {fileID: 3740734141752248189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.45, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1, z: 1.5}
   m_Children:
   - {fileID: 4322719876974804123}
   - {fileID: 882998673904210803}
@@ -802,6 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896486b4bb16a5c48b05680d69559ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3990687300992921692
 GameObject:
   m_ObjectHideFlags: 0

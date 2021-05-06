@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    //TODO: Implement
     private GameObject[] obstaclesSpwanPoints;
     private EnvConfiguration envConfig;
 

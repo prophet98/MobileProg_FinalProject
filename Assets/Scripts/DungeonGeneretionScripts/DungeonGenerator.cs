@@ -35,7 +35,7 @@ public class DungeonGenerator : MonoBehaviour
 
     #region init
 
-    void Awake()
+    void Start()
     {
         RoomRandomSelector();
     }

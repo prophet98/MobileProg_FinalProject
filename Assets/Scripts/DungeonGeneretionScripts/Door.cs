@@ -17,6 +17,11 @@ public class Door : MonoBehaviour
     public delegate void Teleport(Transform oppRespawn);
     public static event Teleport OnTeleport;
 
+    private void Start()
+    {
+        UnityEditor.AI.NavMeshBuilder.BuildNavMesh();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -29,6 +34,9 @@ public class Door : MonoBehaviour
             OnEnvChange?.Invoke();
 
             dungeonGenerator.NextRoom(oppositeDoor);
+
+            UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
+            UnityEditor.AI.NavMeshBuilder.BuildNavMesh(); //TODO: find a better place
         }
     }
 }
