@@ -68,10 +68,4 @@ public class EnvLightCycle : MonoBehaviour
 
         sunSource.transform.eulerAngles = sunAdjustAngle;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -14,6 +14,10 @@ public class RandomizeConfig : MonoBehaviour
     [SerializeField]
     private GameObject penaltyArea;
 
+    private EnvConfiguration _currentEnvConfig;
+
+    public EnvConfiguration GetCurrentConfig { get => _currentEnvConfig; }
+
     #region init
     // Start is called before the first frame update
     void Start()
@@ -48,7 +52,9 @@ public class RandomizeConfig : MonoBehaviour
 
     private void SetNewConfig(EnvConfiguration config)
     {
-        for(int i = 0; i<walls.Length; i++)
+        _currentEnvConfig = config;
+
+        for (int i = 0; i<walls.Length; i++)
         {
             MatChange(walls[i], config.WallsMaterial);
         }
