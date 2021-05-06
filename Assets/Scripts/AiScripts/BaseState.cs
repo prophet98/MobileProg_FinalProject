@@ -58,7 +58,7 @@ namespace AiScripts
         {
             var direction = player.position - npc.transform.position;
             var angle = Vector3.Angle(direction.normalized, npc.transform.forward);
-            if (angle < 20f)
+            if ((direction.magnitude < AttackDistance) && angle < 20f)
             {
                 return true;
             }

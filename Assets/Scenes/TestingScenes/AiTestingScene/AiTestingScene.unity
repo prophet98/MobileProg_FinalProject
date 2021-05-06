@@ -1326,6 +1326,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_ILOVEYOU
       objectReference: {fileID: 0}
+    - target: {fileID: 1503954254946191985, guid: ab2affb38b39a8e4992905bf5003d228,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1503954254946191996, guid: ab2affb38b39a8e4992905bf5003d228,
         type: 3}
       propertyPath: m_RootOrder
@@ -1380,6 +1385,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006590821658052482, guid: ab2affb38b39a8e4992905bf5003d228,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006590821658052482, guid: ab2affb38b39a8e4992905bf5003d228,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab2affb38b39a8e4992905bf5003d228, type: 3}
@@ -1680,8 +1695,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1508522830, guid: d742e317998d776448fd57760fe6d7b0, type: 3}
-      propertyPath: hpValue
-      value: 1000
+      propertyPath: maxHp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 432404637854077440, guid: d742e317998d776448fd57760fe6d7b0,
+        type: 3}
+      propertyPath: weaponDamage
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 432404639281640596, guid: d742e317998d776448fd57760fe6d7b0,
         type: 3}

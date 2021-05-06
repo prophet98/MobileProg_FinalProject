@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerWeaponComponent : MonoBehaviour
 {
     // [SerializeField] private int enemiesInRange;
@@ -17,11 +16,9 @@ public class PlayerWeaponComponent : MonoBehaviour
                 TriggerList.Add(other);
             }
         }
-        // enemiesInRange = triggerList.Count;
     }
     private void OnTriggerExit(Collider other)
     {
-        // enemiesInRange = 0;
         if (TriggerList.Contains(other))
         {
             TriggerList.Remove(other);

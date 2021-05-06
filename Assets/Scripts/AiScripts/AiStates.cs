@@ -68,17 +68,16 @@ namespace AiScripts
             {
                 anim.SetTrigger(DebugAttack);
             }
-            else if (IsInRange() && !IsInSight())
+            if (IsInRange() && !IsInSight())
             {
                 anim.ResetTrigger(DebugAttack);
                 AlignActorRotation();
             } 
-            else if (!IsInRange() && !IsInSight())
+            if (!IsInRange() && !IsInSight())
             {
                 nextAiState = new ChaseState(npc, agent, player, anim, AttackDistance);
                 stage = Event.Exit;
             }
-            
         }
         
         private const float RotationSpeed = 5.0f;
