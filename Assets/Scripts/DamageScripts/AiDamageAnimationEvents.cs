@@ -6,10 +6,17 @@ namespace DamageScripts
     {
         public delegate void DamageAction(int damage);
         public static event DamageAction OnPlayerDamagedSuccess;
+        public static event DamageAction OnShoot;
 
-        public void AiAttack(int damage)
+        public int attackDamage;
+
+        public void AiMeleeAttack()
         {
-            OnPlayerDamagedSuccess?.Invoke(damage);
+            OnPlayerDamagedSuccess?.Invoke(attackDamage);
+        }
+        public void AiRangedAttack()
+        { 
+            OnShoot?.Invoke(attackDamage);
         }
     }
 }

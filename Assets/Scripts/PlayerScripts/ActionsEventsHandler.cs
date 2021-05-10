@@ -111,5 +111,7 @@ public class ActionsEventsHandler : MonoBehaviour
         
         PlayerDamageAnimationEvents.OnDamagedSuccess -= ApplyDamage;
         PlayerDamageAnimationEvents.OnDamagedFail -= CancelDamage;
+        
+        AiDamageAnimationEvents.OnPlayerDamagedSuccess -= ReceiveDamage;
     }
 }
