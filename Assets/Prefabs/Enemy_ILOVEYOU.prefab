@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   player: {fileID: 0}
-  attackRange: 20
+  agentStats: {fileID: 11400000, guid: 9af64adfd3f727541a35252b42af8428, type: 2}
 --- !u!114 &1503954254946191998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726aa0a61e870ff4785a283ce7c0ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 5
+  attackDamage: 3
 --- !u!1001 &1503954256037102027
 PrefabInstance:
   m_ObjectHideFlags: 0

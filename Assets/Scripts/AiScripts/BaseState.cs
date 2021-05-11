@@ -16,17 +16,16 @@ namespace AiScripts
         protected readonly Transform player;
         protected AiState nextAiState;
         protected readonly NavMeshAgent agent;
-
-        protected float AttackDistance { get; }
-
-        protected AiState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, float attackDistance)
+        protected readonly AiAgentStats agentStats;
+        
+        protected AiState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, AiAgentStats stats)
         {
             this.npc = npc;
             this.agent = agent;
             this.anim = anim;
             stage = Event.Enter;
             this.player = player;
-            AttackDistance = attackDistance;
+            agentStats = stats;
         }
 
         protected virtual void Enter() { stage = Event.Update; }
@@ -48,7 +47,7 @@ namespace AiScripts
         protected bool IsInRange()
         {
             var direction = player.position - npc.transform.position;
-            if ((direction.magnitude < AttackDistance))
+            if ((direction.magnitude < agentStats.attackDistance))
             {
                 return true;
             }
@@ -58,7 +57,7 @@ namespace AiScripts
         {
             var direction = player.position - npc.transform.position;
             var angle = Vector3.Angle(direction.normalized, npc.transform.forward);
-            if ((direction.magnitude < AttackDistance) && angle < 20f)
+            if ((direction.magnitude < agentStats.attackDistance) && angle < 20f)
             {
                 return true;
             }

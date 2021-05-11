@@ -421,6 +421,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Slammer
       objectReference: {fileID: 0}
+    - target: {fileID: 7050508820448470647, guid: d57fc433d051e3643850c7bba38cb7d5,
+        type: 3}
+      propertyPath: agentStats
+      value: 
+      objectReference: {fileID: 11400000, guid: dfb960e3a40928644851aa4bea810105,
+        type: 2}
+    - target: {fileID: 7050508820448470647, guid: d57fc433d051e3643850c7bba38cb7d5,
+        type: 3}
+      propertyPath: aiAgentStats
+      value: 
+      objectReference: {fileID: 11400000, guid: dfb960e3a40928644851aa4bea810105,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d57fc433d051e3643850c7bba38cb7d5, type: 3}
 --- !u!1 &1386092915

@@ -1,3 +1,5 @@
+using System;
+using AiScripts;
 using UnityEngine;
 
 namespace DamageScripts
@@ -8,15 +10,20 @@ namespace DamageScripts
         public static event DamageAction OnPlayerDamagedSuccess;
         public static event DamageAction OnShoot;
 
-        public int attackDamage;
+        private int _attackDamage;
+
+        private void Awake()
+        {
+            _attackDamage = GetComponentInParent<AiController>().agentStats.attackDamage;
+        }
 
         public void AiMeleeAttack()
         {
-            OnPlayerDamagedSuccess?.Invoke(attackDamage);
+            OnPlayerDamagedSuccess?.Invoke(_attackDamage);
         }
         public void AiRangedAttack()
         { 
-            OnShoot?.Invoke(attackDamage);
+            OnShoot?.Invoke(_attackDamage);
         }
     }
 }
