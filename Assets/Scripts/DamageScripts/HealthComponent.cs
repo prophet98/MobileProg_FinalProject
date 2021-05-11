@@ -21,13 +21,13 @@ namespace DamageScripts
             var currentHealthPct = (float)_currentHp / maxHp;
             OnHealthPctChange?.Invoke(currentHealthPct);
 
-            if (_currentHp<=0 && this.GetComponent<AiController>())
+            if (_currentHp<=0 && this.GetComponent<AiController>()) //is IA?
             {
                 PlayerWeaponComponent.TriggerList.Remove(this.GetComponentInChildren<Collider>());
-                gameObject.SetActive(false);
+                Destroy(gameObject);
             
             }
-            else if (_currentHp<=0 )
+            else if (_currentHp<=0 ) //is Player?
             {
                 gameObject.SetActive(false);
             }
