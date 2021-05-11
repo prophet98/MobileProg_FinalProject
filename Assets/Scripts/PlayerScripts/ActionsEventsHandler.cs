@@ -14,6 +14,8 @@ public class ActionsEventsHandler : MonoBehaviour
     private static readonly int DebugDash = Animator.StringToHash("DebugDash");
     private static readonly int DebugRun = Animator.StringToHash("DebugRun");
 
+    private PlayerDamageAnimationEvents _playerDamageAnimationEvents;
+
     public static int comboCounter;
     
     private void Awake()
@@ -22,6 +24,7 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.Enable();
         _animator = GetComponentInChildren<Animator>();
         _playerWeaponComponent = GetComponentInChildren<PlayerWeaponComponent>();
+        _playerDamageAnimationEvents = GetComponentInChildren<PlayerDamageAnimationEvents>();
     }
 
     private void OnEnable()
@@ -33,8 +36,8 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Move.performed += OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled += OnMoveCanceled;
 
-        PlayerDamageAnimationEvents.OnDamagedSuccess += ApplyDamage;
-        PlayerDamageAnimationEvents.OnDamagedFail += CancelDamage;
+        _playerDamageAnimationEvents.OnDamagedSuccess += ApplyDamage;
+        _playerDamageAnimationEvents.OnDamagedFail += CancelDamage;
         
         AiDamageAnimationEvents.OnPlayerDamagedSuccess += ReceiveDamage;
     }
@@ -109,8 +112,8 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Move.performed -= OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled -= OnMoveCanceled;
         
-        PlayerDamageAnimationEvents.OnDamagedSuccess -= ApplyDamage;
-        PlayerDamageAnimationEvents.OnDamagedFail -= CancelDamage;
+        _playerDamageAnimationEvents.OnDamagedSuccess -= ApplyDamage;
+        _playerDamageAnimationEvents.OnDamagedFail -= CancelDamage;
         
         AiDamageAnimationEvents.OnPlayerDamagedSuccess -= ReceiveDamage;
     }

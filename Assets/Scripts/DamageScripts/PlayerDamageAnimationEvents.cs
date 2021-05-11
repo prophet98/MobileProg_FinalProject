@@ -5,8 +5,8 @@ namespace DamageScripts
     public class PlayerDamageAnimationEvents : MonoBehaviour
     {
         public delegate void DamageAction();
-        public static event DamageAction OnDamagedSuccess;
-        public static event DamageAction OnDamagedFail;
+        public event DamageAction OnDamagedSuccess;
+        public event DamageAction OnDamagedFail;
     
         public void FirstAttack()
         {
