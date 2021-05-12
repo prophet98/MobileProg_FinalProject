@@ -6,13 +6,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject enemyType;
 
-    private void Start()
+    private void OnEnable()
     {
         SpawnEnemy();
     }
 
 
-    public void SpawnEnemy()
+    private void SpawnEnemy()
     {
         Instantiate(enemyType, transform.position, transform.rotation);
     }
