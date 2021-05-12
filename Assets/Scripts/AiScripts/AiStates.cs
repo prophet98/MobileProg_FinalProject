@@ -7,10 +7,10 @@ namespace AiScripts
     {
         private static readonly int DebugRun = Animator.StringToHash("DebugRun");
 
-        public ChaseState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim,float attackDistance): base(npc, agent, player, anim, attackDistance)
+        public ChaseState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, AiAgentStats stats): base(npc, agent, player, anim, stats)
         {
-            base.agent.speed = 5;
-            base.agent.isStopped = false;
+            agent.speed = 5;
+            agent.isStopped = false;
         }
 
         protected override void Enter()
@@ -21,14 +21,12 @@ namespace AiScripts
 
         protected override void Update()
         {
-            // Debug.Log(npc.name + " " + "enemy chasing");
-        
             agent.SetDestination(player.position - Vector3.right);
             if (agent.hasPath)
             {
                 if (IsInRange())
                 {
-                    nextAiState = new AttackState(npc, agent, player, anim, AttackDistance);
+                    nextAiState = new AttackState(npc, agent, player, anim, agentStats );
                     stage = Event.Exit;
                 }
             }
@@ -41,11 +39,10 @@ namespace AiScripts
     }
     
     public class AttackState : AiState
-    {
-        private const string AttackAnimName = "ATTACK01";
+    { 
         private static readonly int DebugAttack = Animator.StringToHash("DebugAttack");
 
-        public AttackState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, float attackDistance): base(npc, agent, player, anim, attackDistance)
+        public AttackState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, AiAgentStats stats): base(npc, agent, player, anim, stats)
         {
         }
 
@@ -58,8 +55,7 @@ namespace AiScripts
 
         protected override void Update()
         {
-            // Debug.Log(npc.name + " " + "enemy attacking");
-            if (AttackDistance>=10) //is a ranged enemy?
+            if (agentStats.attackDistance>=10) //is a ranged enemy?
             {
                 AlignActorRotation();
             }
@@ -75,17 +71,16 @@ namespace AiScripts
             } 
             if (!IsInRange() && !IsInSight())
             {
-                nextAiState = new ChaseState(npc, agent, player, anim, AttackDistance);
+                nextAiState = new ChaseState(npc, agent, player, anim, agentStats);
                 stage = Event.Exit;
             }
         }
         
-        private const float RotationSpeed = 5.0f;
         private void AlignActorRotation()
         {
             Vector3 direction = player.position - npc.transform.position;
             npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.LookRotation(direction),
-                Time.deltaTime * RotationSpeed);
+                Time.deltaTime * agentStats.rotationSpeed);
         }
 
         protected override void Exit()
