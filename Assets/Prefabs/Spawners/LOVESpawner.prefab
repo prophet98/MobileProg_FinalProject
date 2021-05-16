@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1221795106958353849}
   m_Layer: 0
   m_Name: LOVESpawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,3 +96,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: {fileID: 1503954254946191985, guid: ab2affb38b39a8e4992905bf5003d228,
     type: 3}
+  enemyCoinValue: 5

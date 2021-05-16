@@ -8,11 +8,10 @@ namespace DamageScripts
     {
         public int maxHp;
         private int _currentHp;
-
         public event Action<float> OnHealthPctChange;
         private void Awake()
         {
-            _currentHp = maxHp;
+            _currentHp = maxHp; 
         }
 
         public void RemoveHealth(int damageValue)
@@ -20,18 +19,17 @@ namespace DamageScripts
             _currentHp -= damageValue;
             var currentHealthPct = (float)_currentHp / maxHp;
             OnHealthPctChange?.Invoke(currentHealthPct);
-
+            
             if (_currentHp<=0 && this.GetComponent<AiController>()) //is IA?
             {
                 PlayerWeaponComponent.TriggerList.Remove(this.GetComponentInChildren<Collider>());
                 Destroy(gameObject);
-            
             }
             else if (_currentHp<=0 ) //is Player?
             {
                 gameObject.SetActive(false);
             }
         }
-        
+
     }
 }

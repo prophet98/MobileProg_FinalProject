@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -24,19 +23,20 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
-            if (OnTeleport != null)
-                OnTeleport(oppositeRespawn);
+            if (other.GetComponent<BattleRewardSystem>().canPassGate)
+            {
+                OnTeleport?.Invoke(oppositeRespawn);
+
+                OnEnvChange?.Invoke();
+
+                dungeonGenerator.NextRoom(oppositeDoor);
+
+                UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
+                UnityEditor.AI.NavMeshBuilder.BuildNavMesh(); //TODO: find a better place
+            }
             
-            OnTeleport?.Invoke(oppositeRespawn);
-
-            OnEnvChange?.Invoke();
-
-            dungeonGenerator.NextRoom(oppositeDoor);
-
-            UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
-            UnityEditor.AI.NavMeshBuilder.BuildNavMesh(); //TODO: find a better place
         }
     }
 }

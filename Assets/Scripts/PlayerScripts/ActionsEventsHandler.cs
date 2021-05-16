@@ -34,7 +34,6 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Skill.performed += OnSkillPerformed;
         _playerInput.PlayerActions.Move.performed += OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled += OnMoveCanceled;
-
         _playerDamageAnimationEvents.OnDamagedSuccess += ApplyDamage;
         _playerDamageAnimationEvents.OnDamagedFail += CancelDamage;
         

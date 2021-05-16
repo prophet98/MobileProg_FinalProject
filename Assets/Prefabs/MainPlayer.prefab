@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 432404639281640602}
   - component: {fileID: 432404639281640603}
   - component: {fileID: 1508522830}
+  - component: {fileID: 534823436}
+  - component: {fileID: 943242354}
   m_Layer: 0
   m_Name: MainPlayer
   m_TagString: Player
@@ -93,6 +95,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
+--- !u!114 &534823436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432404639281640599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c099437033ad1c54d9decc2fe1cbbe21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowerSlotSkill: {fileID: 11400000, guid: bff557dc1e161334c9f1210e07828e68, type: 2}
+  upperSlotSkill: {fileID: 11400000, guid: 50d4f6121617fcc4b88c4effb37295fc, type: 2}
+--- !u!114 &943242354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432404639281640599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4d570ca37443645a49b905d149e252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPassGate: 0
 --- !u!95 &662695694
 Animator:
   serializedVersion: 3
