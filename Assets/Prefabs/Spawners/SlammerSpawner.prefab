@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8202507744027697980}
   m_Layer: 0
   m_Name: SlammerSpawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,3 +96,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: {fileID: 7050508820448470646, guid: d57fc433d051e3643850c7bba38cb7d5,
     type: 3}
+  enemyCoinValue: 3
