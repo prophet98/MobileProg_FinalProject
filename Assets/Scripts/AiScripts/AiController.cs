@@ -27,6 +27,7 @@ namespace AiScripts
 
         private void OnDestroy()
         {
+            if (player == null) return;
             player.GetComponentInChildren<PlayerWeaponComponent>().killCounter++;
             if (player.GetComponentInChildren<PlayerWeaponComponent>().killCounter == GameObject.FindGameObjectsWithTag("Spawner").Length)
             {
@@ -35,6 +36,7 @@ namespace AiScripts
                 player.GetComponent<BattleRewardSystem>().RewardPlayer(battleMoney);
                 player.GetComponent<BattleRewardSystem>().canPassGate = true;
             }
+
         }
     }
 
