@@ -16,6 +16,7 @@ public class PlayerWeaponComponent : MonoBehaviour
     private void ResetKillCounter()
     {
         killCounter = 0;
+        GetComponentInParent<BattleRewardSystem>().canPassGate = false;
     }
 
     private void OnTriggerStay(Collider other)
