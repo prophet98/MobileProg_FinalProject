@@ -8,7 +8,8 @@ public class ActionsEventsHandler : MonoBehaviour
     private PlayerInput _playerInput;
     private Animator _animator;
     private PlayerWeaponComponent _playerWeaponComponent;
-    private PlayerDamageAnimationEvents _playerDamageAnimationEvents;
+
+    public PlayerDamageAnimationEvents PlayerDamageAnimationEvents { get; private set; }
     private SkillSlotsController _skillSlotsController;
     private static readonly int DebugAttack = Animator.StringToHash("DebugAttack");
     // private static readonly int DebugDash = Animator.StringToHash("DebugDash");
@@ -23,7 +24,7 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.Enable();
         _animator = GetComponentInChildren<Animator>();
         _playerWeaponComponent = GetComponentInChildren<PlayerWeaponComponent>();
-        _playerDamageAnimationEvents = GetComponentInChildren<PlayerDamageAnimationEvents>();
+        PlayerDamageAnimationEvents = GetComponentInChildren<PlayerDamageAnimationEvents>();
         _skillSlotsController = GetComponent<SkillSlotsController>();
     }
 
@@ -34,8 +35,8 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Skill.performed += OnSkillPerformed;
         _playerInput.PlayerActions.Move.performed += OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled += OnMoveCanceled;
-        _playerDamageAnimationEvents.OnDamagedSuccess += ApplyDamage;
-        _playerDamageAnimationEvents.OnDamagedFail += CancelDamage;
+        PlayerDamageAnimationEvents.OnDamagedSuccess += ApplyDamage;
+        PlayerDamageAnimationEvents.OnDamagedFail += CancelDamage;
         
         AiDamageAnimationEvents.OnPlayerDamagedSuccess += ReceiveDamage;
     }
@@ -80,22 +81,21 @@ public class ActionsEventsHandler : MonoBehaviour
     private void OnDashPerformed(InputAction.CallbackContext obj)
     {
         VisualDebugger.PrintText("Player Dashes!");
-        _skillSlotsController.SetUpSkillTimers();
         if (_skillSlotsController.lowerSlotSkill.state == BaseSkill.AbilityState.Ready)
         {
             _skillSlotsController.lowerSlotSkill.Activate(gameObject);
             _skillSlotsController.lowerSlotSkill.state = BaseSkill.AbilityState.Activated;
+            _skillSlotsController.SetUpSkillTimers();
         }
-       
     }
     private void OnSkillPerformed(InputAction.CallbackContext obj)
     {
-        VisualDebugger.PrintText("Player used an active skill!");
-        _skillSlotsController.SetUpSkillTimers();
+        VisualDebugger.PrintText("Player used an active skill!"); 
         if (_skillSlotsController.upperSlotSkill.state == BaseSkill.AbilityState.Ready)
         {
             _skillSlotsController.upperSlotSkill.Activate(gameObject);
             _skillSlotsController.upperSlotSkill.state = BaseSkill.AbilityState.Activated;
+            _skillSlotsController.SetUpSkillTimers();
         }
     }
 
@@ -116,8 +116,8 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Move.performed -= OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled -= OnMoveCanceled;
         
-        _playerDamageAnimationEvents.OnDamagedSuccess -= ApplyDamage;
-        _playerDamageAnimationEvents.OnDamagedFail -= CancelDamage;
+        PlayerDamageAnimationEvents.OnDamagedSuccess -= ApplyDamage;
+        PlayerDamageAnimationEvents.OnDamagedFail -= CancelDamage;
         
         AiDamageAnimationEvents.OnPlayerDamagedSuccess -= ReceiveDamage;
     }
