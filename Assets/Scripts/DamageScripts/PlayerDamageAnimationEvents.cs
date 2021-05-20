@@ -7,34 +7,17 @@ namespace DamageScripts
         public delegate void DamageAction();
         public event DamageAction OnDamagedSuccess;
         public event DamageAction OnDamagedFail;
-    
-        public void FirstAttack()
+        public Sound.Names[] attackSound;
+
+        private void SwordAttack(int counter)
         {
-            if (ActionsEventsHandler.comboCounter == 1)
+            if (ActionsEventsHandler.comboCounter == counter)
             {
                 OnDamagedSuccess?.Invoke();
-            }
-            else
-            {
-                OnDamagedFail?.Invoke();
-            }
-        }
-        public void SecondAttack()
-        {
-            if (ActionsEventsHandler.comboCounter == 2)
-            {
-                OnDamagedSuccess?.Invoke();
-            }
-            else
-            {
-                OnDamagedFail?.Invoke();
-            }
-        }
-        public void ThirdAttack()
-        {
-            if (ActionsEventsHandler.comboCounter == 3)
-            {
-                OnDamagedSuccess?.Invoke();
+                if (SoundManager.instance != null)
+                {
+                    SoundManager.instance.Play(attackSound[Random.Range(0,attackSound.Length)]);
+                }
             }
             else
             {
@@ -42,9 +25,10 @@ namespace DamageScripts
             }
         }
 
-        void ResetCounter()
+        private void ResetCounter()
         {
             ActionsEventsHandler.comboCounter = 0;
         }
+        
     }
 }

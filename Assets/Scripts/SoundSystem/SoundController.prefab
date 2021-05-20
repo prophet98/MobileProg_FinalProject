@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6976703666086156172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1415449792678596121}
+  - component: {fileID: 4551494993502154722}
+  m_Layer: 0
+  m_Name: SoundController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1415449792678596121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6976703666086156172}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4354225, y: 4.433091, z: -6.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4551494993502154722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6976703666086156172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4333276c9ca3957459aea3f2608b6f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - source: {fileID: 0}
+    name: 2
+    clip: {fileID: 8300000, guid: beaba8a115bdf384cae2d7a9c9cf23a2, type: 3}
+    volume: 1
+    pitch: 0.1
+    pitchVariance: 0
+    loop: 0
+    isRandom: 0
+    canBeOverridden: 1
+  - source: {fileID: 0}
+    name: 3
+    clip: {fileID: 8300000, guid: d3f05e7e4597b29408b9c4254f367669, type: 3}
+    volume: 1
+    pitch: 0.1
+    pitchVariance: 0
+    loop: 0
+    isRandom: 0
+    canBeOverridden: 1
+  - source: {fileID: 0}
+    name: 4
+    clip: {fileID: 8300000, guid: ea47b9ddd355c254ca367bf52205b0a1, type: 3}
+    volume: 1
+    pitch: 0.1
+    pitchVariance: 0
+    loop: 0
+    isRandom: 0
+    canBeOverridden: 1
+  - source: {fileID: 0}
+    name: 6
+    clip: {fileID: 8300000, guid: 97a2900e74db0f547935970cb8dc5a3a, type: 3}
+    volume: 0.348
+    pitch: 0.41
+    pitchVariance: 1.508
+    loop: 0
+    isRandom: 1
+    canBeOverridden: 1
+  - source: {fileID: 0}
+    name: 5
+    clip: {fileID: 8300000, guid: 28937dd26ed69c648b562a95d64dd518, type: 3}
+    volume: 1
+    pitch: 0.1
+    pitchVariance: 1
+    loop: 0
+    isRandom: 0
+    canBeOverridden: 0
