@@ -356,6 +356,81 @@ Material:
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!1001 &214669819
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.4354225
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.433091
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415449792678596121, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551494993502154722, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: mainMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 26115edfa3ab110449850ba35b27f8ac,
+        type: 2}
+    - target: {fileID: 6976703666086156172, guid: 9c6f4d36dceff2d42bb22f92d9200195,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c6f4d36dceff2d42bb22f92d9200195, type: 3}
 --- !u!21 &251130455
 Material:
   serializedVersion: 6

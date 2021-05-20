@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
     {
         public static SoundManager instance;
         public Sound[] sounds;
-
+        public AudioMixerGroup soundEffectsMixer;
+        public AudioMixerGroup musicEffectsMixer;
         private void Awake()
         {
 
@@ -52,6 +54,14 @@ public class SoundManager : MonoBehaviour
                 return;
             }
 
+            if (s.name == Sound.Names.MainTheme)
+            {
+                s.source.outputAudioMixerGroup = musicEffectsMixer;
+            }
+            else
+            {
+                s.source.outputAudioMixerGroup = soundEffectsMixer;
+            }
             if (!s.canBeOverridden && s.source.isPlaying)
             {
                 return;
