@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 5180192126482702586}
   m_Layer: 0
   m_Name: Enemy_Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,7 +236,7 @@ PrefabInstance:
     - target: {fileID: 4665303434057221444, guid: aa02fbf4e363eb6468174f1222cb2ec9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.29
+      value: 5.794
       objectReference: {fileID: 0}
     - target: {fileID: 4665303434057221444, guid: aa02fbf4e363eb6468174f1222cb2ec9,
         type: 3}
