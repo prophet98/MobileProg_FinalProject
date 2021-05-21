@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7719422906678774879}
   - component: {fileID: 5531565424003184789}
   - component: {fileID: 8898585576703873989}
+  - component: {fileID: 5339219117065819728}
   m_Layer: 0
   m_Name: Env_Obstacle_ACIDGayser
   m_TagString: Untagged
@@ -96,6 +97,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.34000003, y: 3.4679627, z: 0.34000003}
   m_Center: {x: 0, y: 1.5639813, z: 0}
+--- !u!114 &5339219117065819728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324440370170386752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84880735c3890664e97228b7eae15ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
 --- !u!1 &6735138853766739114
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,10 +3903,10 @@ ParticleSystem:
   TriggerModule:
     enabled: 0
     serializedVersion: 2
-    inside: 1
-    outside: 0
-    enter: 0
-    exit: 0
+    inside: 2
+    outside: 2
+    enter: 2
+    exit: 2
     colliderQueryMode: 0
     radiusScale: 1
     primitives: []
