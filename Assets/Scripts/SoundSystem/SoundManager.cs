@@ -11,7 +11,6 @@ public class SoundManager : MonoBehaviour
         public AudioMixerGroup musicEffectsMixer;
         private void Awake()
         {
-
             #region Singleton
 
             if (instance != null)
