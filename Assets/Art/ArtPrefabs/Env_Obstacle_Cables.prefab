@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4359332221143366685}
   - component: {fileID: 3472354606033804807}
+  - component: {fileID: 3603867211089867931}
   m_Layer: 0
   m_Name: Env_Obstacle_Cables
   m_TagString: Untagged
@@ -129,6 +130,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2047122, y: 3.4679627, z: 2.2606282}
   m_Center: {x: -0.07717335, y: 1.5639813, z: 0.2590077}
+--- !u!114 &3603867211089867931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3977985938094188199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84880735c3890664e97228b7eae15ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
 --- !u!1 &6149301515711665710
 GameObject:
   m_ObjectHideFlags: 0
@@ -3940,10 +3954,10 @@ ParticleSystem:
   TriggerModule:
     enabled: 0
     serializedVersion: 2
-    inside: 1
-    outside: 0
-    enter: 0
-    exit: 0
+    inside: 2
+    outside: 2
+    enter: 2
+    exit: 2
     colliderQueryMode: 0
     radiusScale: 1
     primitives: []
