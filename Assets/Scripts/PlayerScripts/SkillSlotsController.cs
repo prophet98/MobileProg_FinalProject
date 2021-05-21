@@ -39,6 +39,7 @@ public class SkillSlotsController : MonoBehaviour
                 else
                 {
                     lowerSlotSkill.state = BaseSkill.AbilityState.Cooldown;
+                    lowerSlotSkill.StartCooldown(gameObject);
                 }
                 break;
             case BaseSkill.AbilityState.Cooldown:
@@ -68,6 +69,7 @@ public class SkillSlotsController : MonoBehaviour
                 else
                 {
                     upperSlotSkill.state = BaseSkill.AbilityState.Cooldown;
+                    upperSlotSkill.StartCooldown(gameObject);
                 }
                 break;
             case BaseSkill.AbilityState.Cooldown:

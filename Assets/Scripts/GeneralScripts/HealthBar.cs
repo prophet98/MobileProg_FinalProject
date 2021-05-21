@@ -34,13 +34,10 @@ public class HealthBar : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             foregroundImage.fillAmount = Mathf.Lerp(preChangePct, pct, elapsed / updateSpeedSeconds);
-            if (IsPlayerBar)
-            {
-                foregroundImage.color = Color.red;
-            }
+            if (IsPlayerBar) foregroundImage.color = Color.red;
             yield return null;
         }
-        foregroundImage.color = Color.cyan;
+        if (IsPlayerBar) foregroundImage.color = Color.cyan;
         foregroundImage.fillAmount = pct;
     }
     private void LateUpdate()

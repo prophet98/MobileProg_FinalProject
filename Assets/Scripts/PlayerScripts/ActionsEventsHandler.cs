@@ -86,7 +86,6 @@ public class ActionsEventsHandler : MonoBehaviour
             _skillSlotsController.lowerSlotSkill.Activate(gameObject);
             _skillSlotsController.lowerSlotSkill.state = BaseSkill.AbilityState.Activated;
             _skillSlotsController.SetUpSkillTimers();
-            
             SoundManager.instance?.Play(Sound.Names.DashSound);
         }
     }

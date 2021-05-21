@@ -8,6 +8,7 @@ namespace DamageScripts
     {
         public int maxHp;
         private int _currentHp;
+        [HideInInspector] public bool isInvincible;
         public event Action<float> OnHealthPctChange;
         private void Awake()
         {
@@ -16,6 +17,10 @@ namespace DamageScripts
 
         public void RemoveHealth(int damageValue)
         {
+            if (isInvincible)
+            {
+                return;
+            }
             _currentHp -= damageValue;
             var currentHealthPct = (float)_currentHp / maxHp;
             OnHealthPctChange?.Invoke(currentHealthPct);

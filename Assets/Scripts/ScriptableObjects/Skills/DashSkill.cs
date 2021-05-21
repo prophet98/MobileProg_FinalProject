@@ -13,9 +13,4 @@ public class DashSkill : BaseSkill
         _characterController.Move(skillUser.transform.forward.normalized * dashSpeed);
     }
 
-    public override void StartCooldown(GameObject skillUser)
-    {
-        
-    }
-
 }
