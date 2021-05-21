@@ -249,6 +249,11 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7867831517203353518, guid: aa02fbf4e363eb6468174f1222cb2ec9,
+        type: 3}
+      propertyPath: healthComponent
+      value: 
+      objectReference: {fileID: 7050508820448470651}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa02fbf4e363eb6468174f1222cb2ec9, type: 3}
 --- !u!224 &4888442061709419013 stripped

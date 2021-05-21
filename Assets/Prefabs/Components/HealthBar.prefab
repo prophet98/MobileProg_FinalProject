@@ -273,3 +273,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foregroundImage: {fileID: 0}
   updateSpeedSeconds: 0.5
+  healthComponent: {fileID: 0}

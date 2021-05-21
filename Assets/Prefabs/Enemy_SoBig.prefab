@@ -41,6 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726aa0a61e870ff4785a283ce7c0ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAttackSound: 0
 --- !u!1 &6645515603309340143
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,11 +346,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
-    - target: {fileID: 4665303434057221446, guid: aa02fbf4e363eb6468174f1222cb2ec9,
+    - target: {fileID: 7867831517203353518, guid: aa02fbf4e363eb6468174f1222cb2ec9,
         type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: healthComponent
+      value: 
+      objectReference: {fileID: 2876477434441033703}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa02fbf4e363eb6468174f1222cb2ec9, type: 3}
 --- !u!224 &9209140774296577904 stripped
