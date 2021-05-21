@@ -5,5 +5,6 @@ public class AiAgentStats : ScriptableObject
 {
     public float attackDistance;
     public float rotationSpeed;
+    public float sightAngle;
     public int attackDamage;
 }

@@ -41,7 +41,6 @@ namespace AiScripts
     public class AttackState : AiState
     { 
         private static readonly int DebugAttack = Animator.StringToHash("DebugAttack");
-
         public AttackState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, AiAgentStats stats): base(npc, agent, player, anim, stats)
         {
         }
@@ -63,10 +62,12 @@ namespace AiScripts
             if (IsInSight() && IsInRange())
             {
                 anim.SetTrigger(DebugAttack);
+                Debug.Log("Im attacking!");
             }
             if (IsInRange() && !IsInSight())
             {
                 anim.ResetTrigger(DebugAttack);
+                Debug.Log("not attacking!");
                 AlignActorRotation();
             } 
             if (!IsInRange() && !IsInSight())

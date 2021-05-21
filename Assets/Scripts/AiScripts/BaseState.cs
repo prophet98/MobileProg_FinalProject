@@ -9,7 +9,7 @@ namespace AiScripts
         {
             Enter, Update, Exit
         };
-    
+        
         protected Event stage;
         protected readonly GameObject npc;
         protected readonly Animator anim;
@@ -57,7 +57,7 @@ namespace AiScripts
         {
             var direction = player.position - npc.transform.position;
             var angle = Vector3.Angle(direction.normalized, npc.transform.forward);
-            if ((direction.magnitude < agentStats.attackDistance) && angle < 20f)
+            if ((direction.magnitude < agentStats.attackDistance) && angle < agentStats.sightAngle)
             {
                 return true;
             }
