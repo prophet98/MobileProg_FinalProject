@@ -37,7 +37,7 @@ public class ThunderEffect : MonoBehaviour
    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent.CompareTag(ENEMY_TAG))
+        if ((other.transform.parent)&&(other.transform.parent.CompareTag(ENEMY_TAG))) 
         {
             if (!enemiesList.Contains(other.gameObject))
             {
