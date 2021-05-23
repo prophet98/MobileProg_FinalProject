@@ -831,7 +831,7 @@ PrefabInstance:
         type: 3}
       propertyPath: upperSlotSkill
       value: 
-      objectReference: {fileID: 11400000, guid: 2a41d33d8df757440b19466dcd86625c,
+      objectReference: {fileID: 11400000, guid: d8256b04bd73f2341937344b257d2090,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beabce1137dd081419691ff957c06f84, type: 3}

@@ -22,6 +22,10 @@ namespace DamageScripts
                 return;
             }
             _currentHp -= damageValue;
+            if (_currentHp>maxHp)
+            {
+                _currentHp = maxHp;
+            }
             var currentHealthPct = (float)_currentHp / maxHp;
             OnHealthPctChange?.Invoke(currentHealthPct);
             
