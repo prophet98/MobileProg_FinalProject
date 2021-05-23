@@ -19,7 +19,6 @@ public class ObstacleDamage : MonoBehaviour
     private void Damage()
     {
         playerGO.GetComponent<HealthComponent>().RemoveHealth(damage);
-        Debug.Log("obs damage");
     }
 
     private void OnTriggerEnter(Collider other)
