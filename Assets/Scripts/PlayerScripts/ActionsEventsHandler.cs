@@ -49,6 +49,8 @@ public class ActionsEventsHandler : MonoBehaviour
     private void ApplyDamage()
     {
         VisualDebugger.PrintText("Player Attacks!");
+        _playerWeaponComponent.weaponParticleInstance.GetComponent<ParticleSystem>().Stop();
+        _playerWeaponComponent.weaponParticleInstance.GetComponent<ParticleSystem>().Play();
         // Debug.Log("Player Attacks!");
         foreach (var enemy in PlayerWeaponComponent.TriggerList.ToList())
         {

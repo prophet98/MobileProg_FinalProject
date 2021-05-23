@@ -7,10 +7,14 @@ public class PlayerWeaponComponent : MonoBehaviour
     public static readonly List<Collider> TriggerList = new List<Collider>();
     public int weaponDamage;
     public int killCounter;
-
+    public GameObject weaponParticle;
+    [HideInInspector] public GameObject weaponParticleInstance;
     private void Awake()
     {
         Door.OnEnvChange += ResetKillCounter;
+        weaponParticleInstance = Instantiate(weaponParticle.gameObject, transform.position,
+            transform.rotation);
+        weaponParticleInstance.gameObject.transform.SetParent(transform);
     }
 
     private void ResetKillCounter()

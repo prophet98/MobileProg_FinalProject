@@ -10,9 +10,10 @@ namespace DamageScripts
         private int _currentHp;
         [HideInInspector] public bool isInvincible;
         public event Action<float> OnHealthPctChange;
+        public event Action OnEntityDeath;
         private void Awake()
         {
-            _currentHp = maxHp; 
+            _currentHp = maxHp;
         }
 
         public void RemoveHealth(int damageValue)
@@ -32,6 +33,7 @@ namespace DamageScripts
             if (_currentHp<=0 && this.GetComponent<AiController>()) //is IA?
             {
                 PlayerWeaponComponent.TriggerList.Remove(this.GetComponentInChildren<Collider>());
+                OnEntityDeath?.Invoke();
                 Destroy(gameObject);
             }
             else if (_currentHp<=0 ) //is Player?
@@ -39,6 +41,6 @@ namespace DamageScripts
                 gameObject.SetActive(false);
             }
         }
-
+        
     }
 }

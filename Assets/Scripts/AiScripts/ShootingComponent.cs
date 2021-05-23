@@ -14,7 +14,7 @@ public class ShootingComponent : MonoBehaviour
     private void ShootProjectile(int damage)
     {
         var bulletObj = Instantiate(bullet, gunSocket.position, gunSocket.rotation);
-        bulletObj.GetComponentInChildren<BulletBehaviour>().bulletDamage = damage;
+        bulletObj.GetComponent<BulletBehaviour>().bulletDamage = damage;
     }
     
     private void OnDisable()
