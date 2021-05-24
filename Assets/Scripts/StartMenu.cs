@@ -18,16 +18,7 @@ public class StartMenu : MonoBehaviour
 
     public void StartGame()
     {
-        StartCoroutine(LoadGame());
-    }
-
-    private IEnumerator LoadGame()
-    {
-        // fadeImage.CrossFadeAlpha(1,2,true);
-        yield return new WaitForSeconds(2);
-        // SoundManager.instance?.EnableAmbientSounds();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-        
+        GameplayManager.instance.LoadLevel(1);
     }
 
     public void QuitGame()
