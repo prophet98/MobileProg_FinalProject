@@ -2474,6 +2474,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDamage: 25
   killCounter: 0
+  weaponParticle: {fileID: 173668, guid: 5d476fdbb7a864646aa6a217aa4e6166, type: 3}
+  weaponParticleInstance: {fileID: 0}
 --- !u!1 &744369363062217553
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,6 +2571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
+  isInvincible: 0
 --- !u!114 &888531046918647242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2582,7 +2585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowerSlotSkill: {fileID: 11400000, guid: bff557dc1e161334c9f1210e07828e68, type: 2}
-  upperSlotSkill: {fileID: 11400000, guid: 50d4f6121617fcc4b88c4effb37295fc, type: 2}
+  upperSlotSkill: {fileID: 11400000, guid: d8256b04bd73f2341937344b257d2090, type: 2}
 --- !u!114 &888531047340676020
 MonoBehaviour:
   m_ObjectHideFlags: 0
