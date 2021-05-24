@@ -1,7 +1,10 @@
+using System;
 using System.Linq;
 using DamageScripts;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ActionsEventsHandler : MonoBehaviour
 {
@@ -14,9 +17,10 @@ public class ActionsEventsHandler : MonoBehaviour
     private static readonly int DebugAttack = Animator.StringToHash("DebugAttack");
     // private static readonly int DebugDash = Animator.StringToHash("DebugDash");
     private static readonly int DebugRun = Animator.StringToHash("DebugRun");
-    
-
     public static int comboCounter;
+
+    public GameObject buttons;
+    private Button[] playerButtons;
     
     private void Awake()
     {
@@ -39,11 +43,33 @@ public class ActionsEventsHandler : MonoBehaviour
         PlayerDamageAnimationEvents.OnDamagedFail += CancelDamage;
         
         AiDamageAnimationEvents.OnPlayerDamagedSuccess += ReceiveDamage;
+
+        playerButtons = buttons.GetComponentsInChildren<Button>();
+
+    }
+
+    private void Start()
+    {
+        InvokeRepeating(nameof(UpdateButtonState), 0.0f, .5f);
     }
 
     private void ReceiveDamage(int damage)
     {
         GetComponent<IDamageable<int>>().RemoveHealth(damage);
+    }
+
+
+    public void UpdateButtonState()
+    {
+        if (PlayerWeaponComponent.TriggerList.Count<=0)
+        {
+            playerButtons[0].interactable = false;
+        }
+
+        else
+        {
+            playerButtons[0].interactable = true;
+        }
     }
 
     private void ApplyDamage()
@@ -76,7 +102,7 @@ public class ActionsEventsHandler : MonoBehaviour
         else
         {
             comboCounter = 0;
-            _animator.ResetTrigger(DebugAttack);
+            _animator.ResetTrigger(DebugAttack); 
         }
     }
 

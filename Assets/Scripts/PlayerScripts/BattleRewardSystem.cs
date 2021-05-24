@@ -14,6 +14,10 @@ public class BattleRewardSystem : MonoBehaviour
 
     private void OnDisable()
     {
-        GameplayManager.instance.playerMoney = CurrentMoney;
+        if (GameplayManager.instance!=null)
+        {
+            GameplayManager.instance.playerMoney = CurrentMoney;
+        }
+        
     }
 }
