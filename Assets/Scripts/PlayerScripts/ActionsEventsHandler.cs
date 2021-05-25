@@ -90,23 +90,26 @@ public class ActionsEventsHandler : MonoBehaviour
 
     private void OnDashPerformed(InputAction.CallbackContext obj)
     {
-        VisualDebugger.PrintText("Player Dashes!");
         if (_skillSlotsController.lowerSlotSkill.state == BaseSkill.AbilityState.Ready)
         {
+            VisualDebugger.PrintText("Player Dashes!");
             _skillSlotsController.lowerSlotSkill.Activate(gameObject);
             _skillSlotsController.lowerSlotSkill.state = BaseSkill.AbilityState.Activated;
             _skillSlotsController.SetUpSkillTimers();
-            SoundManager.instance?.Play(Sound.Names.DashSound);
+            SoundManager.instance?.Play( _skillSlotsController.lowerSlotSkill.skillSound);
         }
     }
     private void OnSkillPerformed(InputAction.CallbackContext obj)
     {
-        VisualDebugger.PrintText("Player used an active skill!"); 
+
         if (_skillSlotsController.upperSlotSkill.state == BaseSkill.AbilityState.Ready)
         {
+            VisualDebugger.PrintText("Player used an active skill!"); 
             _skillSlotsController.upperSlotSkill.Activate(gameObject);
             _skillSlotsController.upperSlotSkill.state = BaseSkill.AbilityState.Activated;
             _skillSlotsController.SetUpSkillTimers();
+            SoundManager.instance?.Play( _skillSlotsController.upperSlotSkill.skillSound);
+
         }
     }
 
@@ -138,7 +141,7 @@ public class ActionsEventsHandler : MonoBehaviour
         UpdateButtonState();
     }
 
-    public void UpdateButtonState()
+    private void UpdateButtonState()
     {
         if (playerButtons == null) return;
         if (PlayerWeaponComponent.TriggerList.Count<=0)

@@ -5,6 +5,7 @@ public class BaseSkill : ScriptableObject
     public string skillName;
     public float cooldownTime;
     public float activeTime;
+    public Sound.Names skillSound;
     public enum AbilityState
     {
         Ready,

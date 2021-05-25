@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726aa0a61e870ff4785a283ce7c0ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttackSound: 0
+  enemyAttackSound: 8
 --- !u!1 &6645515603309340143
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 150
+  isInvincible: 0
 --- !u!114 &2876477434441033704
 MonoBehaviour:
   m_ObjectHideFlags: 0

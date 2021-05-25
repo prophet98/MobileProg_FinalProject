@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726aa0a61e870ff4785a283ce7c0ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttackSound: 0
+  enemyAttackSound: 9
 --- !u!54 &1003190525377111649
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 300
+  isInvincible: 0
 --- !u!1001 &2273942654932170883
 PrefabInstance:
   m_ObjectHideFlags: 0

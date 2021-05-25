@@ -22,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
         enemyInstance = Instantiate(enemyType, transform.position, transform.rotation);
         _deathParticleInstance = Instantiate(deathParticle, transform.position, transform.rotation);
         enemyInstance.GetComponent<HealthComponent>().OnEntityDeath += StartDeathParticleCoroutine;
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
     void StartDeathParticleCoroutine()
