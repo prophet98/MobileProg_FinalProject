@@ -26,7 +26,6 @@ public class PlayerWeaponComponent : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        GetComponentInParent<ActionsEventsHandler>().UpdateButtonState();
         if (other.transform.parent.CompareTag("Enemy"))
         {
             if (!TriggerList.Contains(other))
@@ -37,7 +36,6 @@ public class PlayerWeaponComponent : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        GetComponentInParent<ActionsEventsHandler>().UpdateButtonState();
         if (TriggerList.Contains(other))
         {
             TriggerList.Remove(other);

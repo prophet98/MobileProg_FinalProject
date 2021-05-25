@@ -48,29 +48,11 @@ public class ActionsEventsHandler : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-        InvokeRepeating(nameof(UpdateButtonState), 0.0f, .5f);
-    }
-
     private void ReceiveDamage(int damage)
     {
         GetComponent<IDamageable<int>>().RemoveHealth(damage);
     }
-
-
-    public void UpdateButtonState()
-    {
-        if (PlayerWeaponComponent.TriggerList.Count<=0)
-        {
-            playerButtons[0].interactable = false;
-        }
-
-        else
-        {
-            playerButtons[0].interactable = true;
-        }
-    }
+    
 
     private void ApplyDamage()
     {
@@ -149,5 +131,37 @@ public class ActionsEventsHandler : MonoBehaviour
         PlayerDamageAnimationEvents.OnDamagedFail -= CancelDamage;
         
         AiDamageAnimationEvents.OnPlayerDamagedSuccess -= ReceiveDamage;
+    }
+    
+    private void LateUpdate()
+    {
+        UpdateButtonState();
+    }
+
+    public void UpdateButtonState()
+    {
+        if (playerButtons == null) return;
+        if (PlayerWeaponComponent.TriggerList.Count<=0)
+        {
+            playerButtons[0].interactable = false;
+        }
+
+        else if (PlayerWeaponComponent.TriggerList.Count>0)
+        {
+            playerButtons[0].interactable = true;
+        }
+
+        playerButtons[1].interactable = _skillSlotsController.lowerSlotSkill.state switch
+        {
+            BaseSkill.AbilityState.Cooldown => false,
+            BaseSkill.AbilityState.Ready => true,
+            _ => playerButtons[1].interactable
+        };
+        playerButtons[2].interactable = _skillSlotsController.upperSlotSkill.state switch
+        {
+            BaseSkill.AbilityState.Cooldown => false,
+            BaseSkill.AbilityState.Ready => true,
+            _ => playerButtons[2].interactable
+        };
     }
 }
