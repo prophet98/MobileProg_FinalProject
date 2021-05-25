@@ -2,13 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class GameplayManager : MonoBehaviour
 {
     public static GameplayManager instance;
     private Image _loadingScreen;
     public int playerMoney;
-
+    [SerializeField] private VolumeController[] volumeControllers;
     private const string PlayerMoneyString = "PlayerMoney";
     private void Awake()
     {
@@ -32,6 +33,13 @@ public class GameplayManager : MonoBehaviour
     private void Start()
     {
         playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
+        if (SceneManager.GetActiveScene().buildIndex ==0) //if MainMenu scene
+        {
+            foreach (var controller in volumeControllers)
+            {
+                controller.Awake();
+            }
+        }
     }
 
     public void LoadLevel(int sceneIndex)

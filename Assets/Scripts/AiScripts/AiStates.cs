@@ -62,12 +62,12 @@ namespace AiScripts
             if (IsInSight() && IsInRange())
             {
                 anim.SetTrigger(DebugAttack);
-                Debug.Log("Im attacking!");
+                // Debug.Log("Im attacking!");
             }
             if (IsInRange() && !IsInSight())
             {
                 anim.ResetTrigger(DebugAttack);
-                Debug.Log("not attacking!");
+                // Debug.Log("not attacking!");
                 AlignActorRotation();
             } 
             if (!IsInRange() && !IsInSight())

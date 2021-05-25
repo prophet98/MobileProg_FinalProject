@@ -356,6 +356,18 @@ Material:
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &154731398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4861816061186540361, guid: 494a72e74006354469f5ce28ad73e621,
+    type: 3}
+  m_PrefabInstance: {fileID: 5718364630282466977}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84dde53701f0f3c42b1be9c3eca1e8ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &214669819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -418,12 +430,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4551494993502154722, guid: 9c6f4d36dceff2d42bb22f92d9200195,
-        type: 3}
-      propertyPath: mainMixer
-      value: 
-      objectReference: {fileID: 24100000, guid: 26115edfa3ab110449850ba35b27f8ac,
-        type: 2}
     - target: {fileID: 6976703666086156172, guid: 9c6f4d36dceff2d42bb22f92d9200195,
         type: 3}
       propertyPath: m_Name
@@ -1223,6 +1229,18 @@ Material:
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &919749144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1661062446186021525, guid: 494a72e74006354469f5ce28ad73e621,
+    type: 3}
+  m_PrefabInstance: {fileID: 5718364630282466977}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84dde53701f0f3c42b1be9c3eca1e8ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1098347365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,6 +1737,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 316251109842918450, guid: 22b39dcc506b4224086f4399b728f6b5,
+        type: 3}
+      propertyPath: volumeControllers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 316251109842918450, guid: 22b39dcc506b4224086f4399b728f6b5,
+        type: 3}
+      propertyPath: volumeControllers.Array.data[0]
+      value: 
+      objectReference: {fileID: 154731398}
+    - target: {fileID: 316251109842918450, guid: 22b39dcc506b4224086f4399b728f6b5,
+        type: 3}
+      propertyPath: volumeControllers.Array.data[1]
+      value: 
+      objectReference: {fileID: 919749144}
     - target: {fileID: 316251109842918451, guid: 22b39dcc506b4224086f4399b728f6b5,
         type: 3}
       propertyPath: m_Name

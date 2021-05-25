@@ -116,5 +116,16 @@ MonoBehaviour:
     loop: 0
     isRandom: 0
     canBeOverridden: 0
-  soundEffectsMixer: {fileID: 0}
-  musicEffectsMixer: {fileID: 0}
+  - source: {fileID: 0}
+    name: 1
+    clip: {fileID: 8300000, guid: c8752fdc19a60c845a65e17171e8bf54, type: 3}
+    volume: 0.2
+    pitch: 0.1
+    pitchVariance: 1
+    loop: 0
+    isRandom: 0
+    canBeOverridden: 0
+  soundEffectsMixer: {fileID: 1132184151161808620, guid: 26115edfa3ab110449850ba35b27f8ac,
+    type: 2}
+  musicEffectsMixer: {fileID: -6830782177926989657, guid: 26115edfa3ab110449850ba35b27f8ac,
+    type: 2}

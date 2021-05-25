@@ -8,7 +8,7 @@ public class Sound {
     public enum Names
     {
         MainTheme,
-        FootSteps,
+        UiSound,
         BladeSwing01,
         BladeSwing02,
         BladeSwing03,
