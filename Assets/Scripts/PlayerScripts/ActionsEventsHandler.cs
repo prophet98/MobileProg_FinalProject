@@ -18,9 +18,8 @@ public class ActionsEventsHandler : MonoBehaviour
     // private static readonly int DebugDash = Animator.StringToHash("DebugDash");
     private static readonly int DebugRun = Animator.StringToHash("DebugRun");
     public static int comboCounter;
-
-    public GameObject buttons;
-    private Button[] playerButtons;
+    private GameObject _hud;
+    private Button[] _playerButtons;
     
     private void Awake()
     {
@@ -30,6 +29,7 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerWeaponComponent = GetComponentInChildren<PlayerWeaponComponent>();
         PlayerDamageAnimationEvents = GetComponentInChildren<PlayerDamageAnimationEvents>();
         _skillSlotsController = GetComponent<SkillSlotsController>();
+        _hud = GameObject.FindGameObjectWithTag("HUD");
     }
 
     private void OnEnable()
@@ -44,7 +44,8 @@ public class ActionsEventsHandler : MonoBehaviour
         
         AiDamageAnimationEvents.OnPlayerDamagedSuccess += ReceiveDamage;
 
-        playerButtons = buttons.GetComponentsInChildren<Button>();
+        _playerButtons = _hud.GetComponentsInChildren<Button>();
+
 
     }
 
@@ -143,28 +144,28 @@ public class ActionsEventsHandler : MonoBehaviour
 
     private void UpdateButtonState()
     {
-        if (playerButtons == null) return;
+        if (_playerButtons == null) return;
         if (PlayerWeaponComponent.TriggerList.Count<=0)
         {
-            playerButtons[0].interactable = false;
+            _playerButtons[0].interactable = false;
         }
 
         else if (PlayerWeaponComponent.TriggerList.Count>0)
         {
-            playerButtons[0].interactable = true;
+            _playerButtons[0].interactable = true;
         }
 
-        playerButtons[1].interactable = _skillSlotsController.lowerSlotSkill.state switch
+        _playerButtons[1].interactable = _skillSlotsController.lowerSlotSkill.state switch
         {
             BaseSkill.AbilityState.Cooldown => false,
             BaseSkill.AbilityState.Ready => true,
-            _ => playerButtons[1].interactable
+            _ => _playerButtons[1].interactable
         };
-        playerButtons[2].interactable = _skillSlotsController.upperSlotSkill.state switch
+        _playerButtons[2].interactable = _skillSlotsController.upperSlotSkill.state switch
         {
             BaseSkill.AbilityState.Cooldown => false,
             BaseSkill.AbilityState.Ready => true,
-            _ => playerButtons[2].interactable
+            _ => _playerButtons[2].interactable
         };
     }
 }
