@@ -38,6 +38,7 @@ public class GameplayManager : MonoBehaviour
             foreach (var controller in volumeControllers)
             {
                 controller.Awake();
+                SoundManager.instance.Play(Sound.Names.MainMenuTheme);
             }
         }
     }

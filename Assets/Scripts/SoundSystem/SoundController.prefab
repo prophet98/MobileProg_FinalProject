@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - source: {fileID: 0}
-    name: 2
+    name: 4
     clip: {fileID: 8300000, guid: beaba8a115bdf384cae2d7a9c9cf23a2, type: 3}
     volume: 1
     pitch: 0.1
@@ -54,7 +54,7 @@ MonoBehaviour:
     isRandom: 0
     canBeOverridden: 1
   - source: {fileID: 0}
-    name: 3
+    name: 5
     clip: {fileID: 8300000, guid: d3f05e7e4597b29408b9c4254f367669, type: 3}
     volume: 1
     pitch: 0.1
@@ -63,7 +63,7 @@ MonoBehaviour:
     isRandom: 0
     canBeOverridden: 1
   - source: {fileID: 0}
-    name: 4
+    name: 6
     clip: {fileID: 8300000, guid: ea47b9ddd355c254ca367bf52205b0a1, type: 3}
     volume: 1
     pitch: 0.1
@@ -72,7 +72,7 @@ MonoBehaviour:
     isRandom: 0
     canBeOverridden: 1
   - source: {fileID: 0}
-    name: 6
+    name: 8
     clip: {fileID: 8300000, guid: 97a2900e74db0f547935970cb8dc5a3a, type: 3}
     volume: 0.2
     pitch: 0.41
@@ -81,7 +81,7 @@ MonoBehaviour:
     isRandom: 1
     canBeOverridden: 0
   - source: {fileID: 0}
-    name: 7
+    name: 9
     clip: {fileID: 8300000, guid: 38d95e38f52f6a54b888d9fd555fa1e3, type: 3}
     volume: 0.21
     pitch: 0.1
@@ -90,7 +90,7 @@ MonoBehaviour:
     isRandom: 0
     canBeOverridden: 1
   - source: {fileID: 0}
-    name: 8
+    name: 10
     clip: {fileID: 8300000, guid: dbc17452b5c57c74381e22f45a9e5b2e, type: 3}
     volume: 0.2
     pitch: 0.1
@@ -99,7 +99,7 @@ MonoBehaviour:
     isRandom: 0
     canBeOverridden: 1
   - source: {fileID: 0}
-    name: 9
+    name: 11
     clip: {fileID: 8300000, guid: e0f8074327731a947b02c18d90cc7085, type: 3}
     volume: 0.2
     pitch: 0.1
@@ -108,7 +108,7 @@ MonoBehaviour:
     isRandom: 0
     canBeOverridden: 1
   - source: {fileID: 0}
-    name: 5
+    name: 7
     clip: {fileID: 8300000, guid: 28937dd26ed69c648b562a95d64dd518, type: 3}
     volume: 0.2
     pitch: 0.1
@@ -117,12 +117,21 @@ MonoBehaviour:
     isRandom: 0
     canBeOverridden: 0
   - source: {fileID: 0}
-    name: 1
+    name: 3
     clip: {fileID: 8300000, guid: c8752fdc19a60c845a65e17171e8bf54, type: 3}
-    volume: 0.2
+    volume: 0.5
     pitch: 0.1
     pitchVariance: 1
     loop: 0
+    isRandom: 0
+    canBeOverridden: 0
+  - source: {fileID: 0}
+    name: 0
+    clip: {fileID: 8300000, guid: 3840cfedb13cae449bc98837b10a81d2, type: 3}
+    volume: 1
+    pitch: 0.1
+    pitchVariance: 1
+    loop: 1
     isRandom: 0
     canBeOverridden: 0
   soundEffectsMixer: {fileID: 1132184151161808620, guid: 26115edfa3ab110449850ba35b27f8ac,

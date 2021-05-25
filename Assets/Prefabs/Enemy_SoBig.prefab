@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726aa0a61e870ff4785a283ce7c0ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttackSound: 8
+  enemyAttackSound: 10
 --- !u!1 &6645515603309340143
 GameObject:
   m_ObjectHideFlags: 0
