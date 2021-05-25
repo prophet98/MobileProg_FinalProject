@@ -31,6 +31,7 @@ public class EnemySpawner : MonoBehaviour
     }
     IEnumerator PlayDeathParticle(GameObject particle)
     {
+        particle.GetComponent<AudioSource>().outputAudioMixerGroup = SoundManager.instance?.soundEffectsMixer;
         particle.transform.position = enemyInstance.transform.position;
         particle.GetComponent<ParticleSystem>().Play();
         particle.GetComponent<AudioSource>().Play();
