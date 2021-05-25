@@ -31,7 +31,7 @@ namespace AiScripts
             player.GetComponentInChildren<PlayerWeaponComponent>().killCounter++;
             if (player.GetComponentInChildren<PlayerWeaponComponent>().killCounter == GameObject.FindGameObjectsWithTag("Spawner").Length)
             {
-                Debug.Log("combattimento finito");
+                // Debug.Log("combattimento finito");
                 var battleMoney = GameObject.FindGameObjectsWithTag("Spawner").Sum(spawner => spawner.GetComponent<EnemySpawner>().enemyCoinValue);
                 player.GetComponent<BattleRewardSystem>().RewardPlayer(battleMoney);
                 player.GetComponent<BattleRewardSystem>().canPassGate = true;

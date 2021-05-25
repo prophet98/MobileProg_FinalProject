@@ -22,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
         enemyInstance = Instantiate(enemyType, transform.position, transform.rotation);
         _deathParticleInstance = Instantiate(deathParticle, transform.position, transform.rotation);
         enemyInstance.GetComponent<HealthComponent>().OnEntityDeath += StartDeathParticleCoroutine;
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
     void StartDeathParticleCoroutine()
@@ -30,6 +31,7 @@ public class EnemySpawner : MonoBehaviour
     }
     IEnumerator PlayDeathParticle(GameObject particle)
     {
+        particle.GetComponent<AudioSource>().outputAudioMixerGroup = SoundManager.instance?.soundEffectsMixer;
         particle.transform.position = enemyInstance.transform.position;
         particle.GetComponent<ParticleSystem>().Play();
         particle.GetComponent<AudioSource>().Play();

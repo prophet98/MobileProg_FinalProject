@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEditor;
@@ -9,25 +10,26 @@ public class StartMenu : MonoBehaviour
 
     [SerializeField] private GameObject settingsUI;
     [SerializeField] private GameObject startUI;
-    // [SerializeField] private Image fadeImage;
+    // [SerializeField] private Image fadeImage;    
+    private Button[] menuButtons;
 
-    private void Start()
+    private void Awake()
     {
-        // fadeImage.CrossFadeAlpha(0,0,true);
+        menuButtons = GetComponentsInChildren<Button>();
+        foreach (var VARIABLE in menuButtons)
+        {
+            VARIABLE.onClick.AddListener(PlaySound);
+        }
     }
 
+    void PlaySound()
+    {
+        SoundManager.instance?.Play(Sound.Names.UiSound);
+    }
+    
     public void StartGame()
     {
-        StartCoroutine(LoadGame());
-    }
-
-    private IEnumerator LoadGame()
-    {
-        // fadeImage.CrossFadeAlpha(1,2,true);
-        yield return new WaitForSeconds(2);
-        // SoundManager.instance?.EnableAmbientSounds();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-        
+        GameplayManager.instance.LoadLevel(1);
     }
 
     public void QuitGame()

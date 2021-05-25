@@ -9,7 +9,7 @@ namespace AiScripts
 
         public ChaseState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, AiAgentStats stats): base(npc, agent, player, anim, stats)
         {
-            agent.speed = 5;
+            agent.speed = stats.agentMovementSpeed;
             agent.isStopped = false;
         }
 
@@ -62,12 +62,12 @@ namespace AiScripts
             if (IsInSight() && IsInRange())
             {
                 anim.SetTrigger(DebugAttack);
-                Debug.Log("Im attacking!");
+                // Debug.Log("Im attacking!");
             }
             if (IsInRange() && !IsInSight())
             {
                 anim.ResetTrigger(DebugAttack);
-                Debug.Log("not attacking!");
+                // Debug.Log("not attacking!");
                 AlignActorRotation();
             } 
             if (!IsInRange() && !IsInSight())
@@ -81,7 +81,7 @@ namespace AiScripts
         {
             Vector3 direction = player.position - npc.transform.position;
             npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.LookRotation(direction),
-                Time.deltaTime * agentStats.rotationSpeed);
+                Time.deltaTime * agentStats.agentRotationSpeed);
         }
 
         protected override void Exit()

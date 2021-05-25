@@ -7,8 +7,10 @@ public class Sound {
     public AudioSource source;
     public enum Names
     {
-        MainTheme,
-        FootSteps,
+        MainMenuTheme,
+        BattleTheme,
+        BossTheme,
+        UiSound,
         BladeSwing01,
         BladeSwing02,
         BladeSwing03,
@@ -16,9 +18,10 @@ public class Sound {
         SlammerBite,
         LoveGun,
         SoBigMace,
-        BossSound
+        BossSound,
+        MyDoomBlade
     }
-    public Names name = Names.MainTheme;
+    public Names name = Names.MainMenuTheme;
         
     public AudioClip clip;
 

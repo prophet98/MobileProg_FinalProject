@@ -32,18 +32,7 @@ public class SoundManager : MonoBehaviour
                 s.source.loop = s.loop;
             }
         }
-
-
-        public void EnableMainMusic()
-        {
-            instance.Play(Sound.Names.MainTheme);
-        }
-        public void DisableMainMusic()
-        {
-            instance.StopSound(Sound.Names.MainTheme);
-        }
         
-
         public void Play(Sound.Names soundName)
         {
             var s = Array.Find(sounds, item => item.name == soundName); //find if there is a sound called with the name specified
@@ -53,7 +42,7 @@ public class SoundManager : MonoBehaviour
                 return;
             }
 
-            if (s.name == Sound.Names.MainTheme)
+            if (s.name == Sound.Names.MainMenuTheme ||s.name == Sound.Names.BattleTheme ||s.name == Sound.Names.BossTheme )
             {
                 s.source.outputAudioMixerGroup = musicEffectsMixer;
             }

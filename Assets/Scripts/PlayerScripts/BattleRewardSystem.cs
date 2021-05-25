@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class BattleRewardSystem : MonoBehaviour
@@ -9,5 +10,14 @@ public class BattleRewardSystem : MonoBehaviour
     public void RewardPlayer(int money)
     {
         CurrentMoney += money;
+    }
+
+    private void OnDisable()
+    {
+        if (GameplayManager.instance!=null)
+        {
+            GameplayManager.instance.playerMoney = CurrentMoney;
+        }
+        
     }
 }
