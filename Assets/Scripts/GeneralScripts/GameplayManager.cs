@@ -56,6 +56,7 @@ public class GameplayManager : MonoBehaviour
         {
             yield return null;
         }
+        SoundManager.instance.StopSound(Sound.Names.MainMenuTheme);
         _loadingScreen.CrossFadeAlpha(0f, .5f, false);
         yield return new WaitForSeconds(.5f);
         _loadingScreen.gameObject.SetActive(false);
