@@ -18,7 +18,8 @@ public class ActionsEventsHandler : MonoBehaviour
     // private static readonly int DebugDash = Animator.StringToHash("DebugDash");
     private static readonly int DebugRun = Animator.StringToHash("DebugRun");
     public static int comboCounter;
-    private GameObject Hud;
+
+    public GameObject buttons;
     private Button[] playerButtons;
     
     private void Awake()
@@ -29,8 +30,6 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerWeaponComponent = GetComponentInChildren<PlayerWeaponComponent>();
         PlayerDamageAnimationEvents = GetComponentInChildren<PlayerDamageAnimationEvents>();
         _skillSlotsController = GetComponent<SkillSlotsController>();
-        
-        Hud = GameObject.FindGameObjectWithTag("HUD");
     }
 
     private void OnEnable()
@@ -45,7 +44,7 @@ public class ActionsEventsHandler : MonoBehaviour
         
         AiDamageAnimationEvents.OnPlayerDamagedSuccess += ReceiveDamage;
 
-        playerButtons = Hud.GetComponentsInChildren<Button>();
+        playerButtons = buttons.GetComponentsInChildren<Button>();
 
     }
 

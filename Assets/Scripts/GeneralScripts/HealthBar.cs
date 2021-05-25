@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Image foregroundImage;
     [SerializeField] private float updateSpeedSeconds = 0.5f;
     [SerializeField] private HealthComponent healthComponent;
-    [SerializeField] private bool isPlayerBar;
+    [SerializeField] private bool IsPlayerBar;
     private void Awake()
     {
         foregroundImage = GetComponentInChildren<Image>();
@@ -34,15 +34,15 @@ public class HealthBar : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             foregroundImage.fillAmount = Mathf.Lerp(preChangePct, pct, elapsed / updateSpeedSeconds);
-            if (isPlayerBar) foregroundImage.color = Color.red;
+            if (IsPlayerBar) foregroundImage.color = Color.red;
             yield return null;
         }
-        if (isPlayerBar) foregroundImage.color = Color.cyan;
+        if (IsPlayerBar) foregroundImage.color = Color.cyan;
         foregroundImage.fillAmount = pct;
     }
     private void LateUpdate()
     {
-        if (isPlayerBar)
+        if (IsPlayerBar)
         {
             return;
         }

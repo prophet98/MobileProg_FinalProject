@@ -1739,6 +1739,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 316251109842918450, guid: 22b39dcc506b4224086f4399b728f6b5,
         type: 3}
+      propertyPath: volumeControllers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 316251109842918450, guid: 22b39dcc506b4224086f4399b728f6b5,
+        type: 3}
       propertyPath: volumeControllers.Array.data[0]
       value: 
       objectReference: {fileID: 154731398}

@@ -529,10 +529,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b352a0809c340aa49bd27bfccc8a6604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foregroundImage: {fileID: 4665303433021480944}
+  foregroundImage: {fileID: 0}
   updateSpeedSeconds: 0.5
   healthComponent: {fileID: 0}
-  isPlayerBar: 1
+  IsPlayerBar: 1
 --- !u!1 &8400723675773362462
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 8400723676594223299}
   m_Layer: 5
   m_Name: HUD_Canvas
-  m_TagString: HUD
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
