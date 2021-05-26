@@ -10,7 +10,12 @@ public class VolumeController : MonoBehaviour
     [SerializeField] private Toggle toggle;
     private bool _disableToggleEvent;
 
-    public void Awake()
+    private void Awake()
+    {
+        AdjustVolumeMixer();
+    }
+
+    public void AdjustVolumeMixer()
     {
         _slider = GetComponent<Slider>();
         _slider.onValueChanged.AddListener(HandleSliderValueChange);

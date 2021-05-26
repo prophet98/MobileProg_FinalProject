@@ -42,14 +42,24 @@ public class GameplayManager : MonoBehaviour
         if (scene.name == "MainMenu")
         {
             _volumeControllers = FindObjectsOfType<VolumeController>(true);
-            foreach (var controller in _volumeControllers)
-            {
-                controller.Awake();
-                SoundManager.instance.Play(Sound.Names.MainMenuTheme);
-            }
+            StartCoroutine(AdjustMixerAndPlayBG(scene.name));
         }
     }
 
+    IEnumerator AdjustMixerAndPlayBG(string sceneName)
+    {
+        yield return new WaitForSeconds(.1f);
+        foreach (var controller in _volumeControllers)
+        {
+            controller.AdjustVolumeMixer();
+        }
+
+        if (sceneName == "MainMenu")
+        {
+            SoundManager.instance.Play(Sound.Names.MainMenuTheme);
+        }
+        
+    }
     private void Start()
     {
         playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
