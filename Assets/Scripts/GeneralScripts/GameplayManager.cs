@@ -1,4 +1,5 @@
 using System.Collections;
+using DamageScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,18 +29,18 @@ public class GameplayManager : MonoBehaviour
         #endregion
 
         _loadingScreen = GetComponentInChildren<Image>(true);
+        HealthComponent.OnPlayerDeath += LoadDeathScene;
+
     }
 
     private void Start()
     {
         playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
-        if (SceneManager.GetActiveScene().buildIndex ==0) //if MainMenu scene
+        if (SceneManager.GetActiveScene().buildIndex != 0) return;
+        foreach (var controller in volumeControllers)
         {
-            foreach (var controller in volumeControllers)
-            {
-                controller.Awake();
-                SoundManager.instance.Play(Sound.Names.MainMenuTheme);
-            }
+            controller.Awake();
+            SoundManager.instance.Play(Sound.Names.MainMenuTheme);
         }
     }
 
@@ -49,6 +50,11 @@ public class GameplayManager : MonoBehaviour
         StartCoroutine(LoadAsyncRoutine(sceneIndex));
     }
 
+    public void LoadDeathScene()
+    {
+        const int deathSceneIndex = 2;
+        StartCoroutine(LoadAsyncRoutine(deathSceneIndex));
+    }
     private IEnumerator LoadAsyncRoutine(int sceneIndex)
     {
         var loadOp =  SceneManager.LoadSceneAsync(sceneIndex);
@@ -65,5 +71,6 @@ public class GameplayManager : MonoBehaviour
     private void OnDestroy()
     {
         PlayerPrefs.SetInt(PlayerMoneyString, playerMoney);
+        HealthComponent.OnPlayerDeath -= LoadDeathScene;
     }
 }

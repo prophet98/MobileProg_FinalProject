@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartMenu : MonoBehaviour
+public class MenuUiManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject settingsUI;
@@ -31,7 +31,14 @@ public class StartMenu : MonoBehaviour
     {
         GameplayManager.instance.LoadLevel(1);
     }
-
+    public void StartDeath()
+    {
+        GameplayManager.instance.LoadLevel(2);
+    }
+    public void StartMenu()
+    {
+        GameplayManager.instance.LoadLevel(0);
+    }
     public void QuitGame()
     {
 #if  UNITY_EDITOR

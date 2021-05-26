@@ -11,6 +11,7 @@ namespace DamageScripts
         [HideInInspector] public bool isInvincible;
         public event Action<float> OnHealthPctChange;
         public event Action OnEntityDeath;
+        public  static event Action OnPlayerDeath;
         private void Awake()
         {
             _currentHp = maxHp;
@@ -39,6 +40,7 @@ namespace DamageScripts
             else if (_currentHp<=0 ) //is Player?
             {
                 gameObject.SetActive(false);
+                OnPlayerDeath?.Invoke();
             }
         }
         
