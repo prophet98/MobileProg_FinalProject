@@ -4,7 +4,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField]
-    private DungeonGenerator dungeonGenerator;
+    private DungeonGeneratorNew dungeonGenerator; //warning
     [SerializeField]
     private GameObject oppositeDoor;
     [SerializeField]

@@ -65,7 +65,7 @@ public class DungeonGeneratorNew
 
             nextIsBoss = false;
 
-            //Debug.Log(stdRoomVariants[randomN].name);
+            Debug.Log(stdRoomVariants[randomN].name);
         }
         else if (nextIsBoss)
         {

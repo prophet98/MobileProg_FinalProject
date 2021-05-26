@@ -271,12 +271,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1672847611}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &311648739 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4551760489951210566, guid: e7b224dedbc442948a940b0414887d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 661059976}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &661059976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -284,11 +278,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 450739262055499565, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: m_Name
-      value: Teleport_doorUP
-      objectReference: {fileID: 0}
     - target: {fileID: 542977607772982722, guid: e7b224dedbc442948a940b0414887d82,
         type: 3}
       propertyPath: m_RootOrder
@@ -349,77 +338,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dungeon
       objectReference: {fileID: 0}
-    - target: {fileID: 2139266981734050311, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: oppositeRespawn
-      value: 
-      objectReference: {fileID: 896901397}
-    - target: {fileID: 3301024234570151785, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: m_Name
-      value: Teleport_doorDown
-      objectReference: {fileID: 0}
-    - target: {fileID: 3682116810818634295, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: m_Name
-      value: Teleport_doorR
-      objectReference: {fileID: 0}
-    - target: {fileID: 4480591205880187022, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: oppositeRespawn
-      value: 
-      objectReference: {fileID: 1863003864}
     - target: {fileID: 4551760489388969365, guid: e7b224dedbc442948a940b0414887d82,
         type: 3}
       propertyPath: sunSource
       value: 
       objectReference: {fileID: 874319827}
-    - target: {fileID: 5378148371137025779, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: oppositeRespawn
-      value: 
-      objectReference: {fileID: 311648739}
-    - target: {fileID: 6776528617180052447, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: doorUp
-      value: 
-      objectReference: {fileID: 1941836288}
-    - target: {fileID: 6776528617180052447, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: doorDown
-      value: 
-      objectReference: {fileID: 2077601372}
-    - target: {fileID: 6776528617180052447, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: doorLeft
-      value: 
-      objectReference: {fileID: 934210481}
-    - target: {fileID: 6776528617180052447, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: doorRight
-      value: 
-      objectReference: {fileID: 1932865045}
-    - target: {fileID: 6776528617180052447, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: adjustRotation
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776528617180052447, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: fallenDoorPrefab
-      value: 
-      objectReference: {fileID: 5305535033849976187, guid: 2f5e208ab373e234d8299ade7c4015e8,
-        type: 3}
-    - target: {fileID: 7076704289050389356, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: m_Name
-      value: Teleport_doorL
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558026225224012175, guid: e7b224dedbc442948a940b0414887d82,
-        type: 3}
-      propertyPath: oppositeRespawn
-      value: 
-      objectReference: {fileID: 929527369}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7b224dedbc442948a940b0414887d82, type: 3}
 --- !u!1 &686305099
@@ -600,24 +523,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &896901397 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4551760489405759442, guid: e7b224dedbc442948a940b0414887d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 661059976}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &929527369 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4551760490560724806, guid: e7b224dedbc442948a940b0414887d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 661059976}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &934210481 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3301024234570151785, guid: e7b224dedbc442948a940b0414887d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 661059976}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1672847611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -692,30 +597,6 @@ PrefabInstance:
       objectReference: {fileID: 194398847}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beabce1137dd081419691ff957c06f84, type: 3}
---- !u!4 &1863003864 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4551760490476417054, guid: e7b224dedbc442948a940b0414887d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 661059976}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1932865045 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 450739262055499565, guid: e7b224dedbc442948a940b0414887d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 661059976}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1941836288 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3682116810818634295, guid: e7b224dedbc442948a940b0414887d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 661059976}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2077601372 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7076704289050389356, guid: e7b224dedbc442948a940b0414887d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 661059976}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7304450987122229790
 PrefabInstance:
   m_ObjectHideFlags: 0

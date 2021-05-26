@@ -9,7 +9,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        envConfig = GameObject.FindObjectOfType<RandomizeConfig>().GetCurrentConfig;
+        envConfig = GameObject.FindObjectOfType<RandomizeConfigNew>().GetCurrentConfig;
         SpawnObstacle();
     }
     private void OnDisable()
