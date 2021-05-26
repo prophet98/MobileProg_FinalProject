@@ -79,6 +79,9 @@ MonoBehaviour:
   dungeonGenerator: {fileID: 1739953395730577428}
   oppositeDoor: {fileID: 3301024234570151785}
   oppositeRespawn: {fileID: 4551760490476417054}
+  PassGO: {fileID: 0}
+  NoPassGO: {fileID: 0}
+  PlayerBRS: {fileID: 0}
 --- !u!1 &563773695873250065
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +597,9 @@ MonoBehaviour:
   dungeonGenerator: {fileID: 1739953395730577428}
   oppositeDoor: {fileID: 450739262055499565}
   oppositeRespawn: {fileID: 4551760490560724806}
+  PassGO: {fileID: 0}
+  NoPassGO: {fileID: 0}
+  PlayerBRS: {fileID: 0}
 --- !u!114 &2139266981734050311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,6 +615,9 @@ MonoBehaviour:
   dungeonGenerator: {fileID: 1739953395730577428}
   oppositeDoor: {fileID: 7076704289050389356}
   oppositeRespawn: {fileID: 4551760489405759442}
+  PassGO: {fileID: 0}
+  NoPassGO: {fileID: 0}
+  PlayerBRS: {fileID: 0}
 --- !u!1 &4124193531982965415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1176,9 @@ MonoBehaviour:
   dungeonGenerator: {fileID: 1739953395730577428}
   oppositeDoor: {fileID: 3682116810818634295}
   oppositeRespawn: {fileID: 4551760489951210566}
+  PassGO: {fileID: 0}
+  NoPassGO: {fileID: 0}
+  PlayerBRS: {fileID: 0}
 --- !u!1 &7110467281233149331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,8 +2260,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19874298, guid: 831c85159903ac84399ac3c3e1d5c5ad, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19874298, guid: 831c85159903ac84399ac3c3e1d5c5ad, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19874298, guid: 831c85159903ac84399ac3c3e1d5c5ad, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.a
+      value: 0.41568628
       objectReference: {fileID: 0}
     - target: {fileID: 19962780, guid: 831c85159903ac84399ac3c3e1d5c5ad, type: 3}
       propertyPath: m_Materials.Array.size
