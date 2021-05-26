@@ -33,7 +33,7 @@ public class GameplayManager : MonoBehaviour
     private void Start()
     {
         playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
-        if (SceneManager.GetActiveScene().buildIndex ==0) //if MainMenu scene
+        if (SceneManager.GetActiveScene().name == "MainMenu") //if MainMenu scene
         {
             foreach (var controller in volumeControllers)
             {

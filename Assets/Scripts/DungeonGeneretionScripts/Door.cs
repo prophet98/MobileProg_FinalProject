@@ -30,7 +30,7 @@ public class Door : MonoBehaviour
     {
         DoorsChanged = false;
         ResetDoor();
-        //UnityEditor.AI.NavMeshBuilder.BuildNavMesh();
+        UnityEditor.AI.NavMeshBuilder.BuildNavMesh();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,7 +45,9 @@ public class Door : MonoBehaviour
 
                 dungeonGenerator.NextRoom(oppositeDoor);
 
-                ResetDoor();
+                UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
+                UnityEditor.AI.NavMeshBuilder.BuildNavMesh(); //TODO: find a better place
+                //ResetDoor();
             }
             
         }
@@ -60,9 +62,6 @@ public class Door : MonoBehaviour
 
     private void ResetDoor()
     {
-        UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
-        UnityEditor.AI.NavMeshBuilder.BuildNavMesh(); //TODO: find a better place
-
         NoPassGO.SetActive(true);
         PassGO.SetActive(false);
         DoorsChanged = false;
@@ -73,7 +72,8 @@ public class Door : MonoBehaviour
         if((PlayerBRS.canPassGate == true)&&(DoorsChanged == false))
         {
             UnlockDoor();
-        } else if((PlayerBRS.canPassGate == false) && (DoorsChanged == true))
+        } 
+        else if((PlayerBRS.canPassGate == false) && (DoorsChanged == true))
         {
             ResetDoor();
         }
