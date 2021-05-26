@@ -14,6 +14,7 @@ public class DungeonGeneratorNew
     [SerializeField]
     private GameObject doorRight;
 
+    private GameObject[] _doors;
     [SerializeField]
     private GameObject fallenDoorPrefab;
     private GameObject fallenDoorInstance;
@@ -39,6 +40,12 @@ public class DungeonGeneratorNew
     void Start()
     {
         RoomRandomSelector();
+        _doors = new[] {doorUp, doorDown, doorLeft, doorRight};
+        
+        foreach (var door in _doors)
+        {
+            door.GetComponent<Door>().ResetDoor();
+        }
     }
 
     private void OnEnable()
@@ -93,10 +100,13 @@ public class DungeonGeneratorNew
 
     public void NextRoom(GameObject entryDoor)
     {
-        if (stageClear == true)
+        if (stageClear)
         {
             GameObject.FindGameObjectWithTag("StandardRoom").SetActive(false);
-
+            foreach (var door in _doors)
+            {
+                door.GetComponent<Door>().ResetDoor();
+            }
             NewFallenDoor(entryDoor);
             RoomRandomSelector();
         }

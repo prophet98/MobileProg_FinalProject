@@ -11,14 +11,14 @@ public class MenuUiManager : MonoBehaviour
     [SerializeField] private GameObject settingsUI;
     [SerializeField] private GameObject startUI;
     // [SerializeField] private Image fadeImage;    
-    private Button[] menuButtons;
+    private Button[] _menuButtons;
 
     private void Awake()
     {
-        menuButtons = GetComponentsInChildren<Button>();
-        foreach (var VARIABLE in menuButtons)
+        _menuButtons = GetComponentsInChildren<Button>();
+        foreach (var menuButton in _menuButtons)
         {
-            VARIABLE.onClick.AddListener(PlaySound);
+            menuButton.onClick.AddListener(PlaySound);
         }
     }
 
@@ -29,15 +29,15 @@ public class MenuUiManager : MonoBehaviour
     
     public void StartGame()
     {
-        GameplayManager.instance.LoadLevel(1);
+        GameplayManager.instance.LoadLevel("Dungeon_PAOLO");
     }
     public void StartDeath()
     {
-        GameplayManager.instance.LoadLevel(2);
+        GameplayManager.instance.LoadLevel("DeathScene");
     }
     public void StartMenu()
     {
-        GameplayManager.instance.LoadLevel(0);
+        GameplayManager.instance.LoadLevel("MainMenu");
     }
     public void QuitGame()
     {

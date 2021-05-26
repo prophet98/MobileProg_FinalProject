@@ -1,15 +1,16 @@
+
 using System.Collections;
+using DamageScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Video;
 
 public class GameplayManager : MonoBehaviour
 {
     public static GameplayManager instance;
     private Image _loadingScreen;
     public int playerMoney;
-    [SerializeField] private VolumeController[] volumeControllers;
+    private VolumeController[] _volumeControllers;
     private const string PlayerMoneyString = "PlayerMoney";
     private void Awake()
     {
@@ -30,12 +31,18 @@ public class GameplayManager : MonoBehaviour
         _loadingScreen = GetComponentInChildren<Image>(true);
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
-        if (SceneManager.GetActiveScene().name == "MainMenu") //if MainMenu scene
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        HealthComponent.OnPlayerDeath += LoadDeathScene;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainMenu")
         {
-            foreach (var controller in volumeControllers)
+            _volumeControllers = FindObjectsOfType<VolumeController>(true);
+            foreach (var controller in _volumeControllers)
             {
                 controller.Awake();
                 SoundManager.instance.Play(Sound.Names.MainMenuTheme);
@@ -43,15 +50,20 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
-    public void LoadLevel(int sceneIndex)
+    private void Start()
     {
-        _loadingScreen.gameObject.SetActive(true);
-        StartCoroutine(LoadAsyncRoutine(sceneIndex));
+        playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
     }
 
-    private IEnumerator LoadAsyncRoutine(int sceneIndex)
+    public void LoadLevel(string sceneName)
     {
-        var loadOp =  SceneManager.LoadSceneAsync(sceneIndex);
+        _loadingScreen.gameObject.SetActive(true);
+        StartCoroutine(LoadAsyncRoutine(sceneName));
+    }
+
+    private IEnumerator LoadAsyncRoutine(string sceneName)
+    {
+        var loadOp =  SceneManager.LoadSceneAsync(sceneName);
         while (!loadOp.isDone)
         {
             yield return null;
@@ -62,8 +74,13 @@ public class GameplayManager : MonoBehaviour
         _loadingScreen.gameObject.SetActive(false);
     }
 
+    private void LoadDeathScene()
+    {
+        StartCoroutine(LoadAsyncRoutine("DeathScene"));
+    }
     private void OnDestroy()
     {
         PlayerPrefs.SetInt(PlayerMoneyString, playerMoney);
+        HealthComponent.OnPlayerDeath -= LoadDeathScene;
     }
 }

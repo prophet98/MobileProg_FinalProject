@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -20,17 +21,18 @@ public class Door : MonoBehaviour
 
     public delegate void Teleport(Transform oppRespawn);
     public static event Teleport OnTeleport;
-
-    //provisional
-    private bool DoorsChanged;
+    
     [SerializeField]
     private BattleRewardSystem PlayerBRS;
 
     private void Start()
     {
-        DoorsChanged = false;
-        ResetDoor();
         UnityEditor.AI.NavMeshBuilder.BuildNavMesh();
+    }
+
+    private void OnEnable()
+    {
+        PlayerBRS.GetComponent<BattleRewardSystem>().UnlockDoors += UnlockDoor;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,7 +49,6 @@ public class Door : MonoBehaviour
 
                 UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
                 UnityEditor.AI.NavMeshBuilder.BuildNavMesh(); //TODO: find a better place
-                //ResetDoor();
             }
             
         }
@@ -57,25 +58,12 @@ public class Door : MonoBehaviour
     {
         PassGO.SetActive(true);
         NoPassGO.SetActive(false);
-        DoorsChanged = true;
     }
 
-    private void ResetDoor()
+    public void ResetDoor()
     {
         NoPassGO.SetActive(true);
         PassGO.SetActive(false);
-        DoorsChanged = false;
     }
-
-    private void Update()
-    {
-        if((PlayerBRS.canPassGate == true)&&(DoorsChanged == false))
-        {
-            UnlockDoor();
-        } 
-        else if((PlayerBRS.canPassGate == false) && (DoorsChanged == true))
-        {
-            ResetDoor();
-        }
-    }
+    
 }
