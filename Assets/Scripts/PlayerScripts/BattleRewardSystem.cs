@@ -18,7 +18,7 @@ public class BattleRewardSystem : MonoBehaviour
     {
         if (GameplayManager.instance!=null)
         {
-            GameplayManager.instance.playerStats.playerMoney = CurrentMoney;
+            //GameplayManager.instance.playerStats.playerMoney = CurrentMoney;
         }
         
     }

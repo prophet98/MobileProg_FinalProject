@@ -77,7 +77,7 @@ public class GameplayManager : MonoBehaviour
     }
     private void Start()
     {
-        playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
+        //playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString); TODO: mettere su OnScenLoaded
     }
 
     public void LoadLevel(string sceneName)
@@ -105,7 +105,7 @@ public class GameplayManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        PlayerPrefs.SetInt(PlayerMoneyString, playerStats.playerMoney);
+        //PlayerPrefs.SetInt(PlayerMoneyString, playerStats.playerMoney);
         HealthComponent.OnPlayerDeath -= LoadDeathScene;
     }
 }
