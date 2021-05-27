@@ -9,9 +9,10 @@ public class GameplayManager : MonoBehaviour
 {
     public static GameplayManager instance;
     private Image _loadingScreen;
-    public int playerMoney;
     private VolumeController[] _volumeControllers;
     private const string PlayerMoneyString = "PlayerMoney";
+
+    public PlayerStats playerStats;
     private void Awake()
     {
         #region Singleton
@@ -39,10 +40,20 @@ public class GameplayManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        _volumeControllers = FindObjectsOfType<VolumeController>(true);
         if (scene.name == "MainMenu")
         {
-            _volumeControllers = FindObjectsOfType<VolumeController>(true);
             StartCoroutine(AdjustMixerAndPlayBG(scene.name));
+        }
+        else if (scene.name == "Dungeon_PAOLO")
+        {
+            StartCoroutine(AdjustMixerAndPlayBG(scene.name));
+            GameObject.FindGameObjectWithTag("Player").GetComponent<SkillSlotsController>().upperSlotSkill = playerStats.upperSkill;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<HealthComponent>().maxHp = playerStats.playerHealth;
+            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerWeaponComponent>().weaponDamage =
+                playerStats.playerWeaponDamage;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().playerSpeed = playerStats.playerSpeed;
+
         }
     }
 
@@ -58,11 +69,15 @@ public class GameplayManager : MonoBehaviour
         {
             SoundManager.instance.Play(Sound.Names.MainMenuTheme);
         }
+        // if (sceneName == "MainMenu")
+        // {
+        //     SoundManager.instance.Play(Sound.Names.MainMenuTheme);
+        // }
         
     }
     private void Start()
     {
-        playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
+        playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
     }
 
     public void LoadLevel(string sceneName)
@@ -90,7 +105,7 @@ public class GameplayManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        PlayerPrefs.SetInt(PlayerMoneyString, playerMoney);
+        PlayerPrefs.SetInt(PlayerMoneyString, playerStats.playerMoney);
         HealthComponent.OnPlayerDeath -= LoadDeathScene;
     }
 }

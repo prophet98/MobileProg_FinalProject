@@ -219,5 +219,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033b8b08ff498d14d8b674a4be6e7ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 374830209}
-  playerMoney: 0
+  playerStats: {fileID: 11400000, guid: 1ca9500adff953e4c94afcbc1652d595, type: 2}
