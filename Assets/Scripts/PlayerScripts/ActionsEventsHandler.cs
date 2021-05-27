@@ -39,6 +39,7 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Skill.performed += OnSkillPerformed;
         _playerInput.PlayerActions.Move.performed += OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled += OnMoveCanceled;
+        _playerInput.PlayerActions.Interact.started += OnPenguinInteract;
         PlayerDamageAnimationEvents.OnDamagedSuccess += ApplyDamage;
         PlayerDamageAnimationEvents.OnDamagedFail += CancelDamage;
         
@@ -47,6 +48,14 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerButtons = _hud.GetComponentsInChildren<Button>();
 
 
+    }
+
+    private void OnPenguinInteract(InputAction.CallbackContext obj)
+    {
+        if(PlayerWeaponComponent.TriggerList.Count > 0)
+        {
+            Debug.Log("Penguin Interact");
+        }
     }
 
     private void ReceiveDamage(int damage)
@@ -145,14 +154,21 @@ public class ActionsEventsHandler : MonoBehaviour
     private void UpdateButtonState()
     {
         if (_playerButtons == null) return;
-        if (PlayerWeaponComponent.TriggerList.Count<=0)
+        if (PlayerWeaponComponent.TriggerList.Count <= 0)
         {
             _playerButtons[0].interactable = false;
         }
 
-        else if (PlayerWeaponComponent.TriggerList.Count>0)
+        else if (PlayerWeaponComponent.TriggerList.Count > 0)
         {
             _playerButtons[0].interactable = true;
+        }
+
+        if (_skillSlotsController.lowerSlotSkill==null && _skillSlotsController.upperSlotSkill == null)
+        {
+            _playerButtons[1].gameObject.SetActive(false);
+            _playerButtons[2].gameObject.SetActive(false);
+            return;
         }
 
         _playerButtons[1].interactable = _skillSlotsController.lowerSlotSkill.state switch
