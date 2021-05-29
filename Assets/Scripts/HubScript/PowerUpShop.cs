@@ -21,6 +21,8 @@ public class PowerUpShop : MonoBehaviour
     [SerializeField]
     private float increaseAmount;
 
+    [SerializeField]
+    private Text priceText;
     private GameplayManager manager;
 
     private void OnEnable()
@@ -31,6 +33,7 @@ public class PowerUpShop : MonoBehaviour
     private void Start()
     {
         manager = FindObjectOfType<GameplayManager>();
+        priceText.text = "$"+cost.ToString();
     }
 
     private void BuyItem()
