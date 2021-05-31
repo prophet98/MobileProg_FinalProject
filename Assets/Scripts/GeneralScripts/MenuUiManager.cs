@@ -29,11 +29,7 @@ public class MenuUiManager : MonoBehaviour
     
     public void StartGame()
     {
-        GameplayManager.instance.LoadLevel("Dungeon_PAOLO");
-    }
-    public void StartDeath()
-    {
-        GameplayManager.instance.LoadLevel("DeathScene");
+        GameplayManager.instance.LoadLevel("Hub");
     }
     public void StartMenu()
     {

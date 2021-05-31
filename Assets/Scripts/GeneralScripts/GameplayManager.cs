@@ -53,6 +53,8 @@ public class GameplayManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerWeaponComponent>().weaponDamage =
                 playerStats.playerWeaponDamage;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().playerSpeed = playerStats.playerSpeed;
+            
+            playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
 
         }
     }
@@ -74,10 +76,6 @@ public class GameplayManager : MonoBehaviour
         //     SoundManager.instance.Play(Sound.Names.MainMenuTheme);
         // }
         
-    }
-    private void Start()
-    {
-        //playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString); TODO: mettere su OnScenLoaded
     }
 
     public void LoadLevel(string sceneName)
@@ -105,7 +103,7 @@ public class GameplayManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        //PlayerPrefs.SetInt(PlayerMoneyString, playerStats.playerMoney);
+        PlayerPrefs.SetInt(PlayerMoneyString, playerStats.playerMoney);
         HealthComponent.OnPlayerDeath -= LoadDeathScene;
     }
 }

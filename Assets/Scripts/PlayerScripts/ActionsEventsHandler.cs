@@ -39,7 +39,6 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerInput.PlayerActions.Skill.performed += OnSkillPerformed;
         _playerInput.PlayerActions.Move.performed += OnMovePerformed;
         _playerInput.PlayerActions.Move.canceled += OnMoveCanceled;
-        _playerInput.PlayerActions.Interact.started += OnPenguinInteract;
         PlayerDamageAnimationEvents.OnDamagedSuccess += ApplyDamage;
         PlayerDamageAnimationEvents.OnDamagedFail += CancelDamage;
         
@@ -49,15 +48,6 @@ public class ActionsEventsHandler : MonoBehaviour
 
 
     }
-
-    private void OnPenguinInteract(InputAction.CallbackContext obj)
-    {
-        if(PlayerWeaponComponent.TriggerList.Count > 0)
-        {
-            Debug.Log("Penguin Interact");
-        }
-    }
-
     private void ReceiveDamage(int damage)
     {
         GetComponent<IDamageable<int>>().RemoveHealth(damage);
