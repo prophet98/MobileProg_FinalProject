@@ -24,14 +24,19 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField]
     private GameObject[] bossRoomVariants;
 
+    [SerializeField]
+    private float adjustRotation;
+    [SerializeField]
+    private int roomBeforeTheBoss = 5;
+
     private const string stdRString = "StandardRoom";
     private const string bossRString = "BossRoom";
 
+    private int roomCount;
     private bool nextIsBoss = false;
     private bool stageClear = false;
 
-    [SerializeField]
-    private float adjustRotation;
+    
 
     #region init
 
@@ -72,6 +77,8 @@ public class DungeonGenerator : MonoBehaviour
 
             int randomN = Random.Range(0, bossRoomVariants.Length);
             bossRoomVariants[randomN].SetActive(true);
+
+            nextIsBoss = false;
         }
     }
 
@@ -101,6 +108,17 @@ public class DungeonGenerator : MonoBehaviour
         }
         stageClear = false;
     }
+
+    private void UpdateBossRoom()
+    {
+        roomCount++;
+        if(roomCount >= roomBeforeTheBoss)
+        {
+            nextIsBoss = true;
+            roomCount = 0;
+        }
+    }
+  
 
     public void SetNextIsBoss(bool isBoss)
     {

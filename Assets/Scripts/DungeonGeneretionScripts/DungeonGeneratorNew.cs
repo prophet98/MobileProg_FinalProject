@@ -35,6 +35,10 @@ public class DungeonGeneratorNew
     [SerializeField]
     private float adjustRotation;
 
+    [SerializeField]
+    private int roomBeforeTheBoss = 5;
+    private int roomCount;
+
     #region init
 
     void Start()
@@ -76,7 +80,7 @@ public class DungeonGeneratorNew
         }
         else if (nextIsBoss)
         {
-            GameObject.FindGameObjectWithTag(bossRString).SetActive(false);
+            //GameObject.FindGameObjectWithTag(bossRString).SetActive(false);
 
             int randomN = Random.Range(0, bossRoomVariants.Length);
             bossRoomVariants[randomN].SetActive(true);
@@ -98,10 +102,21 @@ public class DungeonGeneratorNew
         doorMustFall.SetActive(false);
     }
 
+    private void CheckForBossRoom()
+    {
+        roomCount++;
+        if (roomCount >= roomBeforeTheBoss)
+        {
+            nextIsBoss = true;
+            roomCount = 0;
+        }
+    }
+
     public void NextRoom(GameObject entryDoor)
     {
         if (stageClear)
         {
+            CheckForBossRoom();
             GameObject.FindGameObjectWithTag("StandardRoom").SetActive(false);
             foreach (var door in _doors)
             {
@@ -113,10 +128,10 @@ public class DungeonGeneratorNew
         stageClear = false;
     }
 
-    public void SetNextIsBoss(bool isBoss)
-    {
-        nextIsBoss = isBoss;
-    }
+    //public void SetNextIsBoss(bool isBoss)
+    //{
+    //    nextIsBoss = isBoss;
+    //}
 
     public void SetStageIsClear()
     {
