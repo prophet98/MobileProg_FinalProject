@@ -9,24 +9,38 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject passivePanel, activePanel;
     [SerializeField] private Button switchButton;
     [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private TextMeshProUGUI skillText;
     private void OnEnable()
     {
         switchButton.onClick.AddListener(HandlePanelView);
-        moneyText.text = FindObjectOfType<GameplayManager>().playerStats.playerMoney.ToString();
+        ActivatePassive();
+        moneyText.text = FindObjectOfType<GameplayManager>().playerStats.playerMoney.ToString(); //TODO: add event for realtime update
     }
 
     private void HandlePanelView()
     {
         if (passivePanel.activeSelf)
         {
-            passivePanel.SetActive(false);
-            activePanel.SetActive(true);
+            ActivateActive();
         }
         else if (activePanel.activeSelf)
         {
-            passivePanel.SetActive(true);
-            activePanel.SetActive(false);
+            ActivatePassive();
         }
+    }
+
+    private void ActivateActive()
+    {
+        skillText.text = "active skills";
+        passivePanel.SetActive(false);
+        activePanel.SetActive(true);
+    }
+
+    private void ActivatePassive()
+    {
+        skillText.text = "passive skills";
+        passivePanel.SetActive(true);
+        activePanel.SetActive(false);
     }
 
     private void OnDisable()
