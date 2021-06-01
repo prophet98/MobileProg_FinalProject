@@ -15,7 +15,7 @@ public class MenuUiManager : MonoBehaviour
 
     private void Awake()
     {
-        _menuButtons = GetComponentsInChildren<Button>();
+        _menuButtons = GetComponentsInChildren<Button>(true);
         foreach (var menuButton in _menuButtons)
         {
             menuButton.onClick.AddListener(PlaySound);

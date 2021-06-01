@@ -1,4 +1,5 @@
 using System;
+using Packages.Rider.Editor.UnitTesting;
 using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
