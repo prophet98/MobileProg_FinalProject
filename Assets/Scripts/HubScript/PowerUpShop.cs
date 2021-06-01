@@ -25,6 +25,8 @@ public class PowerUpShop : MonoBehaviour
     private Text priceText;
     private GameplayManager manager;
 
+    private ShopManager sm;
+
     private void OnEnable()
     {
         GetComponent<Button>().onClick.AddListener(BuyItem); 
@@ -43,6 +45,7 @@ public class PowerUpShop : MonoBehaviour
         {
             CheckForSkill();
             manager.playerStats.playerMoney -= cost;
+            sm.UpdateCoinsText();
             Debug.Log(manager.playerStats.playerMoney);
         } else
         {

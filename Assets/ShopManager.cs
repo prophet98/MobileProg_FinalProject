@@ -10,11 +10,12 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button switchButton;
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI skillText;
+
     private void OnEnable()
     {
         switchButton.onClick.AddListener(HandlePanelView);
         ActivatePassive();
-        moneyText.text = FindObjectOfType<GameplayManager>().playerStats.playerMoney.ToString(); //TODO: add event for realtime update
+        UpdateCoinsText();//TODO: Fix
     }
 
     private void HandlePanelView()
@@ -41,6 +42,11 @@ public class ShopManager : MonoBehaviour
         skillText.text = "passive skills";
         passivePanel.SetActive(true);
         activePanel.SetActive(false);
+    }
+
+    public void UpdateCoinsText()
+    {
+        moneyText.text = FindObjectOfType<GameplayManager>().playerStats.playerMoney.ToString();
     }
 
     private void OnDisable()
