@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        //TODO: Refactor this is just for testing.
          HandleMovement();  
         
     }
@@ -62,10 +61,18 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.forward = _moveVector;
         }
+        //_playerVelocity.y += GravityValue * Time.deltaTime;
+
+        if (_groundedPlayer == false)
+        {
+            //Add our gravity Vecotr
+            _moveVector += Physics.gravity;
+        }
+
         _controller.Move(_moveVector * (Time.deltaTime * playerSpeed));
-        _playerVelocity.y += GravityValue * Time.deltaTime;
+
     }
-    
+
 }
 
     
