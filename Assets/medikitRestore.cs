@@ -8,7 +8,7 @@ public class medikitRestore : MonoBehaviour
     [SerializeField]
     private GameObject healParticles;
     
-    private string PLAYER_TAG = "Player";
+    private const string PLAYER_TAG = "Player";
 
     private void OnTriggerEnter(Collider other)
     {

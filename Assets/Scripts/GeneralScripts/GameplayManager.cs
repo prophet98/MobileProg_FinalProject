@@ -52,7 +52,7 @@ public class GameplayManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<HealthComponent>().maxHp = playerStats.playerHealth;
             GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerWeaponComponent>().weaponDamage =
                 playerStats.playerWeaponDamage;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().playerSpeed = playerStats.playerSpeed;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerSpeed = playerStats.playerSpeed;
             
             playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
 

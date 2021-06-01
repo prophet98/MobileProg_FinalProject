@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float playerSpeed = 2.0f;
+    private float playerSpeed = 10f;
     #region InputVariables
     private PlayerInput _playerInput;
     private CharacterController _controller;
@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private bool _groundedPlayer;
     private static readonly int DebugRun = Animator.StringToHash("DebugRun");
     private const float GravityValue = -9.81f;
+
+    public float PlayerSpeed { get => playerSpeed; set => playerSpeed = value; }
     #endregion
 
     private void Awake()
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour
             _moveVector += Physics.gravity;
         }
 
-        _controller.Move(_moveVector * (Time.deltaTime * playerSpeed));
+        _controller.Move(_moveVector * (Time.deltaTime * PlayerSpeed));
 
     }
 
