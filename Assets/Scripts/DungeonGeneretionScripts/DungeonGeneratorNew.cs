@@ -14,6 +14,9 @@ public class DungeonGeneratorNew
     [SerializeField]
     private GameObject doorRight;
 
+    [SerializeField]
+    private GameObject bossFightText;
+
     private GameObject[] _doors;
     [SerializeField]
     private GameObject fallenDoorPrefab;
@@ -44,6 +47,9 @@ public class DungeonGeneratorNew
     void Start()
     {
         RoomRandomSelector();
+
+        bossFightText.SetActive(false);
+
         _doors = new[] {doorUp, doorDown, doorLeft, doorRight};
         
         foreach (var door in _doors)
@@ -70,17 +76,17 @@ public class DungeonGeneratorNew
     {
         if (!nextIsBoss)
         {
+            bossFightText.SetActive(false);
 
             int randomN = Random.Range(0, stdRoomVariants.Length);
             stdRoomVariants[randomN].SetActive(true);
-
-            nextIsBoss = false;
 
             Debug.Log(stdRoomVariants[randomN].name);
         }
         else if (nextIsBoss)
         {
             //GameObject.FindGameObjectWithTag(bossRString).SetActive(false);
+            bossFightText.SetActive(true);
 
             int randomN = Random.Range(0, bossRoomVariants.Length);
             bossRoomVariants[randomN].SetActive(true);
@@ -109,6 +115,10 @@ public class DungeonGeneratorNew
         {
             nextIsBoss = true;
             roomCount = 0;
+            Debug.Log("r count: " + roomCount.ToString());
+        } else
+        {
+            nextIsBoss = false;
         }
     }
 

@@ -12,6 +12,10 @@ public class GameplayManager : MonoBehaviour
     private VolumeController[] _volumeControllers;
     private const string PlayerMoneyString = "PlayerMoney";
 
+    private const float defaultPlayerSpeed = 10;
+    private const int defaultPlayerHealth = 100;
+    private const int defaultPlayerWeaponDamage = 25;
+
     public PlayerStats playerStats;
     private void Awake()
     {
@@ -55,6 +59,7 @@ public class GameplayManager : MonoBehaviour
         {
             StartCoroutine(AdjustMixerAndPlayBG(scene.name));
             playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
+            ResetPlayerStats();
         }
         
     }
@@ -75,9 +80,18 @@ public class GameplayManager : MonoBehaviour
         {
             Debug.LogError("no player was found in the scene!");
         }
-        
-        
     }
+
+    private void ResetPlayerStats()
+    {
+        playerStats.playerSpeed = defaultPlayerSpeed;
+        playerStats.playerHealth = defaultPlayerHealth;
+        playerStats.playerWeaponDamage = defaultPlayerWeaponDamage;
+        playerStats.upperSkill = null;
+
+        LoadPlayerStats();
+    }
+
     IEnumerator AdjustMixerAndPlayBG(string sceneName)
     {
         yield return new WaitForSeconds(.1f);
@@ -118,6 +132,7 @@ public class GameplayManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         _loadingScreen.gameObject.SetActive(false);
     }
+
 
     private void LoadDeathScene()
     {

@@ -32,14 +32,14 @@ public class ShopManager : MonoBehaviour
 
     private void ActivateActive()
     {
-        skillText.text = "active skills";
+        skillText.text = "switch to\npassive skills";
         passivePanel.SetActive(false);
         activePanel.SetActive(true);
     }
 
     private void ActivatePassive()
     {
-        skillText.text = "passive skills";
+        skillText.text = "switch to\nactive skills";
         passivePanel.SetActive(true);
         activePanel.SetActive(false);
     }

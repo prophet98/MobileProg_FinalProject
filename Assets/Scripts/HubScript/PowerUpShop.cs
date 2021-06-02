@@ -29,7 +29,8 @@ public class PowerUpShop : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponent<Button>().onClick.AddListener(BuyItem); 
+        GetComponent<Button>().onClick.AddListener(BuyItem);
+        sm = FindObjectOfType<ShopManager>();
     }
 
     private void Start()
@@ -40,9 +41,9 @@ public class PowerUpShop : MonoBehaviour
 
     private void BuyItem()
     {
-        Debug.Log("press buy");
         if(manager.playerStats.playerMoney >= cost)
         {
+            Debug.Log("press buy");
             CheckForSkill();
             manager.playerStats.playerMoney -= cost;
             sm.UpdateCoinsText();
