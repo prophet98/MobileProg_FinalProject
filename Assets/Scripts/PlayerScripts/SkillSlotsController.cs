@@ -10,37 +10,15 @@ public class SkillSlotsController : MonoBehaviour
 
     private float _lowerActiveTime, _lowerCoolDownTime, _upperActiveTime, _upperCooldownTime;
 
-    [HideInInspector]public bool isLowerNull, isUpperNull;
-    private void Start()
-    {
-        if (lowerSlotSkill is null)
-        {
-            isLowerNull = true;
-        }
-        else if (lowerSlotSkill != null )
-        {
-            isLowerNull = false;
-        }
-
-        if (upperSlotSkill is null)
-        {
-            isUpperNull = true;
-        }
-        else if (upperSlotSkill != null)
-        {
-            isUpperNull = false;
-        }
-    }
-
     public void SetUpSkillTimers()
     {
-        if (!isLowerNull)
+        if (lowerSlotSkill != null)
         {
             _lowerActiveTime = lowerSlotSkill.activeTime;
             _lowerCoolDownTime = lowerSlotSkill.cooldownTime;
         }
 
-        if (!isUpperNull)
+        if (upperSlotSkill != null)
         {
             _upperActiveTime = upperSlotSkill.activeTime;
             _upperCooldownTime = upperSlotSkill.cooldownTime;
@@ -51,12 +29,12 @@ public class SkillSlotsController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!isLowerNull)
+        if (lowerSlotSkill != null)
         {
             LowerCooldownRoutine();
         }
 
-        if (!isUpperNull)
+        if (upperSlotSkill != null)
         {
             UpperCooldownRoutine();
         }

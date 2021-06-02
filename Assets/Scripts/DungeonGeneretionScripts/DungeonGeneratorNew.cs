@@ -111,7 +111,8 @@ public class DungeonGeneratorNew
     private void CheckForBossRoom()
     {
         roomCount++;
-        if (roomCount >= roomBeforeTheBoss)
+        int roomBeforeTheBossLocal = Random.Range(roomBeforeTheBoss, roomBeforeTheBoss * 2);
+        if (roomCount >= roomBeforeTheBossLocal)
         {
             nextIsBoss = true;
             roomCount = 0;

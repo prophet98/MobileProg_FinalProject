@@ -138,8 +138,8 @@ public class ActionsEventsHandler : MonoBehaviour
     private void Start()
     {
         Debug.Log("VAR");
-        _playerButtons[1].gameObject.SetActive(!_skillSlotsController.isLowerNull);
-        _playerButtons[2].gameObject.SetActive(!_skillSlotsController.isUpperNull);
+        _playerButtons[1].gameObject.SetActive(_skillSlotsController.lowerSlotSkill != null);
+        _playerButtons[2].gameObject.SetActive(_skillSlotsController.upperSlotSkill != null);
     }
 
     private void LateUpdate()
@@ -161,7 +161,7 @@ public class ActionsEventsHandler : MonoBehaviour
         }
 
         
-        if (!_skillSlotsController.isLowerNull)
+        if (_skillSlotsController.lowerSlotSkill != null)
         {
             _playerButtons[1].interactable = _skillSlotsController.lowerSlotSkill.state switch
             {
@@ -171,7 +171,7 @@ public class ActionsEventsHandler : MonoBehaviour
             };
         }
         
-        if (!_skillSlotsController.isUpperNull)
+        if (_skillSlotsController.upperSlotSkill != null)
         {
             _playerButtons[2].interactable = _skillSlotsController.upperSlotSkill.state switch
             {
