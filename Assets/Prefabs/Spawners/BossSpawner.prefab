@@ -96,5 +96,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: {fileID: 9018512758640231733, guid: fd7daeba3c87f674492a36814b054066,
     type: 3}
-  enemyCoinValue: 35
+  enemyCoinValue: 30
   deathParticle: {fileID: 172590, guid: 93c383a7bb6b65547bc569e7d7f10507, type: 3}
