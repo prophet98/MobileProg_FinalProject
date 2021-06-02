@@ -56,7 +56,7 @@ public class ActionsEventsHandler : MonoBehaviour
 
     private void ApplyDamage()
     {
-        VisualDebugger.PrintText("Player Attacks!");
+        //VisualDebugger.PrintText("Player Attacks!");
         _playerWeaponComponent.weaponParticleInstance.GetComponent<ParticleSystem>().Stop();
         _playerWeaponComponent.weaponParticleInstance.GetComponent<ParticleSystem>().Play();
         // Debug.Log("Player Attacks!");
@@ -70,7 +70,7 @@ public class ActionsEventsHandler : MonoBehaviour
         //suono di fail?
         comboCounter = 0;
         _animator.ResetTrigger(DebugAttack);
-        VisualDebugger.PrintText("Player misses target!");
+        //VisualDebugger.PrintText("Player misses target!");
         // Debug.Log("Player misses target!");
     }
 
@@ -92,7 +92,7 @@ public class ActionsEventsHandler : MonoBehaviour
     {
         if (_skillSlotsController.lowerSlotSkill.state == BaseSkill.AbilityState.Ready)
         {
-            VisualDebugger.PrintText("Player Dashes!");
+            //VisualDebugger.PrintText("Player Dashes!");
             _skillSlotsController.lowerSlotSkill.Activate(gameObject);
             _skillSlotsController.lowerSlotSkill.state = BaseSkill.AbilityState.Activated;
             _skillSlotsController.SetUpSkillTimers();
@@ -103,7 +103,7 @@ public class ActionsEventsHandler : MonoBehaviour
     {
         if (_skillSlotsController.upperSlotSkill.state == BaseSkill.AbilityState.Ready)
         {
-            VisualDebugger.PrintText("Player used an active skill!"); 
+            //VisualDebugger.PrintText("Player used an active skill!"); 
             _skillSlotsController.upperSlotSkill.Activate(gameObject);
             _skillSlotsController.upperSlotSkill.state = BaseSkill.AbilityState.Activated;
             _skillSlotsController.SetUpSkillTimers();
