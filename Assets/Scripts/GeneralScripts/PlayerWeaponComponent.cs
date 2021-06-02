@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerWeaponComponent : MonoBehaviour
 {
     // [SerializeField] private int enemiesInRange;
-    public static readonly List<Collider> TriggerList = new List<Collider>();
+    public readonly List<Collider> triggerList = new List<Collider>();
     public int weaponDamage;
     public int killCounter;
     public GameObject weaponParticle;
@@ -28,17 +28,17 @@ public class PlayerWeaponComponent : MonoBehaviour
     {
         if (other.transform.parent.CompareTag("Enemy"))
         {
-            if (!TriggerList.Contains(other))
+            if (!triggerList.Contains(other))
             {
-                TriggerList.Add(other);
+                triggerList.Add(other);
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (TriggerList.Contains(other))
+        if (triggerList.Contains(other))
         {
-            TriggerList.Remove(other);
+            triggerList.Remove(other);
         }
     }
 

@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Packages.Rider.Editor.UnitTesting;
 using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
@@ -42,8 +44,17 @@ public class SoundManager : MonoBehaviour
                 return;
             }
 
-            if (s.name == Sound.Names.MainMenuTheme ||s.name == Sound.Names.BattleTheme ||s.name == Sound.Names.BossTheme )
+            s.source.volume = 1.0f;
+            
+            if (s.name == Sound.Names.MainMenuTheme ||s.name == Sound.Names.BattleTheme01 ||s.name == Sound.Names.HubTheme ||s.name == Sound.Names.BattleTheme03 ||s.name == Sound.Names.BossTheme )
             {
+                foreach (var sound in sounds)
+                {
+                    if (sound.name.ToString().Contains("Theme") && sound.source.isPlaying)
+                    { 
+                        StartCoroutine(StartFade(sound));
+                    }
+                }
                 s.source.outputAudioMixerGroup = musicEffectsMixer;
             }
             else
@@ -76,8 +87,23 @@ public class SoundManager : MonoBehaviour
                 Debug.LogWarning("Sound: " + name + " has not found a source to play!");
                 return;
             }
-
             s.source.Stop();
 
         }
+
+        private IEnumerator StartFade(Sound sound)
+        {
+            float currentTime = 0;
+            float start = sound.source.volume;
+            
+            while (currentTime < 1f)
+            {
+                currentTime += Time.deltaTime;
+                sound.source.volume = Mathf.Lerp(start, 0.0f, currentTime /1f);
+                yield return null;
+            }
+            StopSound(sound.name);
+            yield break;
+        }
+        
     }

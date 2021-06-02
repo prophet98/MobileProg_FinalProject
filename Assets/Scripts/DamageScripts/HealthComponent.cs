@@ -33,7 +33,6 @@ namespace DamageScripts
             
             if (_currentHp<=0 && this.GetComponent<AiController>()) //is IA?
             {
-                PlayerWeaponComponent.TriggerList.Remove(this.GetComponentInChildren<Collider>());
                 OnEntityDeath?.Invoke();
                 Destroy(gameObject);
             }

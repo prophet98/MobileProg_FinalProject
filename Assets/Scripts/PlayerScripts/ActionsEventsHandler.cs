@@ -46,7 +46,7 @@ public class ActionsEventsHandler : MonoBehaviour
 
         _playerButtons = _hud.GetComponentsInChildren<Button>();
 
-
+        comboCounter = 0;
     }
     private void ReceiveDamage(int damage)
     {
@@ -60,7 +60,7 @@ public class ActionsEventsHandler : MonoBehaviour
         _playerWeaponComponent.weaponParticleInstance.GetComponent<ParticleSystem>().Stop();
         _playerWeaponComponent.weaponParticleInstance.GetComponent<ParticleSystem>().Play();
         // Debug.Log("Player Attacks!");
-        foreach (var enemy in PlayerWeaponComponent.TriggerList.ToList())
+        foreach (var enemy in _playerWeaponComponent.triggerList.ToList())
         {
             enemy.GetComponentInParent<IDamageable<int>>().RemoveHealth(_playerWeaponComponent.weaponDamage);
         }
@@ -77,7 +77,7 @@ public class ActionsEventsHandler : MonoBehaviour
     private void OnAttackStarted(InputAction.CallbackContext context)
     {
         _animator.SetTrigger(DebugAttack);
-        if (PlayerWeaponComponent.TriggerList.Count>0)
+        if (_playerWeaponComponent.triggerList.Count>0)
         {
             comboCounter++;
         }
@@ -144,12 +144,12 @@ public class ActionsEventsHandler : MonoBehaviour
     private void UpdateButtonState()
     {
         if (_playerButtons == null) return;
-        if (PlayerWeaponComponent.TriggerList.Count <= 0)
+        if (_playerWeaponComponent.triggerList.Count <= 0)
         {
             _playerButtons[0].interactable = false;
         }
 
-        else if (PlayerWeaponComponent.TriggerList.Count > 0)
+        else if (_playerWeaponComponent.triggerList.Count > 0)
         {
             _playerButtons[0].interactable = true;
         }
