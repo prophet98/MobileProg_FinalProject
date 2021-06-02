@@ -8,7 +8,7 @@ public class Sound {
     public enum Names
     {
         MainMenuTheme,
-        BattleTheme,
+        BattleTheme01,
         BossTheme,
         UiSound,
         BladeSwing01,
@@ -19,7 +19,10 @@ public class Sound {
         LoveGun,
         SoBigMace,
         BossSound,
-        MyDoomBlade
+        MyDoomBlade,
+        CashRegister,
+        HubTheme,
+        BattleTheme03
     }
     public Names name = Names.MainMenuTheme;
         

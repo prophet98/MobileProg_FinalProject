@@ -43,6 +43,7 @@ public class PowerUpShop : MonoBehaviour
         {
             CheckForSkill();
             manager.playerStats.playerMoney -= cost;
+            SoundManager.instance?.Play(Sound.Names.CashRegister);
             Debug.Log(manager.playerStats.playerMoney);
         } else
         {

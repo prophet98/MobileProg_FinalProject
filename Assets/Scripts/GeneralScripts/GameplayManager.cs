@@ -48,17 +48,35 @@ public class GameplayManager : MonoBehaviour
         else if (scene.name == "Dungeon_PAOLO")
         {
             StartCoroutine(AdjustMixerAndPlayBG(scene.name));
-            GameObject.FindGameObjectWithTag("Player").GetComponent<SkillSlotsController>().upperSlotSkill = playerStats.upperSkill;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<HealthComponent>().maxHp = playerStats.playerHealth;
-            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerWeaponComponent>().weaponDamage =
-                playerStats.playerWeaponDamage;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().playerSpeed = playerStats.playerSpeed;
-            
-            playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
-
+            LoadPlayerStats();
         }
+        else if (scene.name == "Hub")
+        {
+            StartCoroutine(AdjustMixerAndPlayBG(scene.name));
+            
+        }
+        
     }
 
+    void LoadPlayerStats()
+    {
+        var Player = GameObject.FindGameObjectWithTag("Player");
+        if (Player!=null)
+        {
+            Player.GetComponent<SkillSlotsController>().upperSlotSkill = playerStats.upperSkill;
+            Player.GetComponent<HealthComponent>().maxHp = playerStats.playerHealth;
+            Player.GetComponentInChildren<PlayerWeaponComponent>().weaponDamage =
+                playerStats.playerWeaponDamage;
+            Player.GetComponent<PlayerController>().playerSpeed = playerStats.playerSpeed;
+            playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
+        }
+        else
+        {
+            Debug.LogError("no player was found in the scene!");
+        }
+        
+        
+    }
     IEnumerator AdjustMixerAndPlayBG(string sceneName)
     {
         yield return new WaitForSeconds(.1f);
@@ -69,12 +87,17 @@ public class GameplayManager : MonoBehaviour
 
         if (sceneName == "MainMenu")
         {
-            SoundManager.instance.Play(Sound.Names.MainMenuTheme);
+            SoundManager.instance?.Play(Sound.Names.MainMenuTheme);
         }
-        // if (sceneName == "MainMenu")
-        // {
-        //     SoundManager.instance.Play(Sound.Names.MainMenuTheme);
-        // }
+
+        else if (sceneName == "Hub")
+        {
+            SoundManager.instance?.Play(Sound.Names.HubTheme);
+        }
+        else if (sceneName == "Dungeon_Paolo")
+        {
+            SoundManager.instance?.Play(Sound.Names.BattleTheme01);
+        }
         
     }
 
@@ -91,7 +114,6 @@ public class GameplayManager : MonoBehaviour
         {
             yield return null;
         }
-        SoundManager.instance.StopSound(Sound.Names.MainMenuTheme);
         _loadingScreen.CrossFadeAlpha(0f, .5f, false);
         yield return new WaitForSeconds(.5f);
         _loadingScreen.gameObject.SetActive(false);
