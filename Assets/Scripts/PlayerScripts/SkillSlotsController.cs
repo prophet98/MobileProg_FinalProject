@@ -49,7 +49,7 @@ public class SkillSlotsController : MonoBehaviour
     }
     
 
-    private void Update()
+    private void LateUpdate()
     {
         if (!isLowerNull)
         {
@@ -89,6 +89,8 @@ public class SkillSlotsController : MonoBehaviour
                     lowerSlotSkill.state = BaseSkill.AbilityState.Ready;
                 }
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 

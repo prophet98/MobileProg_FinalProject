@@ -15,5 +15,9 @@ public class BaseSkill : ScriptableObject
 
     public AbilityState state = AbilityState.Ready;
     public virtual void Activate(GameObject skillUser){}
-    public virtual void StartCooldown(GameObject skillUser){}
+
+    public virtual void StartCooldown(GameObject skillUser)
+    {
+        SoundManager.instance?.StopSound(skillSound);
+    }
 }

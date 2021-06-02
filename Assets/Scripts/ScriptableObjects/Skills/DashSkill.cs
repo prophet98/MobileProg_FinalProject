@@ -12,5 +12,5 @@ public class DashSkill : BaseSkill
         _characterController = skillUser.GetComponent<CharacterController>();
         _characterController.Move(skillUser.transform.forward.normalized * dashSpeed);
     }
-
+    
 }

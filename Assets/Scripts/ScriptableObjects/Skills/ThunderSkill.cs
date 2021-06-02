@@ -17,6 +17,7 @@ public class ThunderSkill : BaseSkill
 
     public override void StartCooldown(GameObject skillUser)
     {
+        base.StartCooldown(skillUser);
         Destroy(_particleInstance);
     }
 }
