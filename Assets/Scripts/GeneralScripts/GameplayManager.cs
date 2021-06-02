@@ -44,6 +44,7 @@ public class GameplayManager : MonoBehaviour
         if (scene.name == "MainMenu")
         {
             StartCoroutine(AdjustMixerAndPlayBG(scene.name));
+            playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
         }
         else if (scene.name == "Dungeon_PAOLO")
         {
@@ -53,7 +54,7 @@ public class GameplayManager : MonoBehaviour
         else if (scene.name == "Hub")
         {
             StartCoroutine(AdjustMixerAndPlayBG(scene.name));
-            
+            playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
         }
         
     }
@@ -67,7 +68,7 @@ public class GameplayManager : MonoBehaviour
             Player.GetComponent<HealthComponent>().maxHp = playerStats.playerHealth;
             Player.GetComponentInChildren<PlayerWeaponComponent>().weaponDamage =
                 playerStats.playerWeaponDamage;
-            Player.GetComponent<PlayerController>().playerSpeed = playerStats.playerSpeed;
+            Player.GetComponent<PlayerController>().PlayerSpeed = playerStats.playerSpeed;
             playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
         }
         else
@@ -85,18 +86,17 @@ public class GameplayManager : MonoBehaviour
             controller.AdjustVolumeMixer();
         }
 
-        if (sceneName == "MainMenu")
+        switch (sceneName)
         {
-            SoundManager.instance?.Play(Sound.Names.MainMenuTheme);
-        }
-
-        else if (sceneName == "Hub")
-        {
-            SoundManager.instance?.Play(Sound.Names.HubTheme);
-        }
-        else if (sceneName == "Dungeon_PAOLO")
-        {
-            SoundManager.instance?.Play(Sound.Names.BattleTheme01);
+            case "MainMenu":
+                SoundManager.instance?.Play(Sound.Names.MainMenuTheme);
+                break;
+            case "Hub":
+                SoundManager.instance?.Play(Sound.Names.HubTheme);
+                break;
+            case "Dungeon_PAOLO":
+                SoundManager.instance?.Play(Sound.Names.BattleTheme01);
+                break;
         }
         
     }

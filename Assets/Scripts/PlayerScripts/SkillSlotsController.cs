@@ -21,7 +21,7 @@ public class SkillSlotsController : MonoBehaviour
 
     private void Update()
     {
-        if(lowerSlotSkill == null && upperSlotSkill == null)
+        if(lowerSlotSkill == null || upperSlotSkill == null)
         {
             return;
         }

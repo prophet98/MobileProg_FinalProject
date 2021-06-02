@@ -45,13 +45,13 @@ public class SoundManager : MonoBehaviour
             }
 
             s.source.volume = 1.0f;
+            
             if (s.name == Sound.Names.MainMenuTheme ||s.name == Sound.Names.BattleTheme01 ||s.name == Sound.Names.HubTheme ||s.name == Sound.Names.BattleTheme03 ||s.name == Sound.Names.BossTheme )
             {
                 foreach (var sound in sounds)
                 {
                     if (sound.name.ToString().Contains("Theme") && sound.source.isPlaying)
-                    {
-                        Debug.Log(sound.name);
+                    { 
                         StartCoroutine(StartFade(sound));
                     }
                 }
@@ -102,6 +102,7 @@ public class SoundManager : MonoBehaviour
                 sound.source.volume = Mathf.Lerp(start, 0.0f, currentTime /1f);
                 yield return null;
             }
+            StopSound(sound.name);
             yield break;
         }
         

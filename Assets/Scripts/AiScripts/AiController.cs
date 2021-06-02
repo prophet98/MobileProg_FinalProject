@@ -29,6 +29,7 @@ namespace AiScripts
         {
             if (player == null) return;
             player.GetComponentInChildren<PlayerWeaponComponent>().killCounter++;
+            player.GetComponentInChildren<PlayerWeaponComponent>().triggerList.Remove(this.GetComponentInChildren<Collider>());
             if (player.GetComponentInChildren<PlayerWeaponComponent>().killCounter == GameObject.FindGameObjectsWithTag("Spawner").Length)
             {
                 // Debug.Log("combattimento finito");

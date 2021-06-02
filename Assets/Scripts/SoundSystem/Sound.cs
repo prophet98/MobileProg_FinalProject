@@ -22,7 +22,8 @@ public class Sound {
         MyDoomBlade,
         CashRegister,
         HubTheme,
-        BattleTheme03
+        BattleTheme03,
+        ThunderSound
     }
     public Names name = Names.MainMenuTheme;
         
