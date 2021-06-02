@@ -6,13 +6,13 @@ namespace DamageScripts
 {
     public class HealthComponent : MonoBehaviour, IDamageable<int>
     {
-        public int maxHp;
-        private int _currentHp;
+        public float maxHp;
+        private float _currentHp;
         [HideInInspector] public bool isInvincible;
         public event Action<float> OnHealthPctChange;
         public event Action OnEntityDeath;
         public  static event Action OnPlayerDeath;
-        private void Awake()
+        private void Start()
         {
             _currentHp = maxHp;
         }
@@ -28,7 +28,7 @@ namespace DamageScripts
             {
                 _currentHp = maxHp;
             }
-            var currentHealthPct = (float)_currentHp / maxHp;
+            var currentHealthPct = _currentHp / maxHp;
             OnHealthPctChange?.Invoke(currentHealthPct);
             
             if (_currentHp<=0 && this.GetComponent<AiController>()) //is IA?
