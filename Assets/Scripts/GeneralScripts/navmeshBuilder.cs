@@ -4,13 +4,9 @@ using UnityEngine.AI;
 public class navmeshBuilder : MonoBehaviour
 {
     public NavMeshSurface surface;
-    private void Start()
-    {
-        RebuildNavMesh();
-    }
-
     private void OnEnable()
     {
+        RebuildNavMesh();
         Door.OnEnvChange += RebuildNavMesh;
     }
 

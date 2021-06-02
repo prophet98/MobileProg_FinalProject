@@ -10,7 +10,7 @@ public class SkillSlotsController : MonoBehaviour
 
     private float _lowerActiveTime, _lowerCoolDownTime, _upperActiveTime, _upperCooldownTime;
 
-    public bool isLowerNull, isUpperNull;
+    [HideInInspector]public bool isLowerNull, isUpperNull;
     private void Start()
     {
         if (lowerSlotSkill is null)

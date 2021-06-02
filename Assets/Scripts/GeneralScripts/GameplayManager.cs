@@ -51,7 +51,7 @@ public class GameplayManager : MonoBehaviour
             StartCoroutine(AdjustMixerAndPlayBG(scene.name));
             playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
         }
-        else if (scene.name == "Dungeon_PAOLO")
+        else if (scene.name == "Dungeon_Final")
         {
             StartCoroutine(AdjustMixerAndPlayBG(scene.name));
             LoadPlayerStats();
@@ -109,7 +109,7 @@ public class GameplayManager : MonoBehaviour
             case "Hub":
                 SoundManager.instance?.Play(Sound.Names.HubTheme);
                 break;
-            case "Dungeon_PAOLO":
+            case "Dungeon_Final":
                 SoundManager.instance?.Play(Sound.Names.BattleTheme01);
                 break;
         }

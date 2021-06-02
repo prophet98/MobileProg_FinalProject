@@ -20,11 +20,12 @@ public class addPenalty : MonoBehaviour
     {
         if (other.CompareTag(PLAYER_TAG))
         {
+            Debug.Log("Enter");
             slowDownImage.SetActive(true);
             
             speed = other.GetComponent<PlayerController>().PlayerSpeed;
             other.GetComponent<PlayerController>().PlayerSpeed = speed/2;
-
+            Debug.Log(this.gameObject.name );
 
             GameObject particlesInstance = Instantiate(penaltyParticles, other.transform);
             Destroy(particlesInstance, 1f);
@@ -35,7 +36,11 @@ public class addPenalty : MonoBehaviour
     {
         if (other.CompareTag(PLAYER_TAG))
         {
+            Debug.Log("Exit");
+
             other.GetComponent<PlayerController>().PlayerSpeed = speed;
+           Debug.Log(this.gameObject.name );
+
             slowDownImage.SetActive(false);
         }
     }
