@@ -94,7 +94,7 @@ public class GameplayManager : MonoBehaviour
         {
             SoundManager.instance?.Play(Sound.Names.HubTheme);
         }
-        else if (sceneName == "Dungeon_Paolo")
+        else if (sceneName == "Dungeon_PAOLO")
         {
             SoundManager.instance?.Play(Sound.Names.BattleTheme01);
         }
