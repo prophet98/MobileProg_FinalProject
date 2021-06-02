@@ -40,6 +40,7 @@ public class GameplayManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         HealthComponent.OnPlayerDeath += LoadDeathScene;
+        BattleRewardSystem.OnWinPoints += LoadWinScene;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -133,14 +134,20 @@ public class GameplayManager : MonoBehaviour
         _loadingScreen.gameObject.SetActive(false);
     }
 
-
     private void LoadDeathScene()
     {
         StartCoroutine(LoadAsyncRoutine("DeathScene"));
     }
+
+    private void LoadWinScene()
+    {
+        StartCoroutine(LoadAsyncRoutine("WinScene"));
+    }
+
     private void OnDestroy()
     {
         PlayerPrefs.SetInt(PlayerMoneyString, playerStats.playerMoney);
         HealthComponent.OnPlayerDeath -= LoadDeathScene;
+        BattleRewardSystem.OnWinPoints -= LoadWinScene;
     }
 }

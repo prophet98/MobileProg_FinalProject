@@ -5551,7 +5551,7 @@ PrefabInstance:
     - target: {fileID: 888531047340676020, guid: beabce1137dd081419691ff957c06f84,
         type: 3}
       propertyPath: scoreMultiplier
-      value: 2
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beabce1137dd081419691ff957c06f84, type: 3}

@@ -14,6 +14,13 @@ public class BattleRewardSystem : MonoBehaviour
     private TextMeshProUGUI scoreText;
     [SerializeField]
     private float scoreMultiplier = 2f;
+    [SerializeField]
+    private float pointsToReach = 10000f;
+    [SerializeField]
+    private int prize = 1000;
+
+    public delegate void ReachMaxPoints();
+    public static event ReachMaxPoints OnWinPoints;
 
     public void RewardPlayer(int money)
     {
@@ -30,5 +37,14 @@ public class BattleRewardSystem : MonoBehaviour
             GameplayManager.instance.playerStats.playerMoney += CurrentMoney;
         }
         
+    }
+
+    private void Update()
+    {
+        if(Score >= pointsToReach)
+        {
+            CurrentMoney += prize;
+            OnWinPoints?.Invoke();
+        }
     }
 }
