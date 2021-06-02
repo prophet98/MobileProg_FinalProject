@@ -137,7 +137,6 @@ public class ActionsEventsHandler : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("VAR");
         _playerButtons[1].gameObject.SetActive(_skillSlotsController.lowerSlotSkill != null);
         _playerButtons[2].gameObject.SetActive(_skillSlotsController.upperSlotSkill != null);
     }

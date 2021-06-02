@@ -10,7 +10,6 @@ public class MenuUiManager : MonoBehaviour
 
     [SerializeField] private GameObject settingsUI;
     [SerializeField] private GameObject startUI;
-    // [SerializeField] private Image fadeImage;    
     private Button[] _menuButtons;
 
     private void Awake()
@@ -22,18 +21,18 @@ public class MenuUiManager : MonoBehaviour
         }
     }
 
-    void PlaySound()
+    private void PlaySound()
     {
         SoundManager.instance?.Play(Sound.Names.UiSound);
     }
     
     public void StartGame()
     {
-        GameplayManager.instance.LoadLevel("Hub");
+        GameplayManager.instance?.LoadLevel("Hub");
     }
     public void StartMenu()
     {
-        GameplayManager.instance.LoadLevel("MainMenu");
+        GameplayManager.instance?.LoadLevel("MainMenu");
     }
     public void QuitGame()
     {
@@ -43,7 +42,7 @@ public class MenuUiManager : MonoBehaviour
         Application.Quit();
 #endif
     }
-
+    
     public void ShowSettings()
     {
         settingsUI.SetActive(true);
@@ -54,6 +53,16 @@ public class MenuUiManager : MonoBehaviour
     {
         settingsUI.SetActive(false);
         startUI.SetActive(true);
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1;
+    }
+    
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
     }
 
 }

@@ -124,6 +124,7 @@ public class GameplayManager : MonoBehaviour
 
     private IEnumerator LoadAsyncRoutine(string sceneName)
     {
+        Time.timeScale = 1;
         var loadOp =  SceneManager.LoadSceneAsync(sceneName);
         while (!loadOp.isDone)
         {
