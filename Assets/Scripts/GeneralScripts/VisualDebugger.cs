@@ -6,16 +6,16 @@ using UnityEngine;
 
 public class VisualDebugger : MonoBehaviour
 {
-    private static TextMeshProUGUI _onScreenText;
+    //private static TextMeshProUGUI _onScreenText;
+    //
+    //private void Start()
+    //{
+    //    _onScreenText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+    //}
 
-    private void Start()
-    {
-        _onScreenText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-    }
-
-    public static void PrintText(string text)
-    {
-        _onScreenText.text = "";
-        _onScreenText.text = text;
-    }
+    //public static void PrintText(string text)
+    //{
+    //    _onScreenText.text = "";
+    //    _onScreenText.text = text;
+    //}
 }

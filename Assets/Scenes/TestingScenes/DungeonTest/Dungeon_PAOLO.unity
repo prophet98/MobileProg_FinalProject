@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 874319827}
-  m_IndirectSpecularColor: {r: 0.00011418565, g: 0.006524887, b: 0.050281364, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -739,6 +739,11 @@ PrefabInstance:
       propertyPath: healthComponent
       value: 
       objectReference: {fileID: 200906294}
+    - target: {fileID: 8400723675778560307, guid: 5149ca85711ab38458bd153eb692821a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8400723676594223298, guid: 5149ca85711ab38458bd153eb692821a,
         type: 3}
       propertyPath: m_Name
@@ -852,6 +857,11 @@ PrefabInstance:
     - target: {fileID: 8400723676883354057, guid: 5149ca85711ab38458bd153eb692821a,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400723677201858769, guid: 5149ca85711ab38458bd153eb692821a,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2165,7 +2175,7 @@ PrefabInstance:
     - target: {fileID: 1739953395730577428, guid: e7b224dedbc442948a940b0414887d82,
         type: 3}
       propertyPath: roomBeforeTheBoss
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1739953395730577428, guid: e7b224dedbc442948a940b0414887d82,
         type: 3}
@@ -5551,7 +5561,7 @@ PrefabInstance:
     - target: {fileID: 888531047340676020, guid: beabce1137dd081419691ff957c06f84,
         type: 3}
       propertyPath: scoreMultiplier
-      value: 500
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beabce1137dd081419691ff957c06f84, type: 3}
