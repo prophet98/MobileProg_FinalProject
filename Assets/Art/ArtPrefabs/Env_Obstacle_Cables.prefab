@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 4359332221143366685}
   - component: {fileID: 3472354606033804807}
   - component: {fileID: 3603867211089867931}
+  - component: {fileID: -5098260832955986556}
   m_Layer: 0
   m_Name: Env_Obstacle_Cables
   m_TagString: Untagged
@@ -143,6 +144,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+--- !u!208 &-5098260832955986556
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3977985938094188199}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8427986731547543146
 GameObject:
   m_ObjectHideFlags: 0

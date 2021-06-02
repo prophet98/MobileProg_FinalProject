@@ -25,11 +25,6 @@ public class Door : MonoBehaviour
     [SerializeField]
     private BattleRewardSystem PlayerBRS;
 
-    private void Start()
-    {
-        UnityEditor.AI.NavMeshBuilder.BuildNavMesh();
-    }
-
     private void OnEnable()
     {
         PlayerBRS.GetComponent<BattleRewardSystem>().UnlockDoors += UnlockDoor;
@@ -46,10 +41,7 @@ public class Door : MonoBehaviour
                 OnEnvChange?.Invoke();
 
                 dungeonGenerator.NextRoom(oppositeDoor);
-
-                UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
-                UnityEditor.AI.NavMeshBuilder.BuildNavMesh(); //TODO: find a better place
-
+                
                 SoundManager.instance?.Play(dungeonGenerator.nextIsBoss ? Sound.Names.BossTheme : Sound.Names.BattleTheme01);
             }
             
