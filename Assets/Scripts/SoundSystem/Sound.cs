@@ -23,7 +23,9 @@ public class Sound {
         CashRegister,
         HubTheme,
         BattleTheme03,
-        ThunderSound
+        ThunderSound,
+        HealSound,
+        ShieldSound
     }
     public Names name = Names.MainMenuTheme;
         

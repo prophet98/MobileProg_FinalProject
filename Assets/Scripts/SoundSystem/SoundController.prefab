@@ -110,7 +110,7 @@ MonoBehaviour:
   - source: {fileID: 0}
     name: 7
     clip: {fileID: 8300000, guid: 28937dd26ed69c648b562a95d64dd518, type: 3}
-    volume: 0.2
+    volume: 0.5
     pitch: 0.1
     pitchVariance: 1
     loop: 0
@@ -159,6 +159,42 @@ MonoBehaviour:
     pitch: 0.1
     pitchVariance: 1
     loop: 1
+    isRandom: 0
+    canBeOverridden: 1
+  - source: {fileID: 0}
+    name: 17
+    clip: {fileID: 8300000, guid: 074a90ce918a85d46b74882030d928ee, type: 3}
+    volume: 1
+    pitch: 0.1
+    pitchVariance: 1
+    loop: 0
+    isRandom: 0
+    canBeOverridden: 1
+  - source: {fileID: 0}
+    name: 12
+    clip: {fileID: 8300000, guid: 11390b4b43824e54e9eaada95422a366, type: 3}
+    volume: 1
+    pitch: 0.1
+    pitchVariance: 1
+    loop: 0
+    isRandom: 0
+    canBeOverridden: 1
+  - source: {fileID: 0}
+    name: 16
+    clip: {fileID: 8300000, guid: 9a06b865bf5dff046ab887fc5bcfd540, type: 3}
+    volume: 0.5
+    pitch: 0.1
+    pitchVariance: 1
+    loop: 1
+    isRandom: 0
+    canBeOverridden: 1
+  - source: {fileID: 0}
+    name: 18
+    clip: {fileID: 8300000, guid: cce1b589d6a0e024eb7fc3c4ecef4cc9, type: 3}
+    volume: 1
+    pitch: 0.1
+    pitchVariance: 1
+    loop: 0
     isRandom: 0
     canBeOverridden: 1
   soundEffectsMixer: {fileID: 1132184151161808620, guid: 26115edfa3ab110449850ba35b27f8ac,

@@ -16,7 +16,7 @@ public class medikitRestore : MonoBehaviour
         {
             other.GetComponent<HealthComponent>().RemoveHealth(-15);
             Debug.Log("Medikit Restore");
-
+            SoundManager.instance?.Play(Sound.Names.HealSound);
             GameObject particlesInstance = Instantiate(healParticles, other.transform);
             Destroy(particlesInstance, 1f);
             Destroy(gameObject);
