@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 874319827}
-  m_IndirectSpecularColor: {r: 0.00011418565, g: 0.006524887, b: 0.050281364, a: 1}
+  m_IndirectSpecularColor: {r: 0.00016262574, g: 0.006962265, b: 0.049663622, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2110,7 +2110,7 @@ PrefabInstance:
     - target: {fileID: 1739953395730577428, guid: e7b224dedbc442948a940b0414887d82,
         type: 3}
       propertyPath: roomBeforeTheBoss
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1739953395730577428, guid: e7b224dedbc442948a940b0414887d82,
         type: 3}

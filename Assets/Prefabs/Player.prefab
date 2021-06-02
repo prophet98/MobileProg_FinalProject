@@ -2545,7 +2545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b0b6c6e596ba845851fde323367ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 10
 --- !u!114 &744369363062217565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2585,7 +2584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowerSlotSkill: {fileID: 11400000, guid: bff557dc1e161334c9f1210e07828e68, type: 2}
-  upperSlotSkill: {fileID: 11400000, guid: 7893292c86e2c584ba47a4300b3092d3, type: 2}
+  upperSlotSkill: {fileID: 0}
 --- !u!114 &888531047340676020
 MonoBehaviour:
   m_ObjectHideFlags: 0

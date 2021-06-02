@@ -47,10 +47,8 @@ public class PowerUpShop : MonoBehaviour
             CheckForSkill();
             manager.playerStats.playerMoney -= cost;
             sm.UpdateCoinsText();
+            SoundManager.instance?.Play(Sound.Names.CashRegister);
             Debug.Log(manager.playerStats.playerMoney);
-        } else
-        {
-            return;
         }
     }
 

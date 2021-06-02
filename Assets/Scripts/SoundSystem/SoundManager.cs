@@ -45,7 +45,10 @@ public class SoundManager : MonoBehaviour
             }
 
             s.source.volume = 1.0f;
-            
+            if (!s.canBeOverridden && s.source.isPlaying)
+            {
+                return;
+            }
             if (s.name == Sound.Names.MainMenuTheme ||s.name == Sound.Names.BattleTheme01 ||s.name == Sound.Names.HubTheme ||s.name == Sound.Names.BattleTheme03 ||s.name == Sound.Names.BossTheme )
             {
                 foreach (var sound in sounds)
@@ -61,10 +64,7 @@ public class SoundManager : MonoBehaviour
             {
                 s.source.outputAudioMixerGroup = soundEffectsMixer;
             }
-            if (!s.canBeOverridden && s.source.isPlaying)
-            {
-                return;
-            }
+            
             
             if (s.isRandom)
             {

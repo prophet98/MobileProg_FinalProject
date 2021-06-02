@@ -32,14 +32,14 @@ public class DungeonGeneratorNew
     private const string stdRString = "StandardRoom";
     private const string bossRString = "BossRoom";
 
-    private bool nextIsBoss = false;
+    public bool nextIsBoss = false;
     private bool stageClear = false;
 
     [SerializeField]
     private float adjustRotation;
 
     [SerializeField]
-    private int roomBeforeTheBoss = 5;
+    private int roomBeforeTheBoss = 1;
     private int roomCount;
 
     #region init
