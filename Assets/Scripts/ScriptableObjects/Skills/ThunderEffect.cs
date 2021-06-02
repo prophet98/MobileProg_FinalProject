@@ -8,7 +8,7 @@ public class ThunderEffect : MonoBehaviour
     private const string ENEMY_TAG = "Enemy";
     private List<GameObject> enemiesList;
     [SerializeField]
-    private int damage = 15;
+    private int damage = 100;
 
     private void Start()
     {
