@@ -101,7 +101,6 @@ public class ActionsEventsHandler : MonoBehaviour
     }
     private void OnSkillPerformed(InputAction.CallbackContext obj)
     {
-
         if (_skillSlotsController.upperSlotSkill.state == BaseSkill.AbilityState.Ready)
         {
             VisualDebugger.PrintText("Player used an active skill!"); 
@@ -135,7 +134,14 @@ public class ActionsEventsHandler : MonoBehaviour
         
         AiDamageAnimationEvents.OnPlayerDamagedSuccess -= ReceiveDamage;
     }
-    
+
+    private void Start()
+    {
+        Debug.Log("VAR");
+        _playerButtons[1].gameObject.SetActive(!_skillSlotsController.isLowerNull);
+        _playerButtons[2].gameObject.SetActive(!_skillSlotsController.isUpperNull);
+    }
+
     private void LateUpdate()
     {
         UpdateButtonState();
@@ -154,24 +160,37 @@ public class ActionsEventsHandler : MonoBehaviour
             _playerButtons[0].interactable = true;
         }
 
-        if (_skillSlotsController.lowerSlotSkill==null && _skillSlotsController.upperSlotSkill == null)
+        
+        if (!_skillSlotsController.isLowerNull)
         {
-            _playerButtons[1].gameObject.SetActive(false);
-            _playerButtons[2].gameObject.SetActive(false);
-            return;
+            _playerButtons[1].interactable = _skillSlotsController.lowerSlotSkill.state switch
+            {
+                BaseSkill.AbilityState.Cooldown => false,
+                BaseSkill.AbilityState.Ready => true,
+                _ => _playerButtons[1].interactable
+            };
         }
+        
+        if (!_skillSlotsController.isUpperNull)
+        {
+            _playerButtons[2].interactable = _skillSlotsController.upperSlotSkill.state switch
+            {
+                BaseSkill.AbilityState.Cooldown => false,
+                BaseSkill.AbilityState.Ready => true,
+                _ => _playerButtons[2].interactable
+            };
+        }
+        
+        
+        
 
-        _playerButtons[1].interactable = _skillSlotsController.lowerSlotSkill.state switch
-        {
-            BaseSkill.AbilityState.Cooldown => false,
-            BaseSkill.AbilityState.Ready => true,
-            _ => _playerButtons[1].interactable
-        };
-        _playerButtons[2].interactable = _skillSlotsController.upperSlotSkill.state switch
-        {
-            BaseSkill.AbilityState.Cooldown => false,
-            BaseSkill.AbilityState.Ready => true,
-            _ => _playerButtons[2].interactable
-        };
+        
+        // if (_skillSlotsController.isLowerNull && _skillSlotsController.isUpperNull)
+        // {
+        //     _playerButtons[1].gameObject.SetActive(false);
+        //     _playerButtons[2].gameObject.SetActive(false);
+        //     
+        // }
+       
     }
 }
