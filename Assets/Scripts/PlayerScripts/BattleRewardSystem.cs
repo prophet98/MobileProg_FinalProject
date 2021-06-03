@@ -27,6 +27,7 @@ public class BattleRewardSystem : MonoBehaviour
         CurrentMoney += money;
         Score = CurrentMoney * scoreMultiplier;
         scoreText.text = "SCORE: " + Score.ToString();
+        PlayerPrefs.SetFloat("PlayerScore", Score);
         UnlockDoors?.Invoke();
     }
 
