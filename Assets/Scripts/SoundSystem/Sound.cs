@@ -25,7 +25,8 @@ public class Sound {
         BattleTheme03,
         ThunderSound,
         HealSound,
-        ShieldSound
+        ShieldSound,
+        SlowDown
     }
     public Names name = Names.MainMenuTheme;
         
