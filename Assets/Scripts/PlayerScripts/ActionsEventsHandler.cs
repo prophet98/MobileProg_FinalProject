@@ -92,7 +92,6 @@ public class ActionsEventsHandler : MonoBehaviour
     {
         if (_skillSlotsController.lowerSlotSkill.state == BaseSkill.AbilityState.Ready)
         {
-            //VisualDebugger.PrintText("Player Dashes!");
             _skillSlotsController.lowerSlotSkill.Activate(gameObject);
             _skillSlotsController.lowerSlotSkill.state = BaseSkill.AbilityState.Activated;
             _skillSlotsController.SetUpSkillTimers();
@@ -103,7 +102,6 @@ public class ActionsEventsHandler : MonoBehaviour
     {
         if (_skillSlotsController.upperSlotSkill.state == BaseSkill.AbilityState.Ready)
         {
-            //VisualDebugger.PrintText("Player used an active skill!"); 
             _skillSlotsController.upperSlotSkill.Activate(gameObject);
             _skillSlotsController.upperSlotSkill.state = BaseSkill.AbilityState.Activated;
             _skillSlotsController.SetUpSkillTimers();
@@ -139,6 +137,13 @@ public class ActionsEventsHandler : MonoBehaviour
     {
         _playerButtons[1].gameObject.SetActive(_skillSlotsController.lowerSlotSkill != null);
         _playerButtons[2].gameObject.SetActive(_skillSlotsController.upperSlotSkill != null);
+    }
+
+    private void OnDestroy()
+    {
+        if (!_skillSlotsController.upperSlotSkill || !_skillSlotsController.lowerSlotSkill) return;
+        SoundManager.instance?.StopSound( _skillSlotsController.upperSlotSkill.skillSound);
+        SoundManager.instance?.StopSound( _skillSlotsController.lowerSlotSkill.skillSound);
     }
 
     private void LateUpdate()
@@ -179,17 +184,6 @@ public class ActionsEventsHandler : MonoBehaviour
                 _ => _playerButtons[2].interactable
             };
         }
-        
-        
-        
 
-        
-        // if (_skillSlotsController.isLowerNull && _skillSlotsController.isUpperNull)
-        // {
-        //     _playerButtons[1].gameObject.SetActive(false);
-        //     _playerButtons[2].gameObject.SetActive(false);
-        //     
-        // }
-       
     }
 }

@@ -86,7 +86,12 @@ public class SoundManager : MonoBehaviour
                 Debug.LogWarning("Sound: " + name + " has not found a source to play!");
                 return;
             }
-            s.source.Stop();
+
+            if (s.source.isPlaying)
+            {
+                s.source.Stop();
+
+            }
 
         }
 

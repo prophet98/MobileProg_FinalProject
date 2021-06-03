@@ -1,4 +1,4 @@
-using DamageScripts;
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ThunderSkill", menuName = "ScriptableObjects/CreateThunderSkill")]

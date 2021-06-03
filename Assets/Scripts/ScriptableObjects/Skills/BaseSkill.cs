@@ -20,4 +20,6 @@ public class BaseSkill : ScriptableObject
     {
         SoundManager.instance?.StopSound(skillSound);
     }
+
+    
 }
