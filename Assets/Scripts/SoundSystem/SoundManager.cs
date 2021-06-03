@@ -87,7 +87,7 @@ public class SoundManager : MonoBehaviour
                 return;
             }
 
-            if (s.source.isPlaying)
+            if (s.source)
             {
                 s.source.Stop();
 

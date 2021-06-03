@@ -22,6 +22,13 @@ public class BattleRewardSystem : MonoBehaviour
     public delegate void ReachMaxPoints();
     public static event ReachMaxPoints OnWinPoints;
 
+    private void Start()
+    {
+        CurrentMoney = 0;
+        Score = 0;
+        PlayerPrefs.SetFloat("PlayerScore", Score);
+    }
+
     public void RewardPlayer(int money)
     {
         CurrentMoney += money;

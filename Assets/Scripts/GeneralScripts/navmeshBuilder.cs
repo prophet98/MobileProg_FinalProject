@@ -17,7 +17,6 @@ public class navmeshBuilder : MonoBehaviour
 
     private void RebuildNavMesh()
     {
-        Debug.Log("building nav mesh");
         if (surface)
         {
             surface.BuildNavMesh();  

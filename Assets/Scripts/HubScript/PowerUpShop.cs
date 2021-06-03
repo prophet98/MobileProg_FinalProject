@@ -46,6 +46,7 @@ public class PowerUpShop : MonoBehaviour
             Debug.Log("press buy");
             CheckForSkill();
             manager.playerStats.playerMoney -= cost;
+            PlayerPrefs.SetInt("PlayerMoney", manager.playerStats.playerMoney);
             sm.UpdateCoinsText();
             SoundManager.instance?.Play(Sound.Names.CashRegister);
             gameObject.SetActive(false);

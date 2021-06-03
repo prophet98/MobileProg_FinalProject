@@ -81,11 +81,9 @@ public class DungeonGeneratorNew
             int randomN = Random.Range(0, stdRoomVariants.Length);
             stdRoomVariants[randomN].SetActive(true);
 
-            Debug.Log(stdRoomVariants[randomN].name);
         }
         else if (nextIsBoss)
         {
-            //GameObject.FindGameObjectWithTag(bossRString).SetActive(false);
             bossFightText.SetActive(true);
 
             int randomN = Random.Range(0, bossRoomVariants.Length);
