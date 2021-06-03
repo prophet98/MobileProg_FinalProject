@@ -10,7 +10,7 @@ public class HubTeleport : MonoBehaviour
     {
         if (other.CompareTag(PLAYER_TAG))
         {
-            SceneManager.LoadScene(2);
+            GameplayManager.instance?.LoadLevel("Dungeon_Final");
         }   
     }
 }
