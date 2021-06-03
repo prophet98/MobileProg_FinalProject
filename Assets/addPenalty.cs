@@ -20,7 +20,7 @@ public class addPenalty : MonoBehaviour
     {
         if (other.CompareTag(PLAYER_TAG))
         {
-            Debug.Log("Enter");
+            SoundManager.instance?.Play(Sound.Names.SlowDown);
             slowDownImage.SetActive(true);
             
             speed = other.GetComponent<PlayerController>().PlayerSpeed;
@@ -35,12 +35,9 @@ public class addPenalty : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(PLAYER_TAG))
-        {
-            Debug.Log("Exit");
-
+        { 
             other.GetComponent<PlayerController>().PlayerSpeed = speed;
-           Debug.Log(this.gameObject.name );
-
+            Debug.Log(this.gameObject.name );
             slowDownImage.SetActive(false);
         }
     }

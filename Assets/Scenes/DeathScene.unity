@@ -1639,5 +1639,15 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 1392820663}
+    - target: {fileID: 7745625293334319137, guid: 0d41e43ed9d256440b808f94fb881bdb,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7745625293334319137, guid: 0d41e43ed9d256440b808f94fb881bdb,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d41e43ed9d256440b808f94fb881bdb, type: 3}
