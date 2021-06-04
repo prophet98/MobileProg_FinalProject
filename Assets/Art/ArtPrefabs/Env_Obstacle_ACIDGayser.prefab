@@ -269,7 +269,7 @@ PrefabInstance:
     - target: {fileID: 19979436, guid: 341fc2e91226cc747a53965fecbee5c6, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 19979436, guid: 341fc2e91226cc747a53965fecbee5c6, type: 3}
       propertyPath: m_RenderMode
       value: 4
