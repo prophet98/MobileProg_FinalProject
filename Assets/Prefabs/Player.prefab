@@ -2491,7 +2491,6 @@ GameObject:
   - component: {fileID: 888531047891276936}
   - component: {fileID: 888531046918647242}
   - component: {fileID: 888531047340676020}
-  - component: {fileID: 1672847613}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2586,8 +2585,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lowerSlotSkill: {fileID: 11400000, guid: bff557dc1e161334c9f1210e07828e68, type: 2}
   upperSlotSkill: {fileID: 0}
-  isLowerNull: 0
-  isUpperNull: 0
 --- !u!114 &888531047340676020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2605,22 +2602,6 @@ MonoBehaviour:
   scoreMultiplier: 5
   pointsToReach: 10000
   prize: 1000
---- !u!208 &1672847613
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 744369363062217553}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &746031093384847767
 GameObject:
   m_ObjectHideFlags: 0
