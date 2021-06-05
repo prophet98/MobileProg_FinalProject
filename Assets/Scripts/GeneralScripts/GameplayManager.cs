@@ -1,4 +1,3 @@
-
 using System.Collections;
 using DamageScripts;
 using UnityEngine;
@@ -11,13 +10,19 @@ public class GameplayManager : MonoBehaviour
     private Image _loadingScreen;
     private VolumeController[] _volumeControllers;
     private const string PlayerMoneyString = "PlayerMoney";
+    private const string PlayerTag = "Player";
+    private const float DefaultPlayerSpeed = 10;
+    private const int DefaultPlayerHealth = 100;
+    private const int DefaultPlayerWeaponDamage = 25;
 
-    private const float defaultPlayerSpeed = 10;
-    private const int defaultPlayerHealth = 100;
-    private const int defaultPlayerWeaponDamage = 25;
+    private const string MainMenuName = "MainMenu";
+    private const string DungeonName = "Dungeon_Final";
+    private const string HubName = "Hub";
+
 
     public PlayerStats playerStats;
-    private void Awake()
+
+    private void Awake() //singleton class that coordinates scene loading and player stats overriding. 
     {
         #region Singleton
 
@@ -36,7 +41,7 @@ public class GameplayManager : MonoBehaviour
         _loadingScreen = GetComponentInChildren<Image>(true);
     }
 
-    private void OnEnable()
+    private void OnEnable() //subscribe this object to different events
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         HealthComponent.OnPlayerDeath += LoadDeathScene;
@@ -46,54 +51,50 @@ public class GameplayManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         _volumeControllers = FindObjectsOfType<VolumeController>(true);
-        if (scene.name == "MainMenu")
+        switch (scene.name)
         {
-            StartCoroutine(AdjustMixerAndPlayBG(scene.name));
-            playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
+            case MainMenuName:
+                StartCoroutine(AdjustMixerAndPlayBg(scene.name));
+                playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
+                break;
+            case HubName:
+                StartCoroutine(AdjustMixerAndPlayBg(scene.name));
+                playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
+                ResetPlayerStats();
+                break;
+            case DungeonName:
+                StartCoroutine(AdjustMixerAndPlayBg(scene.name));
+                LoadPlayerStats();
+                break;
         }
-        else if (scene.name == "Dungeon_Final")
-        {
-            StartCoroutine(AdjustMixerAndPlayBG(scene.name));
-            LoadPlayerStats();
-        }
-        else if (scene.name == "Hub")
-        {
-            StartCoroutine(AdjustMixerAndPlayBG(scene.name));
-            playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
-            ResetPlayerStats();
-        }
-        
     }
 
-    void LoadPlayerStats()
+    private void LoadPlayerStats() //if player is in scene, update his instance variables with saved one. 
     {
-        var Player = GameObject.FindGameObjectWithTag("Player");
-        if (Player!=null)
+        var player = GameObject.FindGameObjectWithTag(PlayerTag);
+        if (player != null)
         {
-            Player.GetComponent<SkillSlotsController>().upperSlotSkill = playerStats.upperSkill;
-            Player.GetComponent<HealthComponent>().maxHp = playerStats.playerHealth;
-            Player.GetComponentInChildren<PlayerWeaponComponent>().weaponDamage =
+            player.GetComponent<SkillSlotsController>().upperSlotSkill = playerStats.upperSkill;
+            player.GetComponent<HealthComponent>().maxHp = playerStats.playerHealth;
+            player.GetComponentInChildren<PlayerWeaponComponent>().weaponDamage =
                 playerStats.playerWeaponDamage;
-            Player.GetComponent<PlayerController>().PlayerSpeed = playerStats.playerSpeed;
+            player.GetComponent<PlayerController>().PlayerSpeed = playerStats.playerSpeed;
             playerStats.playerMoney = PlayerPrefs.GetInt(PlayerMoneyString);
-        }
-        else
-        {
-            Debug.LogError("no player was found in the scene!");
         }
     }
 
-    private void ResetPlayerStats()
+    private void ResetPlayerStats() //reset player stats to default. 
     {
-        playerStats.playerSpeed = defaultPlayerSpeed;
-        playerStats.playerHealth = defaultPlayerHealth;
-        playerStats.playerWeaponDamage = defaultPlayerWeaponDamage;
+        playerStats.playerSpeed = DefaultPlayerSpeed;
+        playerStats.playerHealth = DefaultPlayerHealth;
+        playerStats.playerWeaponDamage = DefaultPlayerWeaponDamage;
         playerStats.upperSkill = null;
 
         LoadPlayerStats();
     }
 
-    IEnumerator AdjustMixerAndPlayBG(string sceneName)
+    private IEnumerator
+        AdjustMixerAndPlayBg(string sceneName) //adjust sound with a fade effect (applies only to BG music)
     {
         yield return new WaitForSeconds(.1f);
         foreach (var controller in _volumeControllers)
@@ -103,17 +104,16 @@ public class GameplayManager : MonoBehaviour
 
         switch (sceneName)
         {
-            case "MainMenu":
+            case MainMenuName:
                 SoundManager.instance?.Play(Sound.Names.MainMenuTheme);
                 break;
-            case "Hub":
+            case HubName:
                 SoundManager.instance?.Play(Sound.Names.HubTheme);
                 break;
-            case "Dungeon_Final":
+            case DungeonName:
                 SoundManager.instance?.Play(Sound.Names.BattleTheme01);
                 break;
         }
-        
     }
 
     public void LoadLevel(string sceneName)
@@ -122,14 +122,15 @@ public class GameplayManager : MonoBehaviour
         StartCoroutine(LoadAsyncRoutine(sceneName));
     }
 
-    private IEnumerator LoadAsyncRoutine(string sceneName)
+    private IEnumerator LoadAsyncRoutine(string sceneName) //loads a level with a very basic loading screen.
     {
         Time.timeScale = 1;
-        var loadOp =  SceneManager.LoadSceneAsync(sceneName);
+        var loadOp = SceneManager.LoadSceneAsync(sceneName);
         while (!loadOp.isDone)
         {
             yield return null;
         }
+
         _loadingScreen.CrossFadeAlpha(0f, .5f, false);
         yield return new WaitForSeconds(.5f);
         _loadingScreen.gameObject.SetActive(false);

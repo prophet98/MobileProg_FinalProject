@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using DamageScripts;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,13 +6,15 @@ using UnityEngine.UI;
 public class ComboVisualizer : MonoBehaviour
 {
     private PlayerDamageAnimationEvents _playerInputComponent;
-    private Image fillImage;
+    private Image _fillImage;
+
     private void Start()
     {
-        _playerInputComponent = GameObject.FindGameObjectWithTag("Player").GetComponent<ActionsEventsHandler>().PlayerDamageAnimationEvents;
+        _playerInputComponent = GameObject.FindGameObjectWithTag("Player").GetComponent<ActionsEventsHandler>()
+            .PlayerDamageAnimationEvents;
+        _fillImage = GetComponent<Image>();
         _playerInputComponent.OnDamagedSuccess += IncreaseValue;
         _playerInputComponent.OnDamagedFail += DecreaseValue;
-        fillImage = GetComponent<Image>();
     }
 
     private void DecreaseValue()
@@ -23,11 +23,11 @@ public class ComboVisualizer : MonoBehaviour
         StartCoroutine(DecreaseBarValue(.0f));
     }
 
-    private void IncreaseValue()
+    private void IncreaseValue() //increases bar value by a third
     {
         StopAllCoroutines();
         GetComponent<Image>().fillAmount += .34f;
-        StartCoroutine(DecreaseOnIdle(3.0f));
+        StartCoroutine(DecreaseOnIdle(2.5f));
     }
 
     private IEnumerator DecreaseOnIdle(float time)
@@ -35,26 +35,25 @@ public class ComboVisualizer : MonoBehaviour
         yield return new WaitForSeconds(time);
         DecreaseValue();
     }
+
     private void OnDisable()
     {
         _playerInputComponent.OnDamagedSuccess -= IncreaseValue;
         _playerInputComponent.OnDamagedFail -= DecreaseValue;
     }
-    
-    private IEnumerator DecreaseBarValue(float value)
+
+    private IEnumerator DecreaseBarValue(float value) //lerp the current value to zero inside the combo button
     {
-        var preChangePct = fillImage.fillAmount;
+        var preChangePct = _fillImage.fillAmount;
         var elapsed = 0.0f;
-        
-        while (elapsed < .5f)
+        const float duration = .5f;
+        while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            fillImage.fillAmount = Mathf.Lerp(preChangePct, value, elapsed / .5f);
+            _fillImage.fillAmount = Mathf.Lerp(preChangePct, value, elapsed / duration);
             yield return null;
         }
-        
-        fillImage.fillAmount = value;
-    } 
-    
-    
+
+        _fillImage.fillAmount = value;
+    }
 }

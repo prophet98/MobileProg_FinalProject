@@ -31,15 +31,18 @@ namespace DamageScripts
             var currentHealthPct = _currentHp / maxHp;
             OnHealthPctChange?.Invoke(currentHealthPct);
             
-            if (_currentHp<=0 && this.GetComponent<AiController>()) //is IA?
+            switch (_currentHp<=0)
             {
-                OnEntityDeath?.Invoke();
-                Destroy(gameObject);
-            }
-            else if (_currentHp<=0 ) //is Player?
-            {
-                gameObject.SetActive(false);
-                OnPlayerDeath?.Invoke();
+                //is IA?
+                case true when this.GetComponent<AiController>():
+                    OnEntityDeath?.Invoke();
+                    Destroy(gameObject);
+                    break;
+                //is Player?
+                case true:
+                    gameObject.SetActive(false);
+                    OnPlayerDeath?.Invoke();
+                    break;
             }
         }
         

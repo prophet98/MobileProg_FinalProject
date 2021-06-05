@@ -9,9 +9,9 @@ namespace DamageScripts
         public event DamageAction OnDamagedFail;
         public Sound.Names[] attackSound;
 
-        private void SwordAttack(int counter)
+        private void SwordAttack(int counter) //event called by the ai animations attached to them 
         {
-            if (ActionsEventsHandler.comboCounter == counter)
+            if (ActionsEventsHandler.comboCounter == counter) //check if player combo counter is following the current counter to apply damage, else you fail to attack.
             {
                 OnDamagedSuccess?.Invoke();
                 if (SoundManager.instance != null)
@@ -25,7 +25,7 @@ namespace DamageScripts
             }
         }
 
-        private void ResetCounter()
+        private void ResetCounter() //event called by the ai animations attached to them
         {
             ActionsEventsHandler.comboCounter = 0;
         }

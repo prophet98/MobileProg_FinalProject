@@ -1,5 +1,3 @@
-
-using System;
 using System.Collections;
 using DamageScripts;
 using UnityEngine;
@@ -11,10 +9,13 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private float updateSpeedSeconds = 0.5f;
     [SerializeField] private HealthComponent healthComponent;
     [SerializeField] private bool isPlayerBar;
-    private void Awake()
+    private Camera _mainCamera;
+
+    private void Awake() //get all needed components and subscribe the event to the health change. 
     {
         foregroundImage = GetComponentInChildren<Image>();
         healthComponent.OnHealthPctChange += HandleHealthChange;
+        _mainCamera = Camera.main;
     }
 
     private void HandleHealthChange(float pct)
@@ -25,28 +26,31 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    private IEnumerator ChangeHealthBarImagePct(float pct)
+    private IEnumerator ChangeHealthBarImagePct(float healthPercentage) //change health percentage with a smooth lerp.
     {
         float preChangePct = foregroundImage.fillAmount;
         float elapsed = 0.0f;
-        
+
         while (elapsed < updateSpeedSeconds)
         {
             elapsed += Time.deltaTime;
-            foregroundImage.fillAmount = Mathf.Lerp(preChangePct, pct, elapsed / updateSpeedSeconds);
+            foregroundImage.fillAmount = Mathf.Lerp(preChangePct, healthPercentage, elapsed / updateSpeedSeconds);
             if (isPlayerBar) foregroundImage.color = Color.red;
             yield return null;
         }
+
         if (isPlayerBar) foregroundImage.color = Color.cyan;
-        foregroundImage.fillAmount = pct;
+        foregroundImage.fillAmount = healthPercentage;
     }
+
     private void LateUpdate()
     {
-        if (isPlayerBar)
+        if (isPlayerBar) //make the health bar face the camera, unless its the player bar.
         {
             return;
         }
-        transform.LookAt(Camera.main.transform);
+
+        transform.LookAt(_mainCamera.transform);
     }
 
     private void OnDisable()

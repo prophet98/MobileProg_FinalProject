@@ -24,11 +24,9 @@ namespace AiScripts
             agent.SetDestination(player.position - Vector3.right);
             if (agent.hasPath)
             {
-                if (IsInRange())
-                {
-                    nextAiState = new AttackState(npc, agent, player, anim, agentStats );
-                    stage = Event.Exit;
-                }
+                if (!IsInRange()) return;
+                nextAiState = new AttackState(npc, agent, player, anim, agentStats );
+                stage = Event.Exit;
             }
         }
         protected override void Exit()
@@ -62,12 +60,10 @@ namespace AiScripts
             if (IsInSight() && IsInRange())
             {
                 anim.SetTrigger(DebugAttack);
-                // Debug.Log("Im attacking!");
             }
             if (IsInRange() && !IsInSight())
             {
                 anim.ResetTrigger(DebugAttack);
-                // Debug.Log("not attacking!");
                 AlignActorRotation();
             } 
             if (!IsInRange() && !IsInSight())
@@ -79,7 +75,7 @@ namespace AiScripts
         
         private void AlignActorRotation()
         {
-            Vector3 direction = player.position - npc.transform.position;
+            var direction = player.position - npc.transform.position;
             npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.LookRotation(direction),
                 Time.deltaTime * agentStats.agentRotationSpeed);
         }

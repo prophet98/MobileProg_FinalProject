@@ -7,9 +7,11 @@ namespace AiScripts
     {
         protected enum Event
         {
-            Enter, Update, Exit
+            Enter,
+            Update,
+            Exit
         };
-        
+
         protected Event stage;
         protected readonly GameObject npc;
         protected readonly Animator anim;
@@ -17,7 +19,7 @@ namespace AiScripts
         protected AiState nextAiState;
         protected readonly NavMeshAgent agent;
         protected readonly AiAgentStats agentStats;
-        
+
         protected AiState(GameObject npc, NavMeshAgent agent, Transform player, Animator anim, AiAgentStats stats)
         {
             this.npc = npc;
@@ -28,9 +30,20 @@ namespace AiScripts
             agentStats = stats;
         }
 
-        protected virtual void Enter() { stage = Event.Update; }
-        protected virtual void Update() { stage = Event.Update; }
-        protected virtual void Exit() { stage = Event.Exit; }
+        protected virtual void Enter()
+        {
+            stage = Event.Update;
+        }
+
+        protected virtual void Update()
+        {
+            stage = Event.Update;
+        }
+
+        protected virtual void Exit()
+        {
+            stage = Event.Exit;
+        }
 
         public AiState Process()
         {
@@ -41,27 +54,21 @@ namespace AiScripts
                 Exit();
                 return nextAiState;
             }
+
             return this;
         }
-    
+
         protected bool IsInRange()
         {
             var direction = player.position - npc.transform.position;
-            if ((direction.magnitude < agentStats.attackDistance))
-            {
-                return true;
-            }
-            return false;
+            return direction.magnitude < agentStats.attackDistance;
         }
+
         protected bool IsInSight()
         {
             var direction = player.position - npc.transform.position;
             var angle = Vector3.Angle(direction.normalized, npc.transform.forward);
-            if ((direction.magnitude < agentStats.attackDistance) && angle < agentStats.sightAngle)
-            {
-                return true;
-            }
-            return false;
+            return (direction.magnitude < agentStats.attackDistance) && angle < agentStats.sightAngle;
         }
     }
 }

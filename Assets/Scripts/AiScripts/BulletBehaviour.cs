@@ -1,5 +1,3 @@
-
-using System;
 using System.Collections;
 using DamageScripts;
 using UnityEngine;
@@ -8,17 +6,19 @@ public class BulletBehaviour : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
     [HideInInspector] public int bulletDamage;
-    private const float LifeTime = 4;
+    private const float LifeTime = 3;
 
     private void OnEnable()
     {
         StartCoroutine(SelfDestruct());
     }
+
     private IEnumerator SelfDestruct()
     {
         yield return new WaitForSeconds(LifeTime);
         Destroy(gameObject);
     }
+
     private void FixedUpdate()
     {
         transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
@@ -29,7 +29,7 @@ public class BulletBehaviour : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.gameObject.GetComponent<HealthComponent>().RemoveHealth(bulletDamage);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

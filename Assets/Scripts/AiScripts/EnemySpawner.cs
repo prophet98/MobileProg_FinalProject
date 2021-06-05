@@ -1,38 +1,38 @@
-
 using System.Collections;
 using DamageScripts;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject enemyType;
+    [SerializeField] private GameObject enemyType;
 
-    private GameObject enemyInstance;
+    private GameObject _enemyInstance;
     public int enemyCoinValue;
     public GameObject deathParticle;
     private GameObject _deathParticleInstance;
+
     private void OnEnable()
     {
         SpawnEnemy();
     }
-    
-    private void SpawnEnemy()
+
+    private void SpawnEnemy() //spawns an enemy and binds to him a death particle.
     {
-        enemyInstance = Instantiate(enemyType, transform.position, transform.rotation);
+        _enemyInstance = Instantiate(enemyType, transform.position, transform.rotation);
         _deathParticleInstance = Instantiate(deathParticle, transform.position, transform.rotation);
-        enemyInstance.GetComponent<HealthComponent>().OnEntityDeath += StartDeathParticleCoroutine;
+        _enemyInstance.GetComponent<HealthComponent>().OnEntityDeath += StartDeathParticleCoroutine;
         GetComponent<MeshRenderer>().enabled = false;
     }
 
-    void StartDeathParticleCoroutine()
+    private void StartDeathParticleCoroutine()
     {
         StartCoroutine(PlayDeathParticle(_deathParticleInstance));
     }
-    IEnumerator PlayDeathParticle(GameObject particle)
+
+    private IEnumerator PlayDeathParticle(GameObject particle) //particle is set to the enemy position, gets played and destroyed.
     {
         particle.GetComponent<AudioSource>().outputAudioMixerGroup = SoundManager.instance?.soundEffectsMixer;
-        particle.transform.position = enemyInstance.transform.position;
+        particle.transform.position = _enemyInstance.transform.position;
         particle.GetComponent<ParticleSystem>().Play();
         particle.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(particle.GetComponent<ParticleSystem>().main.duration);
