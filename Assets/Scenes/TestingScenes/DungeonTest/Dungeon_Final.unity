@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 874319827}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.00016262574, g: 0.006962265, b: 0.049663622, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -180,11 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1159695830, guid: 5149ca85711ab38458bd153eb692821a, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1239647363, guid: 5149ca85711ab38458bd153eb692821a, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1773588411, guid: 5149ca85711ab38458bd153eb692821a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -887,6 +887,31 @@ PrefabInstance:
       propertyPath: sunSource
       value: 
       objectReference: {fileID: 874319827}
+    - target: {fileID: 4551760489388969365, guid: e7b224dedbc442948a940b0414887d82,
+        type: 3}
+      propertyPath: intensities.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551760489388969365, guid: e7b224dedbc442948a940b0414887d82,
+        type: 3}
+      propertyPath: intensities.Array.data[0]
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551760489388969365, guid: e7b224dedbc442948a940b0414887d82,
+        type: 3}
+      propertyPath: intensities.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551760489388969365, guid: e7b224dedbc442948a940b0414887d82,
+        type: 3}
+      propertyPath: intensities.Array.data[2]
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551760489388969365, guid: e7b224dedbc442948a940b0414887d82,
+        type: 3}
+      propertyPath: intensities.Array.data[3]
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5378148371137025779, guid: e7b224dedbc442948a940b0414887d82,
         type: 3}
       propertyPath: PlayerBRS
@@ -1086,7 +1111,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1620224482
+--- !u!21 &1290488974
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0

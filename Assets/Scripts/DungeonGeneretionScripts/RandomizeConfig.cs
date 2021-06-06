@@ -20,7 +20,7 @@ public class RandomizeConfig : MonoBehaviour
 
     #region init
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         ChangeEnv();
     }
@@ -39,14 +39,13 @@ public class RandomizeConfig : MonoBehaviour
     #region Randomization
     private void ChangeEnv()
     {
-        SetNewConfig(randomConfig());
+        SetNewConfig(RandomConfig());
     }
 
-    private EnvConfiguration randomConfig()
+    private EnvConfiguration RandomConfig()
     {
-        EnvConfiguration config;
         int index = Random.Range(0, environmentConfigurations.Length);
-        config = environmentConfigurations[index];
+        EnvConfiguration config = environmentConfigurations[index];
         return config;
     }
 
@@ -54,9 +53,9 @@ public class RandomizeConfig : MonoBehaviour
     {
         _currentEnvConfig = config;
 
-        for (int i = 0; i<walls.Length; i++)
+        foreach (var wall in walls)
         {
-            MatChange(walls[i], config.WallsMaterial);
+            MatChange(wall, config.WallsMaterial);
         }
         MatChange(walkableArea, config.GroundMaterial);
         MatChange(penaltyArea, config.MalusMaterial);

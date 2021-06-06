@@ -17,8 +17,8 @@ public class DungeonGeneratorNew : MonoBehaviour
 
     [SerializeField]
     private GameObject fallenDoorPrefab;
-    private GameObject fallenDoorInstance;
-    private GameObject doorMustFall;
+    private GameObject _fallenDoorInstance;
+    private GameObject _doorMustFall;
 
 
     [SerializeField]
@@ -26,11 +26,11 @@ public class DungeonGeneratorNew : MonoBehaviour
     [SerializeField]
     private GameObject[] bossRoomVariants;
 
-    private const string stdRString = "StandardRoom";
-    private const string bossRString = "BossRoom";
+    private const string StdRString = "StandardRoom";
+    private const string BossRString = "BossRoom";
 
     public bool nextIsBoss = false;
-    private bool stageClear = false;
+    private bool _stageClear = false;
 
     [SerializeField]
     private float adjustRotation;
@@ -39,7 +39,7 @@ public class DungeonGeneratorNew : MonoBehaviour
     private int roomBeforeTheBoss = 1;
     [SerializeField]
     private GameObject bossFightText;
-    private int roomCount;
+    private int _roomCount;
 
     #region init
 
@@ -92,28 +92,28 @@ public class DungeonGeneratorNew : MonoBehaviour
 
     private void NewFallenDoor(GameObject door)
     {
-        if (fallenDoorInstance != null)
+        if (_fallenDoorInstance != null)
         {
-            doorMustFall.SetActive(true);
-            Destroy(fallenDoorInstance);
+            _doorMustFall.SetActive(true);
+            Destroy(_fallenDoorInstance);
         }
 
-        doorMustFall = door;
-        fallenDoorInstance = Instantiate(fallenDoorPrefab, doorMustFall.transform.position, Quaternion.identity);
+        _doorMustFall = door;
+        _fallenDoorInstance = Instantiate(fallenDoorPrefab, _doorMustFall.transform.position, Quaternion.identity);
         //Vector3 rotationOffset = new Vector3(0, adjustRotation, 0);
         //fallenDoorInstance.transform.Rotate(rotationOffset, Space.Self);
-        doorMustFall.SetActive(false);
+        _doorMustFall.SetActive(false);
     }
 
     private void CheckForBossRoom()
     {
-        roomCount++;
+        _roomCount++;
         int roomBeforeTheBossLocal = Random.Range(roomBeforeTheBoss, roomBeforeTheBoss * 2);
-        if (roomCount >= roomBeforeTheBossLocal)
+        if (_roomCount >= roomBeforeTheBossLocal)
         {
             nextIsBoss = true;
-            roomCount = 0;
-            Debug.Log("r count: " + roomCount.ToString());
+            _roomCount = 0;
+            Debug.Log("r count: " + _roomCount.ToString());
         }
         else
         {
@@ -123,7 +123,7 @@ public class DungeonGeneratorNew : MonoBehaviour
 
     public void NextRoom(GameObject entryDoor)
     {
-        if (stageClear)
+        if (_stageClear)
         {
             CheckForBossRoom();
             GameObject.FindGameObjectWithTag("StandardRoom").SetActive(false);
@@ -134,7 +134,7 @@ public class DungeonGeneratorNew : MonoBehaviour
             NewFallenDoor(entryDoor);
             RoomRandomSelector();
         }
-        stageClear = false;
+        _stageClear = false;
     }
 
     //public void SetNextIsBoss(bool isBoss)
@@ -144,7 +144,7 @@ public class DungeonGeneratorNew : MonoBehaviour
 
     public void SetStageIsClear()
     {
-        stageClear = true;
+        _stageClear = true;
     }
 
     #endregion

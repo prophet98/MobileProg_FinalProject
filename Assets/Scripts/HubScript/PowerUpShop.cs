@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,39 +13,38 @@ public class PowerUpShop : MonoBehaviour
     [SerializeField]
     private BaseSkill skill;
 
-    private enum playerStat { Health, Speed, WeaponDmg };
+    private enum PlayerStat { Health, Speed, WeaponDmg };
     [SerializeField]
-    private playerStat statToIncrease = playerStat.Health;
+    private PlayerStat statToIncrease = PlayerStat.Health;
     [SerializeField]
     private float increaseAmount;
 
     [SerializeField]
     private Text priceText;
-    private GameplayManager manager;
+    private GameplayManager _manager;
 
-    private ShopManager sm;
+    private ShopManager _shopManager;
 
     private void OnEnable()
     {
         GetComponent<Button>().onClick.AddListener(BuyItem);
-        sm = FindObjectOfType<ShopManager>();
+        _shopManager = FindObjectOfType<ShopManager>();
     }
 
     private void Start()
     {
-        manager = FindObjectOfType<GameplayManager>();
-        priceText.text = "$"+cost.ToString();
+        _manager = FindObjectOfType<GameplayManager>();
+        priceText.text = $"${cost}";
     }
 
     private void BuyItem()
     {
-        if(manager.playerStats.playerMoney >= cost)
+        if(_manager.playerStats.playerMoney >= cost)
         {
-            Debug.Log("press buy");
             CheckForSkill();
-            manager.playerStats.playerMoney -= cost;
-            PlayerPrefs.SetInt("PlayerMoney", manager.playerStats.playerMoney);
-            sm.UpdateCoinsText();
+            _manager.playerStats.playerMoney -= cost;
+            PlayerPrefs.SetInt("PlayerMoney", _manager.playerStats.playerMoney);
+            _shopManager.UpdateCoinsText();
             SoundManager.instance?.Play(Sound.Names.CashRegister);
             gameObject.SetActive(false);
         }
@@ -57,24 +54,20 @@ public class PowerUpShop : MonoBehaviour
     {
         if (isActiveSkill)
         {
-            manager.playerStats.upperSkill = skill;
-            Debug.Log("Add active skill");
+            _manager.playerStats.upperSkill = skill;
         }
         else if (!isActiveSkill)
         {
             switch (statToIncrease)
             {
-                case playerStat.Health:
-                    manager.playerStats.playerHealth += (int)increaseAmount;
-                    Debug.Log("Add health" + manager.playerStats.playerHealth);
+                case PlayerStat.Health:
+                    _manager.playerStats.playerHealth += (int)increaseAmount;
                     break;
-                case playerStat.Speed:
-                    manager.playerStats.playerSpeed += increaseAmount;
-                    Debug.Log("Add speed" + manager.playerStats.playerSpeed);
+                case PlayerStat.Speed:
+                    _manager.playerStats.playerSpeed += increaseAmount;
                     break;
-                case playerStat.WeaponDmg:
-                    manager.playerStats.playerWeaponDamage += (int)increaseAmount;
-                    Debug.Log("Add dmg" + manager.playerStats.playerWeaponDamage);
+                case PlayerStat.WeaponDmg:
+                    _manager.playerStats.playerWeaponDamage += (int)increaseAmount;
                     break;
             }
         }

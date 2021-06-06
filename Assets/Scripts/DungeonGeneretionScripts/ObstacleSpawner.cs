@@ -1,23 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    private GameObject obstacleInstance;
-    private EnvConfiguration envConfig;
+    private GameObject _obstacleInstance;
+    private EnvConfiguration _envConfig;
 
     private void OnEnable()
     {
-        envConfig = GameObject.FindObjectOfType<RandomizeConfigNew>().GetCurrentConfig;
+        _envConfig = GameObject.FindObjectOfType<RandomizeConfigNew>().GetCurrentConfig;
         SpawnObstacle();
     }
+
     private void OnDisable()
     {
-        Destroy(obstacleInstance);
+        Destroy(_obstacleInstance);
     }
+
     private void SpawnObstacle()
     {
-        obstacleInstance = Instantiate(envConfig.OstacleGO, transform.position, transform.rotation);
+        _obstacleInstance = Instantiate(_envConfig.OstacleGO, transform.position, transform.rotation);
     }
 }

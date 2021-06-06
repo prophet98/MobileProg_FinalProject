@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class EnvLightCycle : MonoBehaviour
@@ -7,15 +6,15 @@ public class EnvLightCycle : MonoBehaviour
     [Tooltip("number of room to pass before the light changes")]
     [SerializeField]
     private int requiredRoomAmount = 3;
-    private int currentRoomAmount;
+    private int _currentRoomAmount;
 
     [Tooltip("main light color variations")]
     [SerializeField]
     private Color[] colors;
     [Tooltip("main light intensity variations, must be the same lenght of colors array")]
     [SerializeField]
-    private float[] intenstities;
-    private int colorsIndex;
+    private float[] intensities;
+    private int _colorsIndex;
 
     [Tooltip("main light, this light will change color and orientation during the game")]
     [SerializeField]
@@ -24,12 +23,12 @@ public class EnvLightCycle : MonoBehaviour
     [SerializeField]
     private float[] xLightAngle;
 
-    private Vector3 sunAdjustAngle;
+    private Vector3 _sunAdjustAngle;
 
-    void Start()
+    private void Start()
     {
-        currentRoomAmount = 0;
-        sunAdjustAngle = new Vector3();
+        _currentRoomAmount = 0;
+        _sunAdjustAngle = new Vector3();
         RotateSun();
     }
 
@@ -45,27 +44,27 @@ public class EnvLightCycle : MonoBehaviour
 
     private void ChangeLight()
     {
-        currentRoomAmount++;
-        if (currentRoomAmount % requiredRoomAmount == 0)
+        _currentRoomAmount++;
+        if (_currentRoomAmount % requiredRoomAmount == 0)
         {
-            currentRoomAmount = 0;
+            _currentRoomAmount = 0;
 
-            colorsIndex++;
-            if (colorsIndex >= colors.Length)
-                colorsIndex = 0;
+            _colorsIndex++;
+            if (_colorsIndex >= colors.Length)
+                _colorsIndex = 0;
 
-            sunSource.color = colors[colorsIndex];
-            sunSource.intensity = intenstities[colorsIndex];
+            sunSource.color = colors[_colorsIndex];
+            sunSource.intensity = intensities[_colorsIndex];
             RotateSun();
         }
     }
 
     private void RotateSun()
     {
-        sunAdjustAngle.x = xLightAngle[colorsIndex];
-        sunAdjustAngle.y = sunSource.transform.eulerAngles.y;
-        sunAdjustAngle.z = sunSource.transform.eulerAngles.z;
+        _sunAdjustAngle.x = xLightAngle[_colorsIndex];
+        _sunAdjustAngle.y = sunSource.transform.eulerAngles.y;
+        _sunAdjustAngle.z = sunSource.transform.eulerAngles.z;
 
-        sunSource.transform.eulerAngles = sunAdjustAngle;
+        sunSource.transform.eulerAngles = _sunAdjustAngle;
     }
 }

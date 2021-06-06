@@ -5,23 +5,21 @@ using UnityEngine.UI;
 
 public class FadeAndTeleport : MonoBehaviour
 {
-    private GameObject player;
-    private WaitForSeconds wait;
+    private GameObject _player;
+    private WaitForSeconds _wait;
 
-    private const string imageName = "FadeImage";
-    private Image fadeImage;
-    [SerializeField]
-    private Color fadeColor;
+    private const string ImageName = "FadeImage";
+    private Image _fadeImage;
+    [SerializeField] private Color fadeColor;
 
-    void Start()
+    private void Start()
     {
-        fadeImage = GameObject.Find(imageName).GetComponent<Image>();
-        fadeImage.color = fadeColor;
-        fadeImage.CrossFadeAlpha(0f, 1.5f, false);
-        wait = new WaitForSeconds(0.3f);
+        _fadeImage = GameObject.Find(ImageName).GetComponent<Image>();
+        _fadeImage.color = fadeColor;
+        _fadeImage.CrossFadeAlpha(0f, 1.5f, false);
+        _wait = new WaitForSeconds(0.3f);
 
-        player = GameObject.FindGameObjectWithTag("Player");
-
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void OnEnable()
@@ -36,15 +34,15 @@ public class FadeAndTeleport : MonoBehaviour
 
     private void TeleportPlayer(Transform targetGo)
     {
-        player.transform.position = targetGo.position;
+        _player.transform.position = targetGo.position;
         StartCoroutine(FadeCoroutine());
     }
 
     private IEnumerator FadeCoroutine()
     {
-        fadeImage.CrossFadeAlpha(1f, 0f, true);
-        yield return wait;
-        fadeImage.CrossFadeAlpha(0f, 1.5f, true);
+        _fadeImage.CrossFadeAlpha(1f, 0f, true);
+        yield return _wait;
+        _fadeImage.CrossFadeAlpha(0f, 1.5f, true);
         yield break;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using DamageScripts;
 using UnityEngine;
 
@@ -5,10 +6,16 @@ public class ShootingComponent : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform gunSocket;
+    private AiDamageAnimationEvents _aiDamageAnimationEvents;
+
+    private void Awake()
+    {
+        _aiDamageAnimationEvents = GetComponentInChildren<AiDamageAnimationEvents>();
+    }
 
     private void OnEnable()
     {
-        AiDamageAnimationEvents.OnShoot += ShootProjectile;
+        _aiDamageAnimationEvents.OnShoot += ShootProjectile;
     }
 
     private void ShootProjectile(int damage)
@@ -19,6 +26,6 @@ public class ShootingComponent : MonoBehaviour
 
     private void OnDisable()
     {
-        AiDamageAnimationEvents.OnShoot -= ShootProjectile;
+        _aiDamageAnimationEvents.OnShoot -= ShootProjectile;
     }
 }

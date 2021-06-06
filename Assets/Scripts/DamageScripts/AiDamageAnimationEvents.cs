@@ -8,7 +8,7 @@ namespace DamageScripts
         public delegate void DamageAction(int damage);
 
         public static event DamageAction OnPlayerDamagedSuccess;
-        public static event DamageAction OnShoot;
+        public event DamageAction OnShoot;
 
         private int _attackDamage;
         public Sound.Names enemyAttackSound;

@@ -1,5 +1,3 @@
-
-using System;
 using TMPro;
 using UnityEngine;
 using Button = UnityEngine.UI.Button;
@@ -15,7 +13,7 @@ public class ShopManager : MonoBehaviour
     {
         switchButton.onClick.AddListener(HandlePanelView);
         ActivatePassive();
-        UpdateCoinsText();//TODO: Fix
+        UpdateCoinsText();
     }
 
     private void HandlePanelView()

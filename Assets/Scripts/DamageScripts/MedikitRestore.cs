@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using DamageScripts;
 
-public class medikitRestore : MonoBehaviour
+public class MedikitRestore : MonoBehaviour
 {
     [SerializeField]
     private GameObject healParticles;
@@ -15,7 +14,6 @@ public class medikitRestore : MonoBehaviour
         if (other.CompareTag(PLAYER_TAG))
         {
             other.GetComponent<HealthComponent>().RemoveHealth(-15);
-            Debug.Log("Medikit Restore");
             SoundManager.instance?.Play(Sound.Names.HealSound);
             GameObject particlesInstance = Instantiate(healParticles, other.transform);
             Destroy(particlesInstance, 1f);
