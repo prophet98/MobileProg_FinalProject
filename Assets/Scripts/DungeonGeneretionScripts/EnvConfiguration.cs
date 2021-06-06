@@ -15,5 +15,5 @@ public class EnvConfiguration : ScriptableObject
     public Material GroundMaterial { get => _groundMaterial; }
     public Material WallsMaterial { get => _wallsMaterial; }
     public Material MalusMaterial { get => _malusMaterial; }
-    public GameObject OstacleGO { get => _obstaclePrefab; } //implementare
+    public GameObject OstacleGO { get => _obstaclePrefab; } 
 }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DungeonGeneratorNew
-    : MonoBehaviour
+public class DungeonGeneratorNew : MonoBehaviour
 {
+    //doors
     [SerializeField]
     private GameObject doorUp;
     [SerializeField]
@@ -13,16 +13,13 @@ public class DungeonGeneratorNew
     private GameObject doorLeft;
     [SerializeField]
     private GameObject doorRight;
-
-    [SerializeField]
-    private GameObject bossFightText;
-
     private GameObject[] _doors;
+
     [SerializeField]
     private GameObject fallenDoorPrefab;
     private GameObject fallenDoorInstance;
-
     private GameObject doorMustFall;
+
 
     [SerializeField]
     private GameObject[] stdRoomVariants;
@@ -40,6 +37,8 @@ public class DungeonGeneratorNew
 
     [SerializeField]
     private int roomBeforeTheBoss = 1;
+    [SerializeField]
+    private GameObject bossFightText;
     private int roomCount;
 
     #region init
@@ -50,8 +49,8 @@ public class DungeonGeneratorNew
 
         bossFightText.SetActive(false);
 
-        _doors = new[] {doorUp, doorDown, doorLeft, doorRight};
-        
+        _doors = new[] { doorUp, doorDown, doorLeft, doorRight };
+
         foreach (var door in _doors)
         {
             door.GetComponent<Door>().ResetDoor();
@@ -115,7 +114,8 @@ public class DungeonGeneratorNew
             nextIsBoss = true;
             roomCount = 0;
             Debug.Log("r count: " + roomCount.ToString());
-        } else
+        }
+        else
         {
             nextIsBoss = false;
         }

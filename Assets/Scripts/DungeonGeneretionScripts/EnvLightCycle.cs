@@ -32,7 +32,7 @@ public class EnvLightCycle : MonoBehaviour
         sunAdjustAngle = new Vector3();
         RotateSun();
     }
-    
+
     private void OnEnable()
     {
         Door.OnEnvChange += ChangeLight;

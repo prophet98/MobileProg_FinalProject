@@ -7,7 +7,7 @@ public class ObstacleDamage : MonoBehaviour
 {
     private GameObject playerGO;
     private const string PLAYER_TAG = "Player";
-    
+
     [SerializeField]
     private int damage = 3;
 
@@ -23,9 +23,9 @@ public class ObstacleDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == PLAYER_TAG)
+        if (other.tag == PLAYER_TAG)
         {
-            InvokeRepeating(nameof(Damage), 0f, 0.5f); 
+            InvokeRepeating(nameof(Damage), 0f, 0.5f);
         }
     }
 

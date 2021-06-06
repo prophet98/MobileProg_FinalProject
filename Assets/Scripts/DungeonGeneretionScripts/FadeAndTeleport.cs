@@ -16,7 +16,7 @@ public class FadeAndTeleport : MonoBehaviour
     void Start()
     {
         fadeImage = GameObject.Find(imageName).GetComponent<Image>();
-        fadeImage.color = fadeColor; 
+        fadeImage.color = fadeColor;
         fadeImage.CrossFadeAlpha(0f, 1.5f, false);
         wait = new WaitForSeconds(0.3f);
 

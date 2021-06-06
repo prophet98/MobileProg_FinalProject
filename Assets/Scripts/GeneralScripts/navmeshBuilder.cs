@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class navmeshBuilder : MonoBehaviour
+public class NavmeshBuilder : MonoBehaviour
 {
     public NavMeshSurface surface;
     private void Awake()

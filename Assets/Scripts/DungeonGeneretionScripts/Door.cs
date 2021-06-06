@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField]
-    private DungeonGeneratorNew dungeonGenerator; //WARNING: doesn't work with dungeon_new
+    private DungeonGeneratorNew dungeonGenerator;
     [SerializeField]
     private GameObject oppositeDoor;
     [SerializeField]
@@ -15,15 +15,14 @@ public class Door : MonoBehaviour
     private GameObject PassGO;
     [SerializeField]
     private GameObject NoPassGO;
+    [SerializeField]
+    private BattleRewardSystem PlayerBRS;
 
     public delegate void ChangeEnv();
     public static event ChangeEnv OnEnvChange;
 
     public delegate void Teleport(Transform oppRespawn);
     public static event Teleport OnTeleport;
-    
-    [SerializeField]
-    private BattleRewardSystem PlayerBRS;
 
     private void OnEnable()
     {
@@ -41,10 +40,10 @@ public class Door : MonoBehaviour
                 OnEnvChange?.Invoke();
 
                 dungeonGenerator.NextRoom(oppositeDoor);
-                
+
                 SoundManager.instance?.Play(dungeonGenerator.nextIsBoss ? Sound.Names.BossTheme : Sound.Names.BattleTheme01);
             }
-            
+
         }
     }
 
@@ -59,5 +58,5 @@ public class Door : MonoBehaviour
         NoPassGO.SetActive(true);
         PassGO.SetActive(false);
     }
-    
+
 }
