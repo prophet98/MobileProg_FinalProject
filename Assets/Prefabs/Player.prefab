@@ -2477,8 +2477,8 @@ MonoBehaviour:
   killCounter: 0
   weaponParticle: {fileID: 173668, guid: 5d476fdbb7a864646aa6a217aa4e6166, type: 3}
   weaponParticleInstance: {fileID: 0}
-  idleColor: {r: 0.80784315, g: 0.98039216, b: 0.16078432, a: 1}
-  inRangeColor: {r: 0, g: 0.3566494, b: 1, a: 1}
+  idleColor: {r: 0.16078429, g: 0.7529412, b: 0.9011248, a: 1}
+  inRangeColor: {r: 0.80784315, g: 0.98039216, b: 0.16078432, a: 1}
 --- !u!1 &744369363062217553
 GameObject:
   m_ObjectHideFlags: 0
