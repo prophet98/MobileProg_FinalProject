@@ -29,7 +29,8 @@ public class BattleRewardSystem : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerScore", Score);
     }
 
-    public void RewardPlayer(int money) //reward the player with given amount of money and update UI accordingly, if he won load another scene. 
+    public void
+        RewardPlayer(int money) //reward the player with given amount of money and update UI accordingly, if he won load another scene. 
     {
         CurrentMoney += money;
         Score = CurrentMoney * scoreMultiplier;
@@ -38,7 +39,6 @@ public class BattleRewardSystem : MonoBehaviour
         moneyText.text = $"+ {money} money";
         StartCoroutine(FadeText(moneyText, 1.5f));
         scoreText.rectTransform.DOPunchScale(new Vector3(1, 1, 1), .5f);
-
         UnlockDoors?.Invoke();
 
         if (Score >= pointsToReach)
@@ -61,5 +61,6 @@ public class BattleRewardSystem : MonoBehaviour
         text.DOFade(1.0f, 0.5f);
         yield return new WaitForSeconds(0.5f);
         text.DOFade(0.0f, duration);
+        yield return null;
     }
 }

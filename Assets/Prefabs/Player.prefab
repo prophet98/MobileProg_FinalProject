@@ -2602,6 +2602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPassGate: 0
   scoreText: {fileID: 0}
+  moneyText: {fileID: 0}
   scoreMultiplier: 5
   pointsToReach: 10000
   prize: 1000
