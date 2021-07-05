@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class BattleRewardSystem : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class BattleRewardSystem : MonoBehaviour
     public event Action UnlockDoors;
 
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI moneyText;
+
     [SerializeField] private float scoreMultiplier = 2f;
     [SerializeField] private float pointsToReach = 10000f;
     [SerializeField] private int prize = 1000;
@@ -25,13 +29,16 @@ public class BattleRewardSystem : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerScore", Score);
     }
 
-    public void
-        RewardPlayer(int money) //reward the player with given amount of money and update UI accordingly, if he won load another scene. 
+    public void RewardPlayer(int money) //reward the player with given amount of money and update UI accordingly, if he won load another scene. 
     {
         CurrentMoney += money;
         Score = CurrentMoney * scoreMultiplier;
         scoreText.text = "SCORE: " + Score;
         PlayerPrefs.SetFloat("PlayerScore", Score);
+        moneyText.text = $"+ {money} money";
+        StartCoroutine(FadeText(moneyText, 1.5f));
+        scoreText.rectTransform.DOPunchScale(new Vector3(1, 1, 1), .5f);
+
         UnlockDoors?.Invoke();
 
         if (Score >= pointsToReach)
@@ -47,5 +54,12 @@ public class BattleRewardSystem : MonoBehaviour
         {
             GameplayManager.instance.playerStats.playerMoney += CurrentMoney;
         }
+    }
+
+    private IEnumerator FadeText(TextMeshProUGUI text, float duration)
+    {
+        text.DOFade(1.0f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        text.DOFade(0.0f, duration);
     }
 }

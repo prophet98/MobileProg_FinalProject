@@ -23,7 +23,10 @@ public class PlayerWeaponComponent : MonoBehaviour
     private void Start()
     {
         _rangeImage = GetComponentInChildren<Image>();
-        _rangeImage.color = idleColor;
+        if (_rangeImage)
+        {
+            _rangeImage.color = idleColor;
+        }
     }
 
     private void ResetKillCounter() //resets the kills made by player.
@@ -58,6 +61,9 @@ public class PlayerWeaponComponent : MonoBehaviour
 
     private void Update()
     {
-        _rangeImage.color = triggerList.Count > 0 ? inRangeColor : idleColor;
+        if (_rangeImage)
+        {
+            _rangeImage.color = triggerList.Count > 0 ? inRangeColor : idleColor;
+        }
     }
 }
