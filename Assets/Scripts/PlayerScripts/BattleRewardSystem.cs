@@ -40,6 +40,7 @@ public class BattleRewardSystem : MonoBehaviour
         StartCoroutine(FadeText(moneyText, 1.5f));
         scoreText.rectTransform.DOPunchScale(new Vector3(1, 1, 1), .5f);
         UnlockDoors?.Invoke();
+        //PlayerPrefs.SetInt("PlayerMoney", GameplayManager.instance.playerStats.playerMoney);
 
         if (Score >= pointsToReach)
         {
@@ -48,7 +49,7 @@ public class BattleRewardSystem : MonoBehaviour
         }
     }
 
-    private void OnDisable() //when game or player quits, update the money value.
+    private void OnDestroy() //when game or player quits, update the money value.
     {
         if (GameplayManager.instance != null)
         {
