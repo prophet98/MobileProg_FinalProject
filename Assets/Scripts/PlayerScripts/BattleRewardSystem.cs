@@ -54,6 +54,7 @@ public class BattleRewardSystem : MonoBehaviour
         if (GameplayManager.instance != null)
         {
             GameplayManager.instance.playerStats.playerMoney += CurrentMoney;
+            PlayerPrefs.SetInt("PlayerMoney", GameplayManager.instance.playerStats.playerMoney);
         }
     }
 
