@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class NavmeshBuilder : MonoBehaviour
 {
     public NavMeshSurface surface;
+
     private void Awake()
     {
         RebuildNavMesh();
@@ -11,7 +12,6 @@ public class NavmeshBuilder : MonoBehaviour
 
     private void OnEnable()
     {
-        
         Door.OnEnvChange += RebuildNavMesh;
     }
 
@@ -22,8 +22,6 @@ public class NavmeshBuilder : MonoBehaviour
 
     private void RebuildNavMesh()
     {
-        
-        surface.BuildNavMesh();  
-        
+        surface.BuildNavMesh();
     }
 }

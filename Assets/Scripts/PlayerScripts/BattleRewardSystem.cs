@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class BattleRewardSystem : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class BattleRewardSystem : MonoBehaviour
     public event Action UnlockDoors;
 
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI moneyText;
+
     [SerializeField] private float scoreMultiplier = 2f;
     [SerializeField] private float pointsToReach = 10000f;
     [SerializeField] private int prize = 1000;
@@ -32,7 +36,11 @@ public class BattleRewardSystem : MonoBehaviour
         Score = CurrentMoney * scoreMultiplier;
         scoreText.text = "SCORE: " + Score;
         PlayerPrefs.SetFloat("PlayerScore", Score);
+        moneyText.text = $"+ {money} money";
+        StartCoroutine(FadeText(moneyText, 1.5f));
+        scoreText.rectTransform.DOPunchScale(new Vector3(1, 1, 1), .5f);
         UnlockDoors?.Invoke();
+        //PlayerPrefs.SetInt("PlayerMoney", GameplayManager.instance.playerStats.playerMoney);
 
         if (Score >= pointsToReach)
         {
@@ -41,11 +49,20 @@ public class BattleRewardSystem : MonoBehaviour
         }
     }
 
-    private void OnDisable() //when game or player quits, update the money value.
+    private void OnDestroy() //when game or player quits, update the money value.
     {
         if (GameplayManager.instance != null)
         {
             GameplayManager.instance.playerStats.playerMoney += CurrentMoney;
+            PlayerPrefs.SetInt("PlayerMoney", GameplayManager.instance.playerStats.playerMoney);
         }
+    }
+
+    private IEnumerator FadeText(TextMeshProUGUI text, float duration)
+    {
+        text.DOFade(1.0f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        text.DOFade(0.0f, duration);
+        yield return null;
     }
 }
